@@ -1,7 +1,6 @@
-import GitHub from "@material-ui/icons/GitHub";
 import { css } from "styled-components";
-import Twitter from "@material-ui/icons/Twitter";
-import { Flex } from "rebass";
+import { Twitter, GitHub } from "react-feather";
+import { Flex } from "rebass/styled-components";
 import { ReactNode, ReactType } from "react";
 import Text from "./Text";
 import Link from "./Link";
@@ -46,7 +45,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
   prefetch
 }) => {
   return (
-    <Text as="div" my={1} color="#FFF">
+    <Text as="div" my={1} color="#F2DFDF">
       <Link href={href} rel={rel} prefetch={prefetch} underline>
         {IconComp && <IconComp />}
         {children}
@@ -60,7 +59,6 @@ const Footer: React.FC<{}> = () => (
     py={5}
     mt={5}
     as="footer"
-    bg="#fff"
     css={css`
       border-top: 1px solid rgba(255, 255, 255, 0.6);
     `}
@@ -68,7 +66,7 @@ const Footer: React.FC<{}> = () => (
     <Layout width={[1, 0.5]}>
       <Flex flexDirection={["column", "row"]}>
         <FooterColumn title="About this website">
-          <Text color="#FFF" lineHeight={1.5}>
+          <Text color="#F2DFDF" lineHeight={1.5}>
             This is my website! I&apos;m Hiranmaya Gundu, a dev exploring web,
             systems and AI trying to decide where to land. This is my personal
             blog!

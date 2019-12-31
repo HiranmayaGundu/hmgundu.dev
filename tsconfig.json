@@ -19,7 +19,9 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "typeRoots": ["./types", "./node_modules/@types"]
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "baseUrl": ".",
+    "paths": { "rebass/styled-components": ["node_modules/@types/rebass"] }
   },
   "exclude": ["node_modules", "types"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

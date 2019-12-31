@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, FlexProps } from "rebass";
+import { Flex, FlexProps } from "rebass/styled-components";
 
 const Main: React.FC<FlexProps> = props => (
   <Flex

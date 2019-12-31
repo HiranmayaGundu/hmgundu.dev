@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "rebass";
+import { Link } from "rebass/styled-components";
 import NextLink from "next/link";
 import ConditionalWrap from "conditional-wrap";
 import styled from "styled-components";

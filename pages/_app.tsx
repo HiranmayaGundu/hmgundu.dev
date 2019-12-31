@@ -1,7 +1,7 @@
 import React from "react";
 import App from "next/app";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { Flex } from "rebass";
+import { Flex } from "rebass/styled-components";
 import reset from "styled-reset";
 import Footer from "../components/Footer";
 import Layout from "../components/Layout";
@@ -10,15 +10,15 @@ import Head from "../components/Head";
 
 // Default theme, to change to what I want later.
 const colors = {
-  blue: "#3867d6",
+  green: "#D0D0D0",
   greys: ["#EEE", "#BBB", "#999", "#666"],
-  white: "#FFF",
+  white: "#F2DFDF",
   black: "#333"
 };
 
 const theme = {
   colors: {
-    primary: colors.blue,
+    primary: colors.green,
     text: colors.white,
     background: "#A62C2B",
     secondary: colors.greys[4],
@@ -41,6 +41,17 @@ const theme = {
       "Segoe UI Symbol"
     ],
     serif: ["Georgia", "serif"]
+  },
+  fontSizes: [16, 18, 20, 24, 32, 48, 64, 96],
+  fontWeights: {
+    body: 400,
+    heading: 700,
+    bold: 700
+  },
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  lineHeights: {
+    body: 1.5,
+    heading: 1.25
   }
 };
 
@@ -82,6 +93,8 @@ class MyApp extends App {
             flexDirection={["column", "row"]}
             alignItems="center"
             justifyContent="center"
+            mt={4}
+            mb={4}
           >
             <Layout
               pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}

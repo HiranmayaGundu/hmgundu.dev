@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import styled, { css } from "styled-components";
-import { Box, Flex } from "rebass";
+import styled from "styled-components";
+import { Box, Flex } from "rebass/styled-components";
 import Text from "./Text";
 import Link from "./Link";
 import Layout from "./Layout";
@@ -19,6 +19,7 @@ const NavItem: React.FC<NavItemProps> = props => {
     <Box mr={4} className={props.className}>
       <Link href={props.href}>
         <Text
+          as="h3"
           color={active ? "text" : "#666"}
           fontWeight={active ? "bold" : "normal"}
         >
@@ -36,20 +37,12 @@ const StyledNavItem = styled(NavItem)`
 `;
 
 const Nav: React.FC<{}> = () => (
-  <Flex
-    py={5}
-    mt={5}
-    as="nav"
-    bg="#fff"
-    css={css`
-      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-    `}
-  >
+  <Flex py={2} mt={2} as="nav">
     <Layout py={1} width={1}>
       <Flex alignItems="center" justifyContent={["center", "space-between"]}>
-        <StyledNavItem href="/" title="Home" />
+        <StyledNavItem href="/" title="Hiranmaya" />
         <StyledNavItem href="/about" title="About" />
-        <StyledNavItem href="/blog" title="blog" />
+        <StyledNavItem href="/blog" title="Blog" />
       </Flex>
     </Layout>
   </Flex>

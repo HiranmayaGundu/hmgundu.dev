@@ -1,4 +1,4 @@
-import { Box, BoxProps } from "rebass";
+import { Box, BoxProps } from "rebass/styled-components";
 import styled from "styled-components";
 
 const Layout: React.FC<BoxProps> = styled(Box)`

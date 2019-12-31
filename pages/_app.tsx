@@ -1,9 +1,12 @@
 import React from "react";
 import App from "next/app";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { Flex } from "rebass";
 import reset from "styled-reset";
 import Footer from "../components/Footer";
 import Layout from "../components/Layout";
+import Nav from "../components/Nav";
+import Head from "../components/Head";
 
 // Default theme, to change to what I want later.
 const colors = {
@@ -16,8 +19,8 @@ const colors = {
 const theme = {
   colors: {
     primary: colors.blue,
-    text: colors.black,
-    background: "rgb(246, 247, 248)",
+    text: colors.white,
+    background: "#A62C2B",
     secondary: colors.greys[4],
     tertiary: colors.greys[3],
     quaternary: colors.greys[2],
@@ -41,11 +44,13 @@ const theme = {
   }
 };
 
-const GlobalStyle = createGlobalStyle`
+type ThemeType = typeof theme;
+
+const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
   ${reset}
 
   body {
-    background-color: rgb(246, 247, 248);
+    background-color: ${props => props.theme.colors.background};
     margin: 0;
   }
 
@@ -59,9 +64,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// const NAV_HEIGHT: number = 65;
+const NAV_HEIGHT = 65;
 
-export const DEFAULT_TITLE: string = "Hiranmaya Gundu- Software developer";
+export const DEFAULT_TITLE = "Hiranmaya Gundu- Software developer";
+
+const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
 class MyApp extends App {
   render() {
@@ -69,10 +76,24 @@ class MyApp extends App {
     return (
       <ThemeProvider theme={theme}>
         <>
-          <Layout>
-            <GlobalStyle />
-            <Component {...pageProps} />
-          </Layout>
+          <Nav />
+          <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
+          <Flex
+            flexDirection={["column", "row"]}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Layout
+              pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
+              css={{
+                paddingLeft: "8px",
+                paddingRight: "8px"
+              }}
+            >
+              <GlobalStyle />
+              <Component {...pageProps} />
+            </Layout>
+          </Flex>
           <Footer />
         </>
       </ThemeProvider>

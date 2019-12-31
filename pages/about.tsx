@@ -1,10 +1,12 @@
-import Header from "../components/Header";
+import Main from "../components/Main";
+import Text from "../components/Text";
 
 const About = () => (
-  <div>
-    <Header />
-    <p>Simple about page, will fill in details later.</p>
-  </div>
+  <Main>
+    <div>
+      <Text>Simple about page, will fill in details later.</Text>
+    </div>
+  </Main>
 );
 
 export default About;

@@ -1,20 +1,13 @@
-import React, { ReactNode } from "react";
-import Grid from "@material-ui/core/Grid";
+import React from "react";
+import { Flex, FlexProps } from "rebass";
 
-interface MainProps {
-  children: ReactNode;
-}
-
-const Main: React.FC<MainProps> = ({ children }) => (
-  <Grid
-    container
-    item
-    direction="column"
-    justify="center"
-    alignItems="flex-start"
-  >
-    {children}
-  </Grid>
+const Main: React.FC<FlexProps> = props => (
+  <Flex
+    as="main"
+    flexDirection="column"
+    alignItems={["center", "flex-start"]}
+    {...props}
+  />
 );
 
 export default Main;

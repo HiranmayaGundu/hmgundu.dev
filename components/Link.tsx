@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "@material-ui/core/Link";
+import { Link } from "rebass";
 import NextLink from "next/link";
 import ConditionalWrap from "conditional-wrap";
 import styled from "styled-components";
@@ -27,9 +27,8 @@ const UniversalLink: React.FC<UniversalLinkProps> = props => {
       <Link
         target={external ? "_blank" : undefined}
         rel={external ? "noopener" : undefined}
-      >
-        {props.children}
-      </Link>
+        {...props}
+      />
     </ConditionalWrap>
   );
 };

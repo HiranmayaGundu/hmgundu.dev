@@ -1,10 +1,11 @@
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import GitHub from "@material-ui/icons/GitHub";
+import { css } from "styled-components";
 import Twitter from "@material-ui/icons/Twitter";
+import { Flex } from "rebass";
 import { ReactNode, ReactType } from "react";
+import Text from "./Text";
 import Link from "./Link";
-import styled from "styled-components";
+import Layout from "./Layout";
 
 interface FooterColumnProps {
   title: string;
@@ -23,17 +24,17 @@ interface FooterItemProps {
 
 const FooterColumn: React.FC<FooterColumnProps> = props => {
   return (
-    <Grid
-      container
-      item
-      direction="column"
-      justify="flex-start"
-      alignItems="center"
-      spacing={1}
+    <Flex
+      flexDirection="column"
+      flex={1}
+      mb={4}
+      mr={props?.last === true ? 0 : 4}
     >
-      <Typography variant="h6">{props.title}</Typography>
+      <Text mb={3} fontWeight="bold" color="#FFF">
+        {props.title}
+      </Text>
       {props.children}
-    </Grid>
+    </Flex>
   );
 };
 
@@ -45,51 +46,55 @@ const FooterItem: React.FC<FooterItemProps> = ({
   prefetch
 }) => {
   return (
-    <Grid item xs={12} sm={3} md={3} lg={3}>
+    <Text as="div" my={1} color="#FFF">
       <Link href={href} rel={rel} prefetch={prefetch} underline>
         {IconComp && <IconComp />}
         {children}
       </Link>
-    </Grid>
+    </Text>
   );
 };
 
-const FooterGrid = styled(Grid)`
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-`;
-
-export default () => (
-  <FooterGrid
-    container
-    item
-    direction="row"
-    alignItems="flex-start"
-    justify="center"
-    spacing={2}
+const Footer: React.FC<{}> = () => (
+  <Flex
+    py={5}
+    mt={5}
+    as="footer"
+    bg="#fff"
+    css={css`
+      border-top: 1px solid rgba(255, 255, 255, 0.6);
+    `}
   >
-    <FooterColumn title="About this website">
-      <Typography>
-        This is my website! I'm Hiranmaya Gundu, a dev exploring web dev,
-        systems and AI trying to decide where to land. This is my personal blog!
-      </Typography>
-    </FooterColumn>
-    <FooterColumn last title="Social Media">
-      <FooterItem
-        href="https://github.com/HiranmayaGundu"
-        IconComp={GitHub}
-        rel="me"
-      >
-        <Typography>View the source on GitHub</Typography>
-      </FooterItem>
-      <FooterItem
-        href="https://twitter.com/newblockk"
-        IconComp={Twitter}
-        rel="me"
-      >
-        <Typography>
-          You can follow me on twitter, though I don't do much there
-        </Typography>
-      </FooterItem>
-    </FooterColumn>
-  </FooterGrid>
+    <Layout width={[1, 0.5]}>
+      <Flex flexDirection={["column", "row"]}>
+        <FooterColumn title="About this website">
+          <Text color="#FFF" lineHeight={1.5}>
+            This is my website! I&apos;m Hiranmaya Gundu, a dev exploring web,
+            systems and AI trying to decide where to land. This is my personal
+            blog!
+          </Text>
+        </FooterColumn>
+        <FooterColumn last title="Social Media">
+          <FooterItem
+            href="https://github.com/HiranmayaGundu/hmgundu.dev"
+            IconComp={GitHub}
+            rel="me"
+          >
+            <br />
+            View the source on GitHub
+          </FooterItem>
+          <FooterItem
+            href="https://twitter.com/newblockk"
+            IconComp={Twitter}
+            rel="me"
+          >
+            <br />
+            You can follow me on twitter, though I don&apos;t do much there
+          </FooterItem>
+        </FooterColumn>
+      </Flex>
+    </Layout>
+  </Flex>
 );
+
+export default Footer;

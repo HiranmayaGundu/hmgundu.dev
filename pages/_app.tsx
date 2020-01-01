@@ -3,10 +3,12 @@ import App from "next/app";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Flex } from "rebass/styled-components";
 import reset from "styled-reset";
+import { MDXProvider } from "@mdx-js/react";
 import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
 import Head from "../components/Head";
+import components from "../components/Markdown";
 
 // Default theme, to change to what I want later.
 const colors = {
@@ -86,29 +88,31 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <>
-          <Nav />
-          <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
-          <Flex
-            flexDirection={["column", "row"]}
-            alignItems="center"
-            justifyContent="center"
-            mt={4}
-            mb={4}
-          >
-            <Layout
-              pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
-              css={{
-                paddingLeft: "8px",
-                paddingRight: "8px"
-              }}
+        <MDXProvider components={components}>
+          <>
+            <Nav />
+            <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
+            <Flex
+              flexDirection={["column", "row"]}
+              alignItems="center"
+              justifyContent="center"
+              mt={4}
+              mb={4}
             >
-              <GlobalStyle />
-              <Component {...pageProps} />
-            </Layout>
-          </Flex>
-          <Footer />
-        </>
+              <Layout
+                pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
+                css={{
+                  paddingLeft: "8px",
+                  paddingRight: "8px"
+                }}
+              >
+                <GlobalStyle />
+                <Component {...pageProps} />
+              </Layout>
+            </Flex>
+            <Footer />
+          </>
+        </MDXProvider>
       </ThemeProvider>
     );
   }

@@ -1,4 +1,3 @@
-import { css } from "styled-components";
 import { Twitter, GitHub } from "react-feather";
 import { Flex } from "rebass/styled-components";
 import { ReactNode, ReactType } from "react";
@@ -55,14 +54,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
 };
 
 const Footer: React.FC<{}> = () => (
-  <Flex
-    py={5}
-    mt={5}
-    as="footer"
-    css={css`
-      border-top: 1px solid rgba(255, 255, 255, 0.6);
-    `}
-  >
+  <Flex py={5} mt={5} as="footer">
     <Layout width={[1, 0.5]}>
       <Flex flexDirection={["column", "row"]}>
         <FooterColumn title="About this website">

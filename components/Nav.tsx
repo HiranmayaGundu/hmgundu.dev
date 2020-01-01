@@ -20,8 +20,9 @@ const NavItem: React.FC<NavItemProps> = props => {
       <Link href={props.href}>
         <Text
           as="h3"
-          color={active ? "text" : "#666"}
-          fontWeight={active ? "bold" : "normal"}
+          color={active ? "text" : "#F8C2D3"}
+          fontWeight="bold"
+          fontSize="18px"
         >
           {props.title}
         </Text>
@@ -40,7 +41,7 @@ const Nav: React.FC<{}> = () => (
   <Flex py={2} mt={2} as="nav">
     <Layout py={1} width={1}>
       <Flex alignItems="center" justifyContent={["center", "space-between"]}>
-        <StyledNavItem href="/" title="Hiranmaya" />
+        <StyledNavItem href="/" title="Hiranmaya Gundu" />
         <StyledNavItem href="/about" title="About" />
         <StyledNavItem href="/blog" title="Blog" />
       </Flex>

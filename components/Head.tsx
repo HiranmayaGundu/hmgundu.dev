@@ -1,7 +1,12 @@
 import React from "react";
 import NextHead from "next/head";
 
-const HeadComponent: React.FC<any> = props => {
+interface HeadProps {
+  title: string;
+  description: string;
+}
+
+const HeadComponent: React.FC<HeadProps> = props => {
   return (
     <NextHead>
       <meta charSet="UTF-8" />

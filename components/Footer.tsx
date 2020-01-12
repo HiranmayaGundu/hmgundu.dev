@@ -74,7 +74,7 @@ const Footer: React.FC<{}> = () => (
             View the source on GitHub
           </FooterItem>
           <FooterItem
-            href="https://twitter.com/newblockk"
+            href="https://twitter.com/hiranmayagundu"
             IconComp={Twitter}
             rel="me"
           >

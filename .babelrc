@@ -1,4 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": [["styled-components", { "ssr": true }], ["@babel/plugin-proposal-optional-chaining"]]
+  "plugins": [["styled-components", { "ssr": true }], ["@babel/plugin-proposal-optional-chaining"], "macros", "preval"]
 }

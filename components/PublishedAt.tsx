@@ -1,16 +1,19 @@
 import React from "react";
 import Link from "./Link";
+import P from "./Paragraph";
 import { parse, format } from "date-fns";
 
 interface PublishedAtProps {
   link: string;
   date: string;
 }
-const PublishedAt: React.FC<PublishedAtProps> = props => (
-  <Link href={props.link}>
-    <time>
-      {format(parse(props.date, "MMMM DD, YYYY", new Date()), "MMMM DD, YYYY")}
-    </time>
+const PublishedAt: React.FC<PublishedAtProps> = ({ link, date }) => (
+  <Link href={link}>
+    <P>
+      <time>
+        {format(parse(date, "yyyy-MM-dd", new Date()), "MMMM dd, yyyy")}
+      </time>
+    </P>
   </Link>
 );
 

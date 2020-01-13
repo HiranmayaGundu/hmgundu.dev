@@ -1,0 +1,11 @@
+{
+  "name": "hmgundu.dev",
+  "version": 2,
+  "alias": ["hmgundu.dev"],
+  "github": {
+    "enabled": true,
+    "autoAlias": true,
+    "silent": false,
+    "autoJobCancelation": true
+  }
+}

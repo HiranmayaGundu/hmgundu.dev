@@ -2,7 +2,7 @@ import React from "react";
 import paginaton from "pagination";
 import _range from "lodash.range";
 import Main from "../components/Main";
-import Text from "../components/Text";
+import { H1 } from "../components/Heading";
 import Post from "../components/Post";
 import { NextPage } from "next";
 import posts from "../posts/index";
@@ -30,15 +30,7 @@ const Blog: NextPage<BlogProps> = ({ page = 1 }) => {
 
   return (
     <Main>
-      <Text
-        as="h1"
-        fontSize={[3, 5]}
-        fontWeight="bold"
-        lineHeight="heading"
-        mb={3}
-      >
-        Blog
-      </Text>
+      <H1>Blog</H1>
       {/* @ts-ignore */}
       {posts
         .filter(

@@ -7,26 +7,22 @@ export const meta = {
 
 ## My First Blog
 
-My reason for starting a blog was simple. I wanted to start a personal side project.
-After working for nearly a year (half of that year as intern), I realized that I have 
-ridden of the high that joining a new job gives and that this was the time to experiment. 
+As part of my job, as I googled for answers like we all do. In the search for answers, I found 
+some amazing personal blogs, such as this one by [Dan Abarmov](https://overreacted.io/). These 
+blogs inspired me to create my own. I wanted to be able to express jargon filled technical content
+in an easily consumable manner. Plus, it helps with your CV. 
 
 <br />
 
-As part of my job, as I googled for answers like we all do, I found some amazing personal
-blogs, such as this one by [Dan Abarmov](https://overreacted.io/). Blogs give a place to 
-express your technical opinions, and also generally improve your long form writing skills.
-So I decided to make my first personal project a blog.
-
-<br />
-
-Having decided on building a blog, I started gathering my requirements. This was the list of 
-things I wanted to do: 
+Since its my first time building a blog, I first decided the technologies I wanted to use. My only 
+constraint was it has to be built with a stack I was not entirely comfortable with. They were:-
 - Use TypeScript - According to the [StackOverflow 2019 Survey](https://insights.stackoverflow.com/survey/2019#technology-_-most-loved-dreaded-and-wanted-languages)
 TypeScript is one of the most loved languages. I wanted to see what the fuss was all about. 
 - Use Statically / Server rendered React - We use React at work, and wanted to explore features that I had not used yet. 
 - Use Styled-Components - Wanted to learn this so that I could use it at work 
 - Deploy this is a serverless manner.  
+
+---
 
 ### Whatever you want to do, it's almost always solved
 
@@ -41,16 +37,21 @@ Having decided to use Next.js, I looked for prior art. I found [Juan Olvera's bl
 Serendipitously, Max Stoiber is one of the co-founder's of Styled-Components! So I used their code bases as \*ahem\* inspiration, and made my own.
 A shoutout to both of them, I would not have a website without their blogs. 
 
+---
+
 ### Things I learned while building this website
 
 
 #### TypeScript and Rebass 
-TypeScript is worth it, but in larger code bases, or code bases that are likely to evolve. It helps communicate the type of data your component takes 
-very well and also catches invalid props at compile time, saving a lot of time! However, working on a small blog, I found types just to be a hinderance, 
-especially with the strict typescript rules to prohibit the any type. And quite frequently, I found the compilation errors next to useless and hard to 
-debug. I also could not use it on the NodeJS code. At least, not easily. Next.js, TypeScript and Node.js seemed to require conflicting javascript module 
-systems, which I had learned about just because of this. TypeScript does not support the require syntax, while Node.js demands it. Facing all these issues,
-I reverted to javascript for the get-blog-posts.js helper module.
+TypeScript is worth it, but in larger, ever changing code bases. Recently, at work I had to use a component I had written just a couple
+of months ago. I could not remember what props I had to pass and what types they were! TypeScript in such situations is amazing.  
+
+On a small blog app however, types were an hinderance. Quite frequently, I found the compilation errors next to useless and hard to debug. 
+But this disenchantment could just be due to the fact that I'm learning the language as I build. I also could not use it on the NodeJS code. 
+At least, not easily. Next.js, TypeScript and Node.js seemed to require conflicting JavaScript module systems, which I had learned 
+about just because of this. TypeScript does not support the require syntax, while Node.js demands it. Facing all these issues, I reverted
+to JavaScript for the get-blog-posts.js helper module. If any one could point me in the correct direction to overcome this, I would love
+to learn!
 
 Another thing to note is that rebass v4.0+ has moved to use Theme-UI, so to use styled-components with rebass, you have to import it like so: 
 
@@ -83,15 +84,15 @@ Also, to use it with TypeScript, you will have to edit your tsconfig.json file a
 #### CSS and Design is still hard
 
 If you look at my website closely (well, you don't really need to look at it closely) you'll find that in terms of styling it's 
-a mix of the two blogs I've previously mentioned. Styling and design is really hard. Which is probably why nocode tools like 
-[webflow](https://webflow.com/) are hot right now. CSS Styling seems like an easily automatable task, and soon designers will take
-care of it rather then developers. 
+a mix of the two blogs I've previously mentioned. Styling and design is really hard. I hope to rebuild this blog soon. Will need
+to learn how to design a web page first though!
 
+---
 
 ### Features yet to be built
 
 As I was working on this website, I realized there are somethings that still have to be built to get a proper blog. 
-- A commenting system. I'll probably have a look at webmention or some other component that can be used. 
+- A commenting system. I'll probably have a look at webmentions or some other component that can be used. 
 - A RSS Feed
 
 <br /> 

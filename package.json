@@ -12,7 +12,7 @@
     "conditional-wrap": "^1.0.0",
     "date-fns": "^2.8.1",
     "lodash.range": "^3.2.0",
-    "next": "^9.1.7",
+    "next": "^9.3.2",
     "pagination": "^0.4.6",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.18.0",

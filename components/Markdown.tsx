@@ -7,7 +7,7 @@ import { CodeBlock, InlineCode } from "./CodeBlock";
 import Pre from "./Pre";
 
 const MarkdownLink = styled(Link)`
-  color: #ffa500;
+  color: ${(props): string => props.theme.colors.textLink};
   text-decoration: underline;
 
   &:hover {
@@ -16,7 +16,7 @@ const MarkdownLink = styled(Link)`
 `;
 const StyledHr = styled.hr`
   margin-top: 16px;
-  border-top: 1px solid ${props => props.theme.colors.text};
+  border-top: 1px solid ${(props): string => props.theme.colors.text};
 `;
 
 export default {

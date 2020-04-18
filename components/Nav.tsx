@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Box, Flex } from "rebass/styled-components";
 import Text from "./Text";
 import Link from "./Link";
@@ -14,15 +14,16 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = props => {
   const { pathname } = useRouter();
+  const themeContext = useContext(ThemeContext);
   const active: boolean = pathname.indexOf(props.href) === 0;
   return (
     <Box mr={4} className={props.className}>
       <Link href={props.href}>
         <Text
           as="h3"
-          color={active ? "text" : "#F8C2D3"}
-          fontWeight="bold"
-          fontSize="18px"
+          color={active ? "text" : themeContext.colors.headerLink}
+          fontWeight={themeContext.fontWeights.bold}
+          fontSize={themeContext.fontSizes[1]}
         >
           {props.title}
         </Text>

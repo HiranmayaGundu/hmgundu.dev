@@ -51,10 +51,12 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
 };
 
 const InlineCode = styled.code`
-  background-color: #eee;
-  color: #000;
-  font-family: ${(props): string => props.theme.fonts.monospace.join()};
-  font-size: ${(props): string => props.theme.fontSizes[0]};
+  ${(props): string => `
+    background-color: ${props.theme.colors.greys[0]};
+    color: ${props.theme.colors.black};
+    font-family: ${props.theme.fonts.monospace.join()};
+    font-size: ${props.theme.fontSizes[0]};
+  `}
 `;
 
 export { CodeBlock, InlineCode };

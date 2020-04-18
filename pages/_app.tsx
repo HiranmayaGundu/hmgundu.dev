@@ -1,7 +1,6 @@
 import React from "react";
 import App from "next/app";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { Flex } from "rebass/styled-components";
 import reset from "styled-reset";
 import { MDXProvider } from "@mdx-js/react";
 import Footer from "../components/Footer";
@@ -104,24 +103,16 @@ class MyApp extends App {
           <>
             <Nav />
             <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
-            <Flex
-              flexDirection={["column", "row"]}
-              alignItems="center"
-              justifyContent="center"
-              mt={4}
-              mb={4}
+            <Layout
+              pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
+              css={{
+                paddingLeft: "8px",
+                paddingRight: "8px"
+              }}
             >
-              <Layout
-                pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
-                css={{
-                  paddingLeft: "8px",
-                  paddingRight: "8px"
-                }}
-              >
-                <GlobalStyle />
-                <Component {...pageProps} />
-              </Layout>
-            </Flex>
+              <GlobalStyle />
+              <Component {...pageProps} />
+            </Layout>
             <Footer />
           </>
         </MDXProvider>

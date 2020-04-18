@@ -6,6 +6,7 @@ import { ThemeContext } from "styled-components";
 import Text from "./Text";
 import Link from "./Link";
 import Layout from "./Layout";
+import Icon from "./Icon";
 
 interface FooterColumnProps {
   title: string;
@@ -50,7 +51,11 @@ const FooterItem: React.FC<FooterItemProps> = ({
   return (
     <Text as="div" my={1} color={theme.colors.white}>
       <Link href={href} rel={rel} prefetch={prefetch} underline>
-        {IconComp && <IconComp />}
+        {IconComp && (
+          <Icon mr={2} ml={0}>
+            <IconComp size="1em" />
+          </Icon>
+        )}
         {children}
       </Link>
     </Text>
@@ -76,7 +81,6 @@ const Footer: React.FC<{}> = () => {
               IconComp={GitHub}
               rel="me"
             >
-              <br />
               View the source on GitHub
             </FooterItem>
             <FooterItem
@@ -84,7 +88,6 @@ const Footer: React.FC<{}> = () => {
               IconComp={Twitter}
               rel="me"
             >
-              <br />
               You can follow me on twitter, though I don&apos;t do much there
             </FooterItem>
           </FooterColumn>

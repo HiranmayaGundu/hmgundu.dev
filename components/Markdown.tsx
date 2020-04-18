@@ -4,7 +4,6 @@ import P from "./Paragraph";
 import styled from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
-import Pre from "./Pre";
 
 const MarkdownLink = styled(Link)`
   color: ${(props): string => props.theme.colors.textLink};
@@ -29,7 +28,6 @@ export default {
   ul: UnorderedList,
   ol: OrderedList,
   li: ListItem,
-  pre: Pre,
   code: CodeBlock,
   inlineCode: InlineCode,
   hr: StyledHr

@@ -15,14 +15,18 @@ const colors = {
   green: "#D0D0D0",
   greys: ["#EEE", "#BBB", "#999", "#666"],
   white: "#F2DFDF",
-  black: "#333"
+  secondaryWhite: "#FFFFFF",
+  black: "#000000",
+  secondaryBlack: "#222",
+  headerLink: "#F8C2D3",
+  textLink: "#FFA7C4"
 };
 
 const theme = {
   colors: {
     primary: colors.green,
     text: colors.white,
-    background: "#A62C2B",
+    background: colors.black,
     secondary: colors.greys[4],
     tertiary: colors.greys[3],
     quaternary: colors.greys[2],
@@ -33,17 +37,17 @@ const theme = {
     system: [
       "-apple-system",
       "BlinkMacSystemFont",
-      "Segoe UI",
+      '"Segoe UI"',
       "Roboto",
       "Helvetica",
       "Arial",
       "sans-serif",
-      "Apple Color Emoji",
-      "Segoe UI Emoji",
-      "Segoe UI Symbol"
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"'
     ],
-    serif: ["Georgia", "serif"],
-    monospace: ["Source Code Pro", "Courier New", "monospace"]
+    serif: ["ff-tisa-sans-web-pr", "Georgia", "serif"],
+    monospace: ['"Source Code Pro"', '"Courier New"', "monospace"]
   },
   fontSizes: [16, 18, 20, 24, 32, 48, 64, 96],
   fontWeights: {
@@ -64,7 +68,14 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
   ${reset}
 
   body {
-    background-color: ${props => props.theme.colors.background};
+    font-family: ${(props): string => props.theme.fonts.serif.join()};
+    background-image: ${(props): string =>
+      `radial-gradient(${props.theme.colors.secondaryBlack} 1px,transparent 0),radial-gradient(${props.theme.colors.secondaryBlack} 1px,transparent 0)`};
+    background-color: ${(props): string => props.theme.colors.background};
+    background-position-x: 0px, 25px;
+    background-position-y: 0px, 25px;
+    background-attachment: fixed;
+    background-size: 50px 50px;
     margin: 0;
   }
 
@@ -85,7 +96,7 @@ export const DEFAULT_TITLE = "Hiranmaya Gundu- Software developer";
 const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
 class MyApp extends App {
-  render() {
+  render(): JSX.Element {
     const { Component, pageProps } = this.props;
     return (
       <ThemeProvider theme={theme}>

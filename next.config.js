@@ -1,5 +1,10 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const remarkSlug = require("remark-slug");
 const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkSlug]
+  }
 });
 
 module.exports = withMDX({

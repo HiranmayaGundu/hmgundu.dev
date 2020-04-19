@@ -21,6 +21,7 @@
     "react-feather": "^2.0.3",
     "react-is": "^16.13.1",
     "rebass": "^4.0.7",
+    "remark-slug": "^6.0.0",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
@@ -62,12 +63,10 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,css,json,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   }
 }

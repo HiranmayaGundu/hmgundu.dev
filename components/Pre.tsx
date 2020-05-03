@@ -13,7 +13,7 @@ export default styled(Box).attrs({
   margin: 1em 0;
   padding: 0.5em;
   line-height: 1.3;
-  font-family: ${(props): string => props.theme.fonts.monospace.join()};
+  font-family: var(--font-family-mono);
   font-size: ${(props): string => props.theme.fontSizes[0]};
   overflow: auto;
 `;

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test cases for toCustomPropeties transforms a theme config to CSS custom properties 1`] = `
+Object {
+  "--font-weights-body": 400,
+  "--font-weights-bold": 700,
+  "--font-weights-heading": 700,
+  "--fonts-body": "system-ui, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", sans-serif",
+  "--fonts-heading": "system-ui, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", sans-serif",
+  "--fonts-monospace": "Menlo, monospace",
+  "--line-heights-0": 1.5,
+  "--line-heights-1": 1.125,
+  "--size-0": "10em",
+  "--size-1": "20em",
+  "--size-2": "30em",
+  "--size-3": "40em",
+  "--space-0": 0,
+  "--space-1": 2,
+  "--space-2": 3,
+  "--space-3": 4,
+  "--space-4": 5,
+  "--space-5": 6,
+}
+`;
+
+exports[`test cases for toCustomPropeties transforms a theme config to CSS custom properties 2`] = `
+Object {
+  "colors": Object {
+    "accent": "--colors-accent",
+    "background": "--colors-background",
+    "dark": Object {
+      "background": Object {
+        "surface": "--colors-dark-background-surface",
+      },
+      "foreground": Object {
+        "text": "--colors-dark-foreground-text",
+      },
+    },
+    "muted": "--colors-muted",
+    "primary": "--colors-primary",
+    "secondary": "--colors-secondary",
+    "text": "--colors-text",
+  },
+  "fontWeights": Object {
+    "body": "--font-weights-body",
+    "bold": "--font-weights-bold",
+    "heading": "--font-weights-heading",
+  },
+  "fonts": Object {
+    "body": "--fonts-body",
+    "heading": "--fonts-heading",
+    "monospace": "--fonts-monospace",
+  },
+  "lineHeights": Array [
+    "--line-heights-0",
+    "--line-heights-1",
+  ],
+  "size": Array [
+    "--size-0",
+    "--size-1",
+    "--size-2",
+    "--size-3",
+  ],
+  "space": Array [
+    "--space-0",
+    "--space-1",
+    "--space-2",
+    "--space-3",
+    "--space-4",
+    "--space-5",
+  ],
+}
+`;

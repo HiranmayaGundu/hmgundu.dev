@@ -1,13 +1,14 @@
 import React from "react";
 import App from "next/app";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { ThemeProvider } from "styled-components";
+import { ColorModeProvider } from "../components/ColorModeContext";
 import { MDXProvider } from "@mdx-js/react";
 import Footer from "../components/Footer";
 import Layout from "../components/Layout";
 import Nav from "../components/Nav";
 import Head from "../components/Head";
 import components from "../components/Markdown";
+import GlobalStyle from "../components/GlobalStyle";
 
 // Default theme, to change to what I want later.
 const colors = {
@@ -18,14 +19,14 @@ const colors = {
   black: "#000000",
   secondaryBlack: "#222",
   headerLink: "#F8C2D3",
-  textLink: "#FFA7C4"
+  textLink: "var(--color-link)"
 };
 
 const theme = {
   colors: {
     primary: colors.green,
-    text: colors.white,
-    background: colors.black,
+    text: "var(--color-text)",
+    background: "var(--color-primary-background",
     secondary: colors.greys[4],
     tertiary: colors.greys[3],
     quaternary: colors.greys[2],
@@ -33,26 +34,16 @@ const theme = {
   },
   breakpoints: ["850px", "1100px", "64em"],
   fonts: {
-    system: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      "Helvetica",
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
-    ],
-    serif: ["ff-tisa-sans-web-pr", "Georgia", "serif"],
-    monospace: ['"Source Code Pro"', '"Courier New"', "monospace"]
+    system: "var(--font-family)",
+    monospace: "var( --font-family-mono)"
   },
   fontSizes: [16, 18, 20, 24, 32, 48, 64, 96],
   fontWeights: {
-    body: 400,
-    heading: 700,
-    bold: 700
+    body: "var(--font-weight-light)",
+    heading: "var(--font-weight-bold)",
+    bold: "var(--font-weight-bold)",
+    light: "var(--font-weight-light)",
+    medium: "var(--font-weight-medium)"
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {
@@ -60,33 +51,6 @@ const theme = {
     heading: 1.25
   }
 };
-
-type ThemeType = typeof theme;
-
-const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
-  ${reset}
-
-  body {
-    font-family: ${(props): string => props.theme.fonts.serif.join()};
-    background-image: ${(props): string =>
-      `radial-gradient(${props.theme.colors.secondaryBlack} 1px,transparent 0),radial-gradient(${props.theme.colors.secondaryBlack} 1px,transparent 0)`};
-    background-color: ${(props): string => props.theme.colors.background};
-    background-position-x: 0px, 25px;
-    background-position-y: 0px, 25px;
-    background-attachment: fixed;
-    background-size: 50px 50px;
-    margin: 0;
-  }
-
-  strong {
-    font-weight: bold;
-  }
-
-  hr {
-    margin: 2em 0;
-    border-color: rgba(0, 0, 0, 0.1);
-  }
-`;
 
 const NAV_HEIGHT = 65;
 
@@ -98,25 +62,27 @@ class MyApp extends App {
   render(): JSX.Element {
     const { Component, pageProps } = this.props;
     return (
-      <ThemeProvider theme={theme}>
-        <MDXProvider components={components}>
-          <>
-            <Nav />
-            <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
-            <Layout
-              pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
-              css={{
-                paddingLeft: "8px",
-                paddingRight: "8px"
-              }}
-            >
-              <GlobalStyle />
-              <Component {...pageProps} />
-            </Layout>
-            <Footer />
-          </>
-        </MDXProvider>
-      </ThemeProvider>
+      <ColorModeProvider>
+        <ThemeProvider theme={theme}>
+          <MDXProvider components={components}>
+            <>
+              <Nav />
+              <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
+              <Layout
+                pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
+                css={{
+                  paddingLeft: "8px",
+                  paddingRight: "8px"
+                }}
+              >
+                <GlobalStyle />
+                <Component {...pageProps} />
+              </Layout>
+              <Footer />
+            </>
+          </MDXProvider>
+        </ThemeProvider>
+      </ColorModeProvider>
     );
   }
 }

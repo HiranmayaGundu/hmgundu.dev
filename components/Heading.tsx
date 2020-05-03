@@ -3,6 +3,7 @@ import { Heading, HeadingProps } from "rebass/styled-components";
 const BaseHeading: React.FC<HeadingProps> = props => (
   <Heading
     lineHeight={1.25}
+    fontWeight="bold"
     fontFamily="system"
     alignSelf="flex-start"
     color="text"

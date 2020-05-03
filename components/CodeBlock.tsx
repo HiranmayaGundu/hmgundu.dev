@@ -54,7 +54,7 @@ const InlineCode = styled.code`
   ${(props): string => `
     background-color: ${props.theme.colors.greys[0]};
     color: ${props.theme.colors.black};
-    font-family: ${props.theme.fonts.monospace.join()};
+    font-family: var(--font-family-mono);
     font-size: ${props.theme.fontSizes[1]}px;
   `}
 `;

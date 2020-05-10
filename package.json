@@ -23,6 +23,7 @@
     "react-feather": "^2.0.3",
     "react-is": "^16.13.1",
     "rebass": "^4.0.7",
+    "refractor": "^3.0.0",
     "remark-slug": "^6.0.0",
     "styled-components": "^5.0.0",
     "terser": "^4.6.13"
@@ -37,6 +38,7 @@
     "@types/react": "16.9.13",
     "@types/react-dom": "16.9.4",
     "@types/rebass": "^4.0.3",
+    "@types/refractor": "^2.8.0",
     "@types/styled-components": "4.4.0",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
@@ -49,7 +51,7 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-mdx": "^1.6.9",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "husky": ">=1",
@@ -67,7 +69,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js,css,json,md}": [
+    "*.{ts,tsx,js,css,json,md,mdx}": [
       "prettier --write"
     ],
     "*.{js,ts,tsx}": [

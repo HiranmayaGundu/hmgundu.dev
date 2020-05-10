@@ -1,16 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { toCustomProperties } from "./CustomPropertiesUtils";
+import { theme } from "./Theme";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+
   :root {
-    --font-family: source-sans-pro,roboto-condensed,roboto, -apple-system, BlinkMacSystemFont,"Segoe UI",
-    Helvetica, Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    --font-family-mono: "Source Code Pro", "Courier New", monospace;
-    --font-weight-bold: 700;
-    --font-weight-medium: 400;
-    --font-weight-light: 300;
-    --font-size-0: 16
+    ${toCustomProperties(theme, ["colors"])};
   }
 
   *, *:before, *:after {

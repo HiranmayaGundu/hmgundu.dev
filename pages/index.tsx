@@ -2,10 +2,12 @@ import React from "react";
 import Text from "../components/Text";
 import { H1 } from "../components/Heading";
 import Main from "../components/Main";
+import Gonds from "../components/Gonds";
 
 const Index: React.FC<{}> = () => {
   return (
     <Main>
+      <Gonds />
       <H1>Hi! I&apos;m Hiranmaya Gundu. 👋</H1>
       <Text as="p" mt={[2, 4]} fontSize={[1, 3]}>
         I&apos;m a software engineer from India, who&apos;s currently exploring

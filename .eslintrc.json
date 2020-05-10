@@ -9,7 +9,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:mdx/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -23,7 +24,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "mdx"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0

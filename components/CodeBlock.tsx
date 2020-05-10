@@ -1,9 +1,11 @@
 import React from "react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import Prism from "prism-react-renderer/prism";
 import theme from "prism-react-renderer/themes/nightOwl";
 import Pre from "./Pre";
 import styled from "styled-components";
-
+import javaLang from "refractor/lang/java";
+javaLang(Prism);
 interface CodeBlockProps {
   children: React.ReactNode;
   className?: string;
@@ -24,6 +26,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
       code={children as string}
       language={language as Language}
       theme={theme}
+      Prism={Prism}
     >
       {({
         className,
@@ -54,7 +57,7 @@ const InlineCode = styled.code`
   ${(props): string => `
     background-color: ${props.theme.colors.greys[0]};
     color: ${props.theme.colors.black};
-    font-family: var(--font-family-mono);
+    font-family: var(--fonts-monospace);
     font-size: ${props.theme.fontSizes[1]}px;
   `}
 `;

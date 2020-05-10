@@ -9,6 +9,9 @@ const colors = {
   textLink: "var(--color-link)"
 };
 
+const fontSizes = [16, 18, 20, 24, 32, 48, 64, 96];
+const fontSizesInRem = fontSizes.map(item => `${item / 16}rem`);
+
 export const theme = {
   colors: {
     primary: colors.green,
@@ -21,20 +24,21 @@ export const theme = {
   },
   breakpoints: ["850px", "1100px", "64em"],
   fonts: {
-    system: "var(--font-family)",
-    monospace: "var( --font-family-mono)"
+    system:
+      'aileron, source-sans-pro, -apple-system, BlinkMacSystemFont,"Segoe UI", Helvetica, Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+    monospace: '"Source Code Pro", menlo, monospace'
   },
-  fontSizes: [16, 18, 20, 24, 32, 48, 64, 96],
+  fontSizes: fontSizesInRem,
   fontWeights: {
-    body: "var(--font-weight-light)",
-    heading: "var(--font-weight-bold)",
-    bold: "var(--font-weight-bold)",
-    light: "var(--font-weight-light)",
-    medium: "var(--font-weight-medium)"
+    body: "300",
+    heading: "700",
+    bold: "700",
+    light: "300",
+    medium: "400"
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {
-    body: 1.5,
-    heading: 1.25
+    body: "1.5",
+    heading: "1.25"
   }
 };

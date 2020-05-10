@@ -45,7 +45,7 @@ describe("test cases for toCustomPropeties", () => {
   });
 
   it("transforms a theme config to CSS custom properties", () => {
-    const result = convertThemeToUseCustomProperties(theme);
+    const result = convertThemeToUseCustomProperties(theme, ["colors"]);
 
     expect(result).toMatchSnapshot();
   });

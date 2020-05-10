@@ -25,49 +25,33 @@ Object {
 
 exports[`test cases for toCustomPropeties transforms a theme config to CSS custom properties 2`] = `
 Object {
-  "colors": Object {
-    "accent": "--colors-accent",
-    "background": "--colors-background",
-    "dark": Object {
-      "background": Object {
-        "surface": "--colors-dark-background-surface",
-      },
-      "foreground": Object {
-        "text": "--colors-dark-foreground-text",
-      },
-    },
-    "muted": "--colors-muted",
-    "primary": "--colors-primary",
-    "secondary": "--colors-secondary",
-    "text": "--colors-text",
-  },
   "fontWeights": Object {
-    "body": "--font-weights-body",
-    "bold": "--font-weights-bold",
-    "heading": "--font-weights-heading",
+    "body": "var(--font-weights-body)",
+    "bold": "var(--font-weights-bold)",
+    "heading": "var(--font-weights-heading)",
   },
   "fonts": Object {
-    "body": "--fonts-body",
-    "heading": "--fonts-heading",
-    "monospace": "--fonts-monospace",
+    "body": "var(--fonts-body)",
+    "heading": "var(--fonts-heading)",
+    "monospace": "var(--fonts-monospace)",
   },
   "lineHeights": Array [
-    "--line-heights-0",
-    "--line-heights-1",
+    "var(--line-heights-0)",
+    "var(--line-heights-1)",
   ],
   "size": Array [
-    "--size-0",
-    "--size-1",
-    "--size-2",
-    "--size-3",
+    "var(--size-0)",
+    "var(--size-1)",
+    "var(--size-2)",
+    "var(--size-3)",
   ],
   "space": Array [
-    "--space-0",
-    "--space-1",
-    "--space-2",
-    "--space-3",
-    "--space-4",
-    "--space-5",
+    "var(--space-0)",
+    "var(--space-1)",
+    "var(--space-2)",
+    "var(--space-3)",
+    "var(--space-4)",
+    "var(--space-5)",
   ],
 }
 `;

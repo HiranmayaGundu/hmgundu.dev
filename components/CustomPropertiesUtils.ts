@@ -33,7 +33,7 @@ export const toCustomProperties = (
 export const convertThemeToUseCustomProperties = (
   theme: Record<string, unknown>,
   escapeKeys: Array<string> = []
-): Record<string, string | number> => {
+): Record<string, any> => {
   const generateProperties = (
     object: object,
     keyPrefix?: string
@@ -48,12 +48,12 @@ export const convertThemeToUseCustomProperties = (
         if (Array.isArray(value)) {
           convertedTheme[key] = [];
           value.forEach((_, i) => {
-            convertedTheme[key].push(`--${formattedKey}-${i}`);
+            convertedTheme[key].push(`var(--${formattedKey}-${i})`);
           });
         } else if (Object(value) === value) {
           convertedTheme[key] = generateProperties(value, formattedKey);
         } else {
-          convertedTheme[key] = `--${formattedKey}`;
+          convertedTheme[key] = `var(--${formattedKey})`;
         }
       }
     });

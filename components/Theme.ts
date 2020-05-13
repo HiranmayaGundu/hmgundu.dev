@@ -5,7 +5,7 @@ const colors = {
   secondaryWhite: "#FFFFFF",
   black: "#000000",
   secondaryBlack: "#222",
-  headerLink: "#F8C2D3",
+  headerLink: "var(--color-link)",
   textLink: "var(--color-link)"
 };
 

@@ -17,7 +17,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: var(--color-primary-background);
     color: var(--color-text);
-    font-weight: var(--font-weight-light)
+    font-weight: var(--font-weight-light);
+    text-rendering: optimizeLegibility;
   }
 
   strong {

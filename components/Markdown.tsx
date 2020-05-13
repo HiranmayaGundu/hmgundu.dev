@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
 import { HeadingProps } from "rebass";
+import Mark from "./Mark";
 
 const MarkdownLink = styled(Link)`
   color: ${(props): string => props.theme.colors.textLink};
@@ -27,9 +28,17 @@ const heading = (Tag: React.ComponentType<HeadingProps>) => (
   </Tag>
 );
 
+const AnchorH2 = heading(H2);
+
+const MarkdownH2: React.FC<HeadingProps> = ({ children }) => (
+  <AnchorH2>
+    <Mark>{children}</Mark>
+  </AnchorH2>
+);
+
 export default {
   h1: heading(H1),
-  h2: heading(H2),
+  h2: MarkdownH2,
   h3: heading(H3),
   h4: heading(H4),
   p: P,

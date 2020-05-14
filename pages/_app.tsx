@@ -31,7 +31,7 @@ const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 class MyApp extends App {
   render(): JSX.Element {
     const { Component, pageProps } = this.props;
-    console.log(newTheme);
+    // console.log(newTheme);
     return (
       <ColorModeProvider>
         <ThemeProvider theme={newTheme}>

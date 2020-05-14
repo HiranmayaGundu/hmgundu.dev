@@ -28,17 +28,9 @@ const heading = (Tag: React.ComponentType<HeadingProps>) => (
   </Tag>
 );
 
-const AnchorH2 = heading(H2);
-
-const MarkdownH2: React.FC<HeadingProps> = ({ children }) => (
-  <AnchorH2>
-    <Mark>{children}</Mark>
-  </AnchorH2>
-);
-
 export default {
   h1: heading(H1),
-  h2: MarkdownH2,
+  h2: heading(H2),
   h3: heading(H3),
   h4: heading(H4),
   p: P,
@@ -48,5 +40,5 @@ export default {
   li: ListItem,
   code: CodeBlock,
   inlineCode: InlineCode,
-  hr: StyledHr
+  hr: StyledHr,
 };

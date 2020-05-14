@@ -33,7 +33,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
         style,
         tokens,
         getLineProps,
-        getTokenProps
+        getTokenProps,
       }): React.ReactNode => (
         <ExpanderDiv>
           <Pre className={className} style={{ ...style, padding: "20px" }}>

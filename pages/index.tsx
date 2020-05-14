@@ -1,8 +1,8 @@
 import React from "react";
-import Text from "../components/Text";
-import { H1 } from "../components/Heading";
-import Main from "../components/Main";
-import Gonds from "../components/Gonds";
+import Text from "components/Text";
+import { H1 } from "components/Heading";
+import Main from "components/Main";
+import Gonds from "components/Gonds";
 import Mark from "components/Mark";
 
 const Index: React.FC<{}> = () => {

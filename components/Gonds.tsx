@@ -2,7 +2,7 @@ import * as React from "react";
 interface GondsProps {
   children?: React.ReactNode;
 }
-const Gonds: React.FC<GondsProps> = props => {
+const Gonds: React.FC<GondsProps> = (props) => {
   return (
     <svg width="380px" height="380px" viewBox="0 0 595.3 841.9" {...props}>
       <style>

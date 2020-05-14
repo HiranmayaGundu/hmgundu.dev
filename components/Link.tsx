@@ -12,7 +12,7 @@ interface UniversalLinkProps {
   underline?: boolean;
   children: React.ReactNode;
 }
-const UniversalLink: React.FC<UniversalLinkProps> = props => {
+const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
   const external =
     props.href.indexOf("//") !== -1 && props.href.indexOf("hmgundu.dev") === -1;
   return (
@@ -38,8 +38,8 @@ export default styled(UniversalLink)`
   text-decoration: none;
 
   &:hover {
-    text-decoration: ${props => props.underline !== false && "underline"};
+    text-decoration: ${(props) => props.underline !== false && "underline"};
   }
 
-  ${props => props.css}
+  ${(props) => props.css}
 `;

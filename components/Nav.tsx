@@ -12,7 +12,7 @@ interface NavItemProps {
   title: string;
 }
 
-const NavItem: React.FC<NavItemProps> = props => {
+const NavItem: React.FC<NavItemProps> = (props) => {
   const { pathname } = useRouter();
   const themeContext = useContext(ThemeContext);
   const active: boolean = pathname.indexOf(props.href) === 0;

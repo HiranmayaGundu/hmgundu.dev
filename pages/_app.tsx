@@ -1,5 +1,5 @@
 import React from "react";
-import App from "next/app";
+import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { ColorModeProvider } from "../components/ColorModeContext";
 import { MDXProvider } from "@mdx-js/react";
@@ -15,7 +15,7 @@ import { convertThemeToUseCustomProperties } from "../components/CustomPropertie
 const newTheme = convertThemeToUseCustomProperties(theme, [
   "colors",
   "breakpoints",
-  "space"
+  "space",
 ]);
 
 newTheme.colors = theme.colors;
@@ -28,34 +28,42 @@ export const DEFAULT_TITLE = "Hiranmaya Gundu- Software developer";
 
 const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
-class MyApp extends App {
-  render(): JSX.Element {
-    const { Component, pageProps } = this.props;
-    // console.log(newTheme);
-    return (
-      <ColorModeProvider>
-        <ThemeProvider theme={newTheme}>
-          <MDXProvider components={components}>
-            <>
-              <Nav />
-              <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
-              <Layout
-                pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
-                css={{
-                  paddingLeft: "8px",
-                  paddingRight: "8px"
-                }}
-              >
-                <GlobalStyle />
-                <Component {...pageProps} />
-              </Layout>
-              <Footer />
-            </>
-          </MDXProvider>
-        </ThemeProvider>
-      </ColorModeProvider>
-    );
-  }
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <ColorModeProvider>
+      <ThemeProvider theme={newTheme}>
+        <MDXProvider components={components}>
+          <>
+            <Nav />
+            <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
+            <Layout
+              pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}
+              css={{
+                paddingLeft: "8px",
+                paddingRight: "8px",
+              }}
+            >
+              <GlobalStyle />
+              <Component {...pageProps} />
+            </Layout>
+            <Footer />
+          </>
+        </MDXProvider>
+      </ThemeProvider>
+    </ColorModeProvider>
+  );
+};
+
+interface WebVitals {
+  id: string;
+  label: string;
+  name: string;
+  startTime: number;
+  value: number;
+}
+export function reportWebVitals(metric: WebVitals): void {
+  // These metrics can be sent to any analytics service
+  console.log(metric);
 }
 
-export default MyApp;
+export default App;

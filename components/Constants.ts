@@ -6,7 +6,7 @@ const LIGHT_THEME_COLORS = {
   altColor: "#F6C751", // yellowish color
   iconBackground: "#55586B",
   iconTShirtMainShade: "#F6BC52",
-  iconTShirtSecondaryShade: "#F9AF37"
+  iconTShirtSecondaryShade: "#F9AF37",
 };
 
 const DARK_THEME_COLORS = {
@@ -17,54 +17,54 @@ const DARK_THEME_COLORS = {
   altColor: "#584D32", // dark brownish color
   iconBackground: "#FBBB51",
   iconTShirtMainShade: "#B63431",
-  iconTShirtSecondaryShade: "#803232"
+  iconTShirtSecondaryShade: "#803232",
 };
 
 export const COLORS = {
   text: {
     light: LIGHT_THEME_COLORS.text,
-    dark: DARK_THEME_COLORS.text
+    dark: DARK_THEME_COLORS.text,
   },
   link: {
     light: LIGHT_THEME_COLORS.altText,
-    dark: DARK_THEME_COLORS.altText
+    dark: DARK_THEME_COLORS.altText,
   },
   "heading-text": {
     light: LIGHT_THEME_COLORS.altText,
-    dark: DARK_THEME_COLORS.altColor
+    dark: DARK_THEME_COLORS.altColor,
   },
   "heading-background": {
     light: LIGHT_THEME_COLORS.altColor,
-    dark: DARK_THEME_COLORS.altText
+    dark: DARK_THEME_COLORS.altText,
   },
   "primary-background": {
     light: LIGHT_THEME_COLORS.blueLight,
-    dark: DARK_THEME_COLORS.blueDark
+    dark: DARK_THEME_COLORS.blueDark,
   },
   "secondary-background": {
     light: LIGHT_THEME_COLORS.blueDark,
-    dark: DARK_THEME_COLORS.blueLight
+    dark: DARK_THEME_COLORS.blueLight,
   },
   "primary-light": {
     light: LIGHT_THEME_COLORS.blueLight, // Want primary colors to be accessible for the shirt color
-    dark: LIGHT_THEME_COLORS.blueLight
+    dark: LIGHT_THEME_COLORS.blueLight,
   },
   "primary-dark": {
     light: DARK_THEME_COLORS.blueDark,
-    dark: DARK_THEME_COLORS.blueDark
+    dark: DARK_THEME_COLORS.blueDark,
   },
   "icon-background": {
     light: LIGHT_THEME_COLORS.iconBackground,
-    dark: DARK_THEME_COLORS.iconBackground
+    dark: DARK_THEME_COLORS.iconBackground,
   },
   "icon-shirt-main": {
     light: LIGHT_THEME_COLORS.iconTShirtMainShade,
-    dark: DARK_THEME_COLORS.iconTShirtMainShade
+    dark: DARK_THEME_COLORS.iconTShirtMainShade,
   },
   "icon-shirt-secondary": {
     light: LIGHT_THEME_COLORS.iconTShirtSecondaryShade,
-    dark: DARK_THEME_COLORS.iconTShirtSecondaryShade
-  }
+    dark: DARK_THEME_COLORS.iconTShirtSecondaryShade,
+  },
 };
 
 export const COLOR_MODE_KEY = "color-mode";

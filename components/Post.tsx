@@ -16,7 +16,7 @@ const PostH2 = styled(H2)`
   margin-bottom: 0px;
 `;
 
-const Post: React.FC<PostProps> = props => (
+const Post: React.FC<PostProps> = (props) => (
   <Box as="article" mb={5}>
     <Box as="header" mb={3}>
       <Link href={props.path}>

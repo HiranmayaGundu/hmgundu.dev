@@ -1,8 +1,10 @@
 import React from "react";
+import { GetStaticProps } from "next";
 import paginaton from "pagination";
 import _range from "lodash.range";
-import { H1 } from "../components/Heading";
-import Post from "../components/Post";
+import Mark from "components/Mark";
+import { H1 } from "components/Heading";
+import Post from "components/Post";
 import { NextPage } from "next";
 import fs from "fs";
 import path from "path";
@@ -23,14 +25,16 @@ const Blog: NextPage<BlogProps> = ({ posts, page = 1 }) => {
     prelink: "/",
     current: page,
     rowsPerPage: 8,
-    totalResult: posts.length
+    totalResult: posts.length,
   });
   const { fromResult, toResult } = paginator.getPaginationData();
   const results = _range(fromResult - 1, toResult);
 
   return (
     <>
-      <H1>Blog</H1>
+      <H1>
+        <Mark>Blog</Mark>
+      </H1>
       {/* @ts-ignore */}
       {posts
         .filter(
@@ -50,16 +54,12 @@ const Blog: NextPage<BlogProps> = ({ posts, page = 1 }) => {
   );
 };
 
-export async function getStaticProps(): Promise<{
-  props: {
-    posts: PostInterface[];
-  };
-}> {
+export const getStaticProps: GetStaticProps = async () => {
   const postsDir = path.join(process.cwd(), "/pages/posts/");
   const META = /export\s+const\s+meta\s+=\s+(\{(\r\n|\n|.)*?(\r\n|\n)\})/;
   const arrOfPosts = fs
     .readdirSync(postsDir)
-    .filter(file => file.endsWith("md") || file.endsWith("mdx"));
+    .filter((file) => file.endsWith("md") || file.endsWith("mdx"));
   const posts: PostInterface[] = arrOfPosts
     .map((file, index) => {
       const name = path.join(postsDir, file);
@@ -74,18 +74,18 @@ export async function getStaticProps(): Promise<{
         path:
           postsDir.replace(process.cwd() + "/pages", "") +
           file.replace(/\.mdx?$/, ""),
-        index
+        index,
       };
     })
-    .filter(meta => meta.published)
+    .filter((meta) => meta.published)
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     );
   return {
     props: {
-      posts
-    }
+      posts,
+    },
   };
-}
+};
 export default Blog;

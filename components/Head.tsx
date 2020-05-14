@@ -41,7 +41,7 @@ const fallbackStyles = (): string => {
   return wrappedInSelector;
 };
 
-const HeadComponent: React.FC<HeadProps> = props => {
+const HeadComponent: React.FC<HeadProps> = (props) => {
   const colorModeScript = autoColorModeScript();
   const fallbackColors = fallbackStyles();
   return (

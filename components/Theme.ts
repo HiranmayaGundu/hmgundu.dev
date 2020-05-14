@@ -6,11 +6,11 @@ const colors = {
   black: "#000000",
   secondaryBlack: "#222",
   headerLink: "var(--color-link)",
-  textLink: "var(--color-link)"
+  textLink: "var(--color-link)",
 };
 
 const fontSizes = [16, 18, 20, 24, 32, 48, 64, 96];
-const fontSizesInRem = fontSizes.map(item => `${item / 16}rem`);
+const fontSizesInRem = fontSizes.map((item) => `${item / 16}rem`);
 
 export const theme = {
   colors: {
@@ -20,13 +20,13 @@ export const theme = {
     secondary: colors.greys[4],
     tertiary: colors.greys[3],
     quaternary: colors.greys[2],
-    ...colors
+    ...colors,
   },
   breakpoints: ["850px", "1100px", "64em"],
   fonts: {
     system:
       'aileron, source-sans-pro, -apple-system, BlinkMacSystemFont,"Segoe UI", Helvetica, Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
-    monospace: '"Source Code Pro", menlo, monospace'
+    monospace: '"Source Code Pro", menlo, monospace',
   },
   fontSizes: fontSizesInRem,
   fontWeights: {
@@ -34,11 +34,11 @@ export const theme = {
     heading: "700",
     bold: "700",
     light: "300",
-    medium: "400"
+    medium: "400",
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {
     body: "1.5",
-    heading: "1.25"
-  }
+    heading: "1.25",
+  },
 };

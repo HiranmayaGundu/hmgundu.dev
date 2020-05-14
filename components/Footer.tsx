@@ -21,7 +21,7 @@ interface FooterItemProps {
   prefetch?: boolean;
 }
 
-const FooterColumn: React.FC<FooterColumnProps> = props => {
+const FooterColumn: React.FC<FooterColumnProps> = (props) => {
   return (
     <Flex
       flexDirection="column"
@@ -42,7 +42,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
   href,
   rel,
   children,
-  prefetch
+  prefetch,
 }) => {
   return (
     <Text as="div" my={1}>

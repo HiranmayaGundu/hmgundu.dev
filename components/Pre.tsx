@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default styled(Box).attrs({
   as: "pre",
   p: 3,
-  mb: 3
+  mb: 3,
 })`
   display: block;
   white-space: pre;

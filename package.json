@@ -74,6 +74,10 @@
     ],
     "*.{js,ts,tsx}": [
       "eslint --fix"
+    ],
+    "*.mdx?": [
+      "prettier --write --parser mdx",
+      "git add"
     ]
   }
 }

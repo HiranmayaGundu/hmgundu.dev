@@ -28,7 +28,7 @@ export const DEFAULT_TITLE = "Hiranmaya Gundu- Software developer";
 
 const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <ColorModeProvider>
       <ThemeProvider theme={newTheme}>

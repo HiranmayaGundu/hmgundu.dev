@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
       if (!match || typeof match[1] !== "string") {
         throw new Error(`${name} needs to export const meta = {}`);
       }
-      const meta = JSON.parse(match[1]);
+      const meta = eval("(" + match[1] + ")");
       return {
         ...meta,
         path:

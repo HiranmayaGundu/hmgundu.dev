@@ -75,7 +75,7 @@
     "*.{js,ts,tsx}": [
       "eslint --fix"
     ],
-    "*.mdx?": [
+    "*.mdx": [
       "prettier --write --parser mdx"
     ]
   }

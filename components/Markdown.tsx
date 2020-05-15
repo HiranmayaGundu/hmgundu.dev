@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
 import { HeadingProps } from "rebass";
-import Mark from "./Mark";
 
 const MarkdownLink = styled(Link)`
   color: ${(props): string => props.theme.colors.textLink};

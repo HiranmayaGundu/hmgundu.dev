@@ -7,7 +7,6 @@ import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
 import { HeadingProps } from "rebass";
 import Layout from "./Layout";
-import { NAV_HEIGHT } from "./Constants";
 import Content from "./Content";
 
 interface WrapperProps {

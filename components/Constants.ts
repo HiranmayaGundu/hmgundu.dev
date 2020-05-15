@@ -2,7 +2,7 @@ const LIGHT_THEME_COLORS = {
   blueLight: "#CFD8EA", // light blue
   blueDark: "#C4D0E3", // slightly darker than above
   text: "#363C45", // white
-  altText: "#A62156", // pinkish color
+  altText: "#503426", // pinkish color
   altColor: "#F6C751", // yellowish color
   iconBackground: "#55586B",
   iconTShirtMainShade: "#F6BC52",

@@ -6,7 +6,7 @@ const Paragraph: React.FC<TextProps> = ({ fontWeight = "light", ...other }) => {
   return (
     <Text
       fontWeight={fontWeight}
-      fontSize={[1, 2]}
+      fontSize={[0, 1]}
       lineHeight={1.6}
       {...other}
     />

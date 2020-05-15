@@ -5,6 +5,7 @@ import { Box, Flex } from "rebass/styled-components";
 import Text from "./Text";
 import Link from "./Link";
 import Layout from "./Layout";
+import { ColorModeContext } from "./ColorModeContext";
 
 interface NavItemProps {
   href: string;
@@ -32,6 +33,27 @@ const NavItem: React.FC<NavItemProps> = (props) => {
   );
 };
 
+const DarkToggle: React.FC<{}> = () => {
+  const { colorMode, setColorMode } = React.useContext(ColorModeContext);
+  if (!colorMode) {
+    return null;
+  }
+  return (
+    <Box>
+      <input
+        type="checkbox"
+        checked={colorMode === "dark"}
+        onChange={(ev) => {
+          setColorMode(ev.target.checked ? "dark" : "light");
+        }}
+      />
+      <Text as="label" color="text" fontSize={1}>
+        {colorMode}
+      </Text>
+    </Box>
+  );
+};
+
 const StyledNavItem = styled(NavItem)`
   &:last-of-type {
     margin-right: 0;
@@ -45,6 +67,7 @@ const Nav: React.FC<{}> = () => (
         <StyledNavItem href="/" title="Hiranmaya Gundu" />
         <StyledNavItem href="/about" title="About" />
         <StyledNavItem href="/blog" title="Blog" />
+        <DarkToggle />
       </Flex>
     </Layout>
   </Flex>

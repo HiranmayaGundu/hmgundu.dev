@@ -1,5 +1,3 @@
-import { darken } from "polished";
-
 const LIGHT_THEME_COLORS = {
   blueLight: "#CFD8EA", // light blue
   blueDark: "#C4D0E3", // slightly darker than above

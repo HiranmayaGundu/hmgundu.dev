@@ -1,3 +1,4 @@
+import * as React from "react";
 import { H1, H2, H3, H4 } from "./Heading";
 import Link from "./Link";
 import P from "./Paragraph";
@@ -5,6 +6,21 @@ import styled from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
 import { HeadingProps } from "rebass";
+import Layout from "./Layout";
+import { NAV_HEIGHT } from "./Constants";
+import Content from "./Content";
+
+interface WrapperProps {
+  children: React.ReactNode;
+}
+
+const Wrapper: React.FC<WrapperProps> = ({ children }) => (
+  <Content p={2}>
+    <Layout pl={[3, 4]} pr={[3, 4]}>
+      {children}
+    </Layout>
+  </Content>
+);
 
 const MarkdownLink = styled(Link)`
   color: ${(props): string => props.theme.colors.textLink};
@@ -40,4 +56,5 @@ export default {
   code: CodeBlock,
   inlineCode: InlineCode,
   hr: StyledHr,
+  wrapper: Wrapper,
 };

@@ -11,10 +11,13 @@ interface UniversalLinkProps {
   prefetch?: boolean;
   underline?: boolean;
   children: React.ReactNode;
+  external?: boolean;
 }
 const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
   const external =
-    props.href.indexOf("//") !== -1 && props.href.indexOf("hmgundu.dev") === -1;
+    props.external ||
+    (props.href.indexOf("//") !== -1 &&
+      props.href.indexOf("hmgundu.dev") === -1);
   return (
     <ConditionalWrap
       condition={!external}

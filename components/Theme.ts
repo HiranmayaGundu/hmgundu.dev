@@ -16,7 +16,7 @@ export const theme = {
   colors: {
     primary: colors.green,
     text: "var(--color-text)",
-    background: "var(--color-primary-background",
+    background: "var(--color-primary-background)",
     secondary: colors.greys[4],
     tertiary: colors.greys[3],
     quaternary: colors.greys[2],
@@ -24,9 +24,9 @@ export const theme = {
   },
   breakpoints: ["850px", "1100px", "64em"],
   fonts: {
-    system:
+    body:
       'aileron, source-sans-pro, -apple-system, BlinkMacSystemFont,"Segoe UI", Helvetica, Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
-    monospace: '"Source Code Pro", menlo, monospace',
+    monospace: "source-code-pro, menlo, monospace",
   },
   fontSizes: fontSizesInRem,
   fontWeights: {

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import { toCustomProperties } from "./CustomPropertiesUtils";
+import { toCustomProperties } from "functions/CustomPropertiesUtils";
 import { theme } from "./Theme";
 
 const GlobalStyle = createGlobalStyle`

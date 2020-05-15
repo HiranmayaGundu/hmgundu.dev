@@ -1,3 +1,5 @@
+import { darken } from "polished";
+
 const LIGHT_THEME_COLORS = {
   blueLight: "#CFD8EA", // light blue
   blueDark: "#C4D0E3", // slightly darker than above
@@ -7,6 +9,7 @@ const LIGHT_THEME_COLORS = {
   iconBackground: "#55586B",
   iconTShirtMainShade: "#F6BC52",
   iconTShirtSecondaryShade: "#F9AF37",
+  boxShadow: "#B3C2DB",
 };
 
 const DARK_THEME_COLORS = {
@@ -18,6 +21,7 @@ const DARK_THEME_COLORS = {
   iconBackground: "#FBBB51",
   iconTShirtMainShade: "#B63431",
   iconTShirtSecondaryShade: "#803232",
+  boxShadow: "#1B242D",
 };
 
 export const COLORS = {
@@ -65,7 +69,17 @@ export const COLORS = {
     light: LIGHT_THEME_COLORS.iconTShirtSecondaryShade,
     dark: DARK_THEME_COLORS.iconTShirtSecondaryShade,
   },
+  "box-shadow": {
+    light: LIGHT_THEME_COLORS.boxShadow,
+    dark: DARK_THEME_COLORS.boxShadow,
+  },
 };
 
 export const COLOR_MODE_KEY = "color-mode";
 export const INITIAL_COLOR_MODE_CSS_PROP = "--initial-color-mode";
+
+export const NAV_HEIGHT = 65;
+
+export interface ChildrenOnlyProps {
+  children: React.ReactNode;
+}

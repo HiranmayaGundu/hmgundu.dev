@@ -1,6 +1,6 @@
 import {
   toCustomProperties,
-  convertThemeToUseCustomProperties
+  convertThemeToUseCustomProperties,
 } from "../CustomPropertiesUtils";
 
 const theme = {
@@ -13,28 +13,28 @@ const theme = {
     muted: "#f6f6f6",
     dark: {
       foreground: {
-        text: "#000"
+        text: "#000",
       },
       background: {
-        surface: "#fff"
-      }
-    }
+        surface: "#fff",
+      },
+    },
   },
   fonts: {
     body:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     heading:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    monospace: "Menlo, monospace"
+    monospace: "Menlo, monospace",
   },
   fontWeights: {
     body: 400,
     heading: 700,
-    bold: 700
+    bold: 700,
   },
   lineHeights: [1.5, 1.125],
   space: [0, 2, 3, 4, 5, 6],
-  size: ["10em", "20em", "30em", "40em"]
+  size: ["10em", "20em", "30em", "40em"],
 };
 
 describe("test cases for toCustomPropeties", () => {

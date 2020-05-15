@@ -46,7 +46,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
 }) => {
   return (
     <Text as="div" my={1}>
-      <Link href={href} rel={rel} prefetch={prefetch} underline>
+      <Link href={href} rel={rel} prefetch={prefetch} underline external>
         {IconComp && (
           <Icon mr={2} ml={0}>
             <IconComp size="1em" />
@@ -60,7 +60,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
 
 const Footer: React.FC<{}> = () => {
   return (
-    <Flex py={5} mt={5} as="footer">
+    <Flex py={4} as="footer">
       <Layout width={[1, 0.5]}>
         <Flex flexDirection={["column", "row"]}>
           <FooterColumn title="About this website">

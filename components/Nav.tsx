@@ -39,7 +39,7 @@ const StyledNavItem = styled(NavItem)`
 `;
 
 const Nav: React.FC<{}> = () => (
-  <Flex py={2} mt={2} as="nav">
+  <Flex py={2} mt={2} mb={2} as="nav">
     <Layout py={1} width={1}>
       <Flex alignItems="center" justifyContent={["center", "space-between"]}>
         <StyledNavItem href="/" title="Hiranmaya Gundu" />

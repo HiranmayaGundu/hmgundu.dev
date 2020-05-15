@@ -4,7 +4,7 @@ const BaseHeading: React.FC<HeadingProps> = (props) => (
   <Heading
     lineHeight={1.25}
     fontWeight="bold"
-    fontFamily="system"
+    fontFamily="body"
     alignSelf="flex-start"
     color="text"
     {...props}
@@ -16,7 +16,7 @@ const H1: React.FC<HeadingProps> = (props) => (
 );
 
 const H2: React.FC<HeadingProps> = (props) => (
-  <BaseHeading fontSize={4} as="h2" mb={4} mt={5} {...props} />
+  <BaseHeading fontSize={4} as="h2" mb={4} mt={4} {...props} />
 );
 
 const H3: React.FC<HeadingProps> = (props) => (

@@ -42,7 +42,6 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     </ColorModeProvider>
   );
 };
-
 interface WebVitals {
   id: string;
   label: string;

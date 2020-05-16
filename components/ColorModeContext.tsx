@@ -1,3 +1,6 @@
+// This is from https://joshwcomeau.com/gatsby/dark-mode/.
+// It is a fantastic blog post on how to avoid the
+// horrible flash effect when having themes in SSG.
 import * as React from "react";
 
 import {

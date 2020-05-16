@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import styled, { ThemeContext } from "styled-components";
-import { Box, Flex } from "rebass/styled-components";
+import { Box, Flex, FlexProps } from "rebass/styled-components";
 import Text from "./Text";
 import Link from "./Link";
 import Layout from "./Layout";
@@ -60,8 +60,18 @@ const StyledNavItem = styled(NavItem)`
   }
 `;
 
+const NavWrapper: React.FC<FlexProps> = styled(Flex)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  background-color: var(--color-primary-background);
+  box-shadow: var(--color-box-shadow) 0px 1px 4px 0px;
+`;
+
 const Nav: React.FC<{}> = () => (
-  <Flex py={2} mt={2} mb={2} as="nav">
+  <NavWrapper py={3} as="nav">
     <Layout py={1} width={1}>
       <Flex alignItems="center" justifyContent={["center", "space-between"]}>
         <StyledNavItem href="/" title="Hiranmaya Gundu" />
@@ -70,7 +80,7 @@ const Nav: React.FC<{}> = () => (
         <DarkToggle />
       </Flex>
     </Layout>
-  </Flex>
+  </NavWrapper>
 );
 
 export default Nav;

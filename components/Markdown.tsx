@@ -8,13 +8,14 @@ import { CodeBlock, InlineCode } from "./CodeBlock";
 import { HeadingProps } from "rebass";
 import Layout from "./Layout";
 import Content from "./Content";
+import { NAV_HEIGHT } from "./Constants";
 
 interface WrapperProps {
   children: React.ReactNode;
 }
 
 const Wrapper: React.FC<WrapperProps> = ({ children }) => (
-  <Content p={2}>
+  <Content p={2} pb={5} mt={`${NAV_HEIGHT + 10}px`} ml="auto" mr="auto" mb="0">
     <Layout pl={[3, 4]} pr={[3, 4]}>
       {children}
     </Layout>

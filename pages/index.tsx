@@ -37,7 +37,7 @@ const GondsWrapper = styled.div`
   left: 50%;
   top: 5px;
   animation: 1s ${fadeIn} ease-out;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 40em) {
     display: none;
   }
 `;
@@ -112,7 +112,7 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
       </SecondarySection>
       <SecondarySectionDivider />
       <PrimarySection>
-        <Box mt={["-40px", "-120px"]} />
+        <Box mt={["-40px", "-80px", "-120px"]} />
         <Layout pl={[3, 4]} pr={[3, 4]}>
           <H2>Recently Published</H2>
           <OneColumnGrid>

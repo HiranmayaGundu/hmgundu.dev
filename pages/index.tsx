@@ -94,7 +94,7 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
         <SectionDivider />
       </SectionDividerWrapper>
       <SecondarySection>
-        <Box mt={["0px", "-30px"]} />
+        <Box mt={["-60px", "-30px"]} />
         <Layout pl={[3, 4]} pr={[3, 4]}>
           <Text as="p" pb={[2, 4]} pt={5} fontSize={[2, 3]} lineHeight={1.6}>
             I&apos;m a software engineer from India, who&apos;s currently

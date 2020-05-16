@@ -14,7 +14,7 @@ export const theme = {
     background: "var(--color-primary-background)",
     ...colors,
   },
-  breakpoints: ["850px", "1100px", "64em"],
+  breakpoints: ["40em", "52em", "64em"],
   fonts: {
     body:
       'aileron, source-sans-pro, -apple-system, BlinkMacSystemFont,"Segoe UI", Helvetica, Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',

@@ -118,10 +118,12 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
           <OneColumnGrid>
             {posts.slice(0, 3).map((post: PostInterface) => (
               <div key={post.title}>
-                <H4>{post.title}</H4>
-                <Text as="p" fontSize={[0, 1]}>
-                  {post.summary}
-                </Text>
+                <Link href={post.path}>
+                  <H4>{post.title}</H4>
+                  <Text as="p" fontSize={[0, 1]}>
+                    {post.summary}
+                  </Text>
+                </Link>
               </div>
             ))}
           </OneColumnGrid>

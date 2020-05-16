@@ -3,9 +3,10 @@ import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import Prism from "prism-react-renderer/prism";
 import theme from "prism-react-renderer/themes/nightOwl";
 import Pre from "./Pre";
-import styled from "styled-components";
 import javaLang from "refractor/lang/java";
 import { ExpanderDiv } from "./ExpanderDiv";
+import { TextProps } from "rebass/styled-components";
+import Text from "./Text";
 javaLang(Prism);
 interface CodeBlockProps {
   children: React.ReactNode;
@@ -47,13 +48,18 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   );
 };
 
-const InlineCode = styled.code`
-  ${(props): string => `
-    background-color: ${props.theme.colors.greys[0]};
-    color: ${props.theme.colors.black};
-    font-family: var(--fonts-monospace);
-    font-size: ${props.theme.fontSizes[1]}px;
-  `}
-`;
+const InlineCode: React.FC<TextProps> = (props) => (
+  <Text
+    fontFamily="monospace"
+    fontWeight="light"
+    fontSize={[0, 1]}
+    bg="grey"
+    color="black"
+    as="code"
+    pl={2}
+    pr={2}
+    {...props}
+  />
+);
 
 export { CodeBlock, InlineCode };

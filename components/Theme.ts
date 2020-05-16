@@ -1,10 +1,6 @@
 const colors = {
-  green: "#D0D0D0",
-  greys: ["#EEE", "#BBB", "#999", "#666"],
-  white: "#F2DFDF",
-  secondaryWhite: "#FFFFFF",
-  black: "#000000",
-  secondaryBlack: "#222",
+  grey: "var(--color-grey)",
+  black: "var(--color-black)",
   headerLink: "var(--color-link)",
   textLink: "var(--color-link)",
 };
@@ -14,12 +10,8 @@ const fontSizesInRem = fontSizes.map((item) => `${item / 16}rem`);
 
 export const theme = {
   colors: {
-    primary: colors.green,
     text: "var(--color-text)",
     background: "var(--color-primary-background)",
-    secondary: colors.greys[4],
-    tertiary: colors.greys[3],
-    quaternary: colors.greys[2],
     ...colors,
   },
   breakpoints: ["850px", "1100px", "64em"],

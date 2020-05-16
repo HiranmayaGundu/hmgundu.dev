@@ -32,7 +32,7 @@ constraint was it has to be built with a stack I was not entirely comfortable wi
 In the case of Statically / Server generated react, there are two main competitors, Next and Gatsby. A quick [google search](https://www.google.com/search?q=next+vs+gatsby)
 will show you the pros and cons of each. I went with Next.js primarily because of it's integration with [now.sh](https://zeit.co/home). I achieved serverless deployments
 and server rendered react in one go. An especially impressive feature of Next is [Automatic Static Optimization](https://nextjs.org/docs/advanced-features/automatic-static-optimization)
-It automatically emits a hydrated React application if you don't use the getInitialProps function. Plus, it helps that it uses PHP like pages directory!
+It automatically emits a hydrated React application if you don't use the `getInitialProps` function. Plus, it helps that it uses PHP like pages directory!
 
 <br />
 
@@ -55,7 +55,7 @@ On a small blog app however, types were an hinderance. Quite frequently, I found
 But this disenchantment could just be due to the fact that I'm learning the language as I build. I also could not use it on the NodeJS code.
 At least, not easily. Next.js, TypeScript and Node.js seemed to require conflicting JavaScript module systems, which I had learned
 about just because of this. TypeScript does not support the require syntax, while Node.js demands it. Facing all these issues, I reverted
-to JavaScript for the get-blog-posts.js helper module. If any one could point me in the correct direction to overcome this, I would love
+to JavaScript for the `get-blog-posts.js` helper module. If any one could point me in the correct direction to overcome this, I would love
 to learn!
 
 <br />
@@ -104,3 +104,11 @@ As I was working on this website, I realized there are somethings that still hav
 <br />{" "}
 
 I'll be adding these as and when I have time, but my primary focus will be on writing some blog posts!
+
+### Updates
+
+It's been a couple of months since this blog post, and some updates since:-
+
+- Next.js has become even more awesome. They have new data fetching methods so that your site is much faster!
+- I used one of them for `getStaticProps` and got rid of the `get-blog-posts.js` file.
+- I redid the CSS of the entire website.

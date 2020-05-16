@@ -23,5 +23,5 @@ export const OrderedList = styled(Box).attrs({
 `;
 
 export const ListItem: React.FC<TextProps> = (props) => (
-  <Paragraph style={{ fontSize: "18px" }} my={1} {...props} as="li" />
+  <Paragraph my={1} {...props} as="li" />
 );

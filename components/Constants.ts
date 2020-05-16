@@ -22,6 +22,9 @@ const DARK_THEME_COLORS = {
   boxShadow: "#1B242D",
 };
 
+const BLACK = "#000";
+const GREY = "#EEE";
+
 export const COLORS = {
   text: {
     light: LIGHT_THEME_COLORS.text,
@@ -30,6 +33,14 @@ export const COLORS = {
   link: {
     light: LIGHT_THEME_COLORS.altText,
     dark: DARK_THEME_COLORS.altText,
+  },
+  black: {
+    light: BLACK,
+    dark: BLACK,
+  },
+  grey: {
+    light: GREY,
+    dark: GREY,
   },
   "heading-text": {
     light: LIGHT_THEME_COLORS.altText,

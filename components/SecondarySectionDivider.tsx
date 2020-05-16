@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DividerSvg } from "./DividerSvg";
 
-const SecondarySectionDivider = () => {
+const SecondarySectionDivider = (): JSX.Element => {
   return (
     <DividerSvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path

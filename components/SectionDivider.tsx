@@ -1,17 +1,5 @@
 import * as React from "react";
-import styled from "styled-components";
-
-const DividerSvg = styled.svg`
-  display: block;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background-color: transparent;
-  pointer-events: none;
-  user-select: none;
-  vertical-align: middle;
-  overflow: hidden;
-`;
+import { DividerSvg } from "./DividerSvg";
 
 const SectionDivider = (): JSX.Element => {
   return (
@@ -19,8 +7,8 @@ const SectionDivider = (): JSX.Element => {
       preserveAspectRatio="none"
       viewBox="0 0 1440 120"
       xmlns="http://www.w3.org/2000/svg"
-      width="1440"
-      height="120"
+      width="1440px"
+      height="120px"
     >
       <path
         fill="var(--color-secondary-background)"

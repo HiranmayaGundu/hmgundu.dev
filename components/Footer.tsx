@@ -71,7 +71,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
 
 const Footer: React.FC<{}> = () => {
   return (
-    <Layout mt={[3, 4]} pl={[3, 4]} pr={[3, 4]}>
+    <Layout pt={5} pl={[3, 4]} pr={[3, 4]}>
       <TwoColumnGrid>
         <FooterColumn title="About this website">
           <Text lineHeight={1.5}>

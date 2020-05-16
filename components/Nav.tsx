@@ -43,7 +43,7 @@ const DarkToggle: React.FC<{}> = () => {
       <input
         type="checkbox"
         checked={colorMode === "dark"}
-        onChange={(ev) => {
+        onChange={(ev): void => {
           setColorMode(ev.target.checked ? "dark" : "light");
         }}
       />

@@ -5,18 +5,12 @@ import theme from "prism-react-renderer/themes/nightOwl";
 import Pre from "./Pre";
 import styled from "styled-components";
 import javaLang from "refractor/lang/java";
+import { ExpanderDiv } from "./ExpanderDiv";
 javaLang(Prism);
 interface CodeBlockProps {
   children: React.ReactNode;
   className?: string;
 }
-
-const ExpanderDiv = styled.div`
-  @media (min-width: 1024px) {
-    margin-left: -80px;
-    margin-right: -80px;
-  }
-`;
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   const language = className?.replace(/language-/, "");

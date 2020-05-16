@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import Text from "components/Text";
-import { H1 } from "components/Heading";
+import { H1, H2 } from "components/Heading";
 import Gonds from "components/Gonds";
 import Mark from "components/Mark";
 import Layout from "components/Layout";
@@ -41,7 +41,7 @@ const GondsWrapper = styled.div`
 const SectionDividerWrapper = styled.div`
   position: absolute;
   z-index: 10;
-  top: 320px;
+  top: 325px;
   width: 100%;
 `;
 
@@ -89,6 +89,14 @@ const Index: React.FC<{}> = () => {
         </Layout>
       </SecondarySection>
       <SecondarySectionDivider />
+      <PrimarySection>
+        <Layout pl={[3, 4]} pr={[3, 4]}>
+          <H2>My Latest posts</H2>
+          <Text as="p" pb={[2, 4]} fontSize={[1, 3]} lineHeight={1.6}>
+            Placeholder text. This is where I have cards of my latest blog posts
+          </Text>
+        </Layout>
+      </PrimarySection>
     </>
   );
 };

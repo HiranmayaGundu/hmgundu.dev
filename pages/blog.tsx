@@ -33,7 +33,6 @@ const Blog: NextPage<BlogProps> = ({ posts, page = 1 }) => {
       <H1>
         <Mark>Blog</Mark>
       </H1>
-      {/* @ts-ignore */}
       {posts
         .filter(
           (post: PostInterface, index: number) =>

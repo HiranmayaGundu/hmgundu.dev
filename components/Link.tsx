@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import ConditionalWrap from "conditional-wrap";
 import styled, { FlattenSimpleInterpolation } from "styled-components";
 
-interface UniversalLinkProps {
+export interface UniversalLinkProps {
   href: string;
   rel?: string;
   css?: FlattenSimpleInterpolation;

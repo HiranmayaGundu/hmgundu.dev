@@ -13,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
     font-family: var(--font-family);
   }
+  html {
+    scroll-padding-top: 65px;
+  }
 
   body {
     background-color: var(--color-primary-background);

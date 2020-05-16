@@ -6,6 +6,7 @@ import Link from "./Link";
 import Layout from "./Layout";
 import Icon from "./Icon";
 import { css } from "styled-components";
+import { TwoColumnGrid } from "./TwoColumnGrid";
 
 interface FooterColumnProps {
   title: string;
@@ -70,35 +71,33 @@ const FooterItem: React.FC<FooterItemProps> = ({
 
 const Footer: React.FC<{}> = () => {
   return (
-    <Flex py={4} as="footer">
-      <Layout width={[1, 0.5]} pl={[3, 4]} pr={[3, 4]}>
-        <Flex flexDirection={["column", "row"]}>
-          <FooterColumn title="About this website">
-            <Text lineHeight={1.5}>
-              This is my website! I&apos;m Hiranmaya Gundu, a dev exploring web,
-              systems and AI trying to decide where to land. This is my personal
-              blog!
-            </Text>
-          </FooterColumn>
-          <FooterColumn last title="Social Media">
-            <FooterItem
-              href="https://github.com/HiranmayaGundu/hmgundu.dev"
-              IconComp={GitHub}
-              rel="me"
-            >
-              View the source on GitHub
-            </FooterItem>
-            <FooterItem
-              href="https://twitter.com/hiranmayagundu"
-              IconComp={Twitter}
-              rel="me"
-            >
-              You can follow me on twitter, though I don&apos;t do much there
-            </FooterItem>
-          </FooterColumn>
-        </Flex>
-      </Layout>
-    </Flex>
+    <Layout mt={[3, 4]} pl={[3, 4]} pr={[3, 4]}>
+      <TwoColumnGrid>
+        <FooterColumn title="About this website">
+          <Text lineHeight={1.5}>
+            This is my website! I&apos;m Hiranmaya Gundu, a dev exploring web,
+            systems and AI trying to decide where to land. This is my personal
+            blog!
+          </Text>
+        </FooterColumn>
+        <FooterColumn last title="Social Media">
+          <FooterItem
+            href="https://github.com/HiranmayaGundu/hmgundu.dev"
+            IconComp={GitHub}
+            rel="me"
+          >
+            View the source on GitHub
+          </FooterItem>
+          <FooterItem
+            href="https://twitter.com/hiranmayagundu"
+            IconComp={Twitter}
+            rel="me"
+          >
+            You can follow me on twitter, though I don&apos;t do much there
+          </FooterItem>
+        </FooterColumn>
+      </TwoColumnGrid>
+    </Layout>
   );
 };
 

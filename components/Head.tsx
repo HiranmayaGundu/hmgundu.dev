@@ -39,6 +39,17 @@ const HeadComponent: React.FC<HeadProps> = (props) => {
         key="twitter:creator"
         content="@hiranmayagundu"
       />
+      <link
+        rel="shortcut icon"
+        type="image/x-icon"
+        href="/static/images/favicon.ico"
+      />
+      <link
+        rel="icon"
+        sizes="192x192"
+        href="/static/images/android-chrome-192x192.png"
+      />
+      <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png" />
     </NextHead>
   );
 };

@@ -53,12 +53,15 @@ const InlineCode: React.FC<TextProps> = (props) => (
     fontFamily="monospace"
     fontWeight="light"
     fontSize={[0, 1]}
-    bg="grey"
-    color="black"
+    bg="var(--color-grey)"
+    color="text"
     as="code"
     pl={2}
     pr={2}
     {...props}
+    sx={{
+      borderRadius: 4,
+    }}
   />
 );
 

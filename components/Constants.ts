@@ -8,6 +8,7 @@ const LIGHT_THEME_COLORS = {
   iconTShirtMainShade: "#F6BC52",
   iconTShirtSecondaryShade: "#F9AF37",
   boxShadow: "#B3C2DB",
+  inlineCode: "#EFF4F5",
 };
 
 const DARK_THEME_COLORS = {
@@ -20,10 +21,10 @@ const DARK_THEME_COLORS = {
   iconTShirtMainShade: "#B63431",
   iconTShirtSecondaryShade: "#803232",
   boxShadow: "#1B242D",
+  inlineCode: "#0E1D39",
 };
 
 const BLACK = "#000";
-const GREY = "#EEE";
 
 export const COLORS = {
   text: {
@@ -39,8 +40,8 @@ export const COLORS = {
     dark: BLACK,
   },
   grey: {
-    light: GREY,
-    dark: GREY,
+    light: LIGHT_THEME_COLORS.inlineCode,
+    dark: DARK_THEME_COLORS.inlineCode,
   },
   "heading-text": {
     light: LIGHT_THEME_COLORS.altText,
@@ -57,14 +58,6 @@ export const COLORS = {
   "secondary-background": {
     light: LIGHT_THEME_COLORS.blueDark,
     dark: DARK_THEME_COLORS.blueLight,
-  },
-  "primary-light": {
-    light: LIGHT_THEME_COLORS.blueLight, // Want primary colors to be accessible for the shirt color
-    dark: LIGHT_THEME_COLORS.blueLight,
-  },
-  "primary-dark": {
-    light: DARK_THEME_COLORS.blueDark,
-    dark: DARK_THEME_COLORS.blueDark,
   },
   "icon-background": {
     light: LIGHT_THEME_COLORS.iconBackground,

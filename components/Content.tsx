@@ -1,12 +1,17 @@
-import styled from "styled-components";
-import { Box } from "rebass/styled-components";
+import { Box, BoxProps } from "rebass/styled-components";
 
-const Content = styled(Box)`
-  background-color: var(--color-secondary-background);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px var(--color-box-shadow);
-  max-width: 900px;
-`;
+const Content: React.FC<BoxProps> = (props) => (
+  <Box
+    bg="var(--color-secondary-background)"
+    as="article"
+    sx={{
+      boxShadow: "0 4px 6px var(--color-box-shadow)",
+      overflow: "hidden",
+      borderRadius: 8,
+      maxWidth: ["24em", "45em", "58em"],
+    }}
+    {...props}
+  />
+);
 
 export default Content;

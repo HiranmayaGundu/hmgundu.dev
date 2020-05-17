@@ -35,14 +35,14 @@ const DarkToggle: React.FC<{}> = () => {
   }
   return (
     <Box>
-      <input
-        type="checkbox"
-        checked={colorMode === "dark"}
-        onChange={(ev): void => {
-          setColorMode(ev.target.checked ? "dark" : "light");
-        }}
-      />
       <Text as="label" color="text" fontSize={1}>
+        <input
+          type="checkbox"
+          checked={colorMode === "dark"}
+          onChange={(ev): void => {
+            setColorMode(ev.target.checked ? "dark" : "light");
+          }}
+        />
         {colorMode}
       </Text>
     </Box>

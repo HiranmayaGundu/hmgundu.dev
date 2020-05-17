@@ -5,7 +5,7 @@ import { ColorModeProvider } from "../components/ColorModeContext";
 import { MDXProvider } from "@mdx-js/react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
-import AppHead from "../components/AppHead";
+import Head from "../components/Head";
 import components from "../components/Markdown";
 import GlobalStyle from "../components/GlobalStyle";
 import { theme } from "../components/Theme";
@@ -28,7 +28,7 @@ const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
-      <AppHead title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
+      <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
       <ColorModeProvider>
         <ThemeProvider theme={newTheme}>
           <MDXProvider components={components}>

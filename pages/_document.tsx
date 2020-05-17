@@ -6,6 +6,41 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import Terser from "terser";
+import { setColorsByTheme } from "components/SetColorsByTheme";
+import { COLORS } from "components/Constants";
+
+const COLOR_MODE_KEY = "color-mode";
+const INITIAL_COLOR_MODE_CSS_PROP = "--initial-color-mode";
+
+// This is from https://joshwcomeau.com/gatsby/dark-mode/.
+// It is a fantastic blog post on how to avoid the
+// horrible flash effect when having themes in SSG.
+const autoColorModeScript = (): string => {
+  const boundFn = String(setColorsByTheme)
+    .replace('"🌈"', JSON.stringify(COLORS))
+    .replace("🔑", COLOR_MODE_KEY)
+    .replace("⚡️", INITIAL_COLOR_MODE_CSS_PROP);
+
+  let calledFunction = `(${boundFn})()`;
+
+  const minifiedCode = Terser.minify(calledFunction).code;
+  calledFunction = minifiedCode ? minifiedCode : "";
+  return calledFunction;
+};
+
+const fallbackStyles = (): string => {
+  const cssVariableString = Object.entries(COLORS).reduce(
+    (acc, [name, colorByTheme]) => {
+      return `${acc}\n--color-${name}: ${colorByTheme.light};`;
+    },
+    ""
+  );
+
+  const wrappedInSelector = `html { ${cssVariableString} }`;
+
+  return wrappedInSelector;
+};
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -35,9 +70,14 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    const colorModeScript = autoColorModeScript();
+    const fallbackColors = fallbackStyles();
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <style>{fallbackColors}</style>
+          <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
+        </Head>
         <body>
           <Main />
           <NextScript />

@@ -13,6 +13,7 @@ export interface UniversalLinkProps {
   children: React.ReactNode;
   external?: boolean;
 }
+
 const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
   const external =
     props.external ||

@@ -5,8 +5,8 @@ import Text from "./Text";
 import Link from "./Link";
 import Layout from "./Layout";
 import Icon from "./Icon";
-import { css } from "styled-components";
 import { TwoColumnGrid } from "./TwoColumnGrid";
+import { textColor } from "./textColor";
 
 interface FooterColumnProps {
   title: string;
@@ -22,9 +22,6 @@ interface FooterItemProps {
   rel?: string;
   prefetch?: boolean;
 }
-const textColor = css`
-  color: var(--color-text);
-`;
 const FooterColumn: React.FC<FooterColumnProps> = (props) => {
   return (
     <Flex

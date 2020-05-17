@@ -12,12 +12,10 @@ import { theme } from "../components/Theme";
 import { convertThemeToUseCustomProperties } from "functions/CustomPropertiesUtils";
 
 const newTheme = convertThemeToUseCustomProperties(theme, [
-  "colors",
   "breakpoints",
   "space",
 ]);
 
-newTheme.colors = theme.colors;
 newTheme.breakpoints = theme.breakpoints;
 newTheme.space = theme.space;
 

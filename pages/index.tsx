@@ -15,6 +15,7 @@ import { PostInterface, getPosts } from "functions/ReadPosts";
 import { Box } from "rebass/styled-components";
 import { ChildrenOnlyProps } from "components/Constants";
 import Head from "components/Head";
+import { textColor } from "components/textColor";
 
 const PrimarySection = styled.div`
   background-color: var(--color-primary-background);
@@ -119,14 +120,12 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
           <H2>Recently Published</H2>
           <OneColumnGrid>
             {posts.slice(0, 3).map((post: PostInterface) => (
-              <div key={post.title}>
-                <Link href={post.path}>
-                  <H4>{post.title}</H4>
-                  <Text as="p" fontSize={[0, 1]}>
-                    {post.summary}
-                  </Text>
-                </Link>
-              </div>
+              <Link css={textColor} href={post.path} key={post.title}>
+                <H4>{post.title}</H4>
+                <Text as="p" fontSize={[0, 1]}>
+                  {post.summary}
+                </Text>
+              </Link>
             ))}
           </OneColumnGrid>
         </Layout>

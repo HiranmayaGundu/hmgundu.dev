@@ -23,7 +23,6 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => (
 );
 
 const MarkdownLink = styled(Link)`
-  color: ${(props): string => props.theme.colors.textLink};
   text-decoration: underline;
 
   &:hover {

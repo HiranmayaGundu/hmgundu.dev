@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import * as React from "react";
 import { useRouter } from "next/router";
-import styled, { ThemeContext } from "styled-components";
+import styled from "styled-components";
 import { Box, Flex, FlexProps } from "rebass/styled-components";
 import Text from "./Text";
 import Link from "./Link";
 import Layout from "./Layout";
 import { ColorModeContext } from "./ColorModeContext";
+import { textColor } from "./textColor";
 
 interface NavItemProps {
   href: string;
@@ -15,17 +16,11 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = (props) => {
   const { pathname } = useRouter();
-  const themeContext = useContext(ThemeContext);
   const active: boolean = pathname.indexOf(props.href) === 0;
   return (
     <Box mr={4} className={props.className}>
-      <Link href={props.href}>
-        <Text
-          as="h3"
-          color={active ? "text" : themeContext.colors.headerLink}
-          fontWeight={themeContext.fontWeights.bold}
-          fontSize={themeContext.fontSizes[1]}
-        >
+      <Link css={active ? textColor : undefined} href={props.href}>
+        <Text as="h3" fontWeight="bold" fontSize={1}>
           {props.title}
         </Text>
       </Link>
@@ -60,15 +55,20 @@ const StyledNavItem = styled(NavItem)`
   }
 `;
 
-const NavWrapper: React.FC<FlexProps> = styled(Flex)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 15;
-  background-color: var(--color-primary-background);
-  box-shadow: var(--color-box-shadow) 0px 1px 4px 0px;
-`;
+const NavWrapper: React.FC<FlexProps> = (props) => (
+  <Flex
+    bg="var(--color-primary-background)"
+    sx={{
+      top: 0,
+      left: 0,
+      width: "100%",
+      zIndex: 15,
+      position: "fixed",
+      boxShadow: "var(--color-box-shadow) 0px 1px 4px 0px",
+    }}
+    {...props}
+  />
+);
 
 const Nav: React.FC<{}> = () => (
   <NavWrapper py={3} as="nav">

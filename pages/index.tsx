@@ -14,6 +14,7 @@ import { NAV_HEIGHT } from "components/Constants";
 import { PostInterface, getPosts } from "functions/ReadPosts";
 import { Box } from "rebass/styled-components";
 import { ChildrenOnlyProps } from "components/Constants";
+import Head from "components/Head";
 
 const PrimarySection = styled.div`
   background-color: var(--color-primary-background);
@@ -73,6 +74,7 @@ interface IndexProps {
 const Index: React.FC<IndexProps> = ({ posts }) => {
   return (
     <>
+      <Head title="Hi I'm Hiranmaya Gundu 👋" />
       <PrimarySection>
         <Layout
           pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}

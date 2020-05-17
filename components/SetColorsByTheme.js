@@ -1,6 +1,10 @@
 // This is from https://joshwcomeau.com/gatsby/dark-mode/.
 // It is a fantastic blog post on how to avoid the
 // horrible flash effect when having themes in SSG.
+
+// Had to replace Object.entries because
+//next was pollyfilling it
+
 export function setColorsByTheme() {
   const colors = "🌈";
   const colorModeKey = "🔑";
@@ -26,8 +30,8 @@ export function setColorsByTheme() {
 
   root.style.setProperty(colorModeCssProp, colorMode);
 
-  Object.entries(colors).forEach(([name, colorByTheme]) => {
-    const cssVarName = `--color-${name}`;
-    root.style.setProperty(cssVarName, colorByTheme[colorMode]);
-  });
+  for (const key in colors) {
+    const cssVarName = `--color-${key}`;
+    root.style.setProperty(cssVarName, colors[key][colorMode]);
+  }
 }

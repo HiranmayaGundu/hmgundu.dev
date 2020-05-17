@@ -5,7 +5,7 @@ import { ColorModeProvider } from "../components/ColorModeContext";
 import { MDXProvider } from "@mdx-js/react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
-import Head from "../components/Head";
+import AppHead from "../components/AppHead";
 import components from "../components/Markdown";
 import GlobalStyle from "../components/GlobalStyle";
 import { theme } from "../components/Theme";
@@ -27,19 +27,21 @@ const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
-    <ColorModeProvider>
-      <ThemeProvider theme={newTheme}>
-        <MDXProvider components={components}>
-          <>
-            <Nav />
-            <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
-            <GlobalStyle />
-            <Component {...pageProps} />
-            <Footer />
-          </>
-        </MDXProvider>
-      </ThemeProvider>
-    </ColorModeProvider>
+    <>
+      <AppHead title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
+      <ColorModeProvider>
+        <ThemeProvider theme={newTheme}>
+          <MDXProvider components={components}>
+            <>
+              <Nav />
+              <GlobalStyle />
+              <Component {...pageProps} />
+              <Footer />
+            </>
+          </MDXProvider>
+        </ThemeProvider>
+      </ColorModeProvider>
+    </>
   );
 };
 interface WebVitals {

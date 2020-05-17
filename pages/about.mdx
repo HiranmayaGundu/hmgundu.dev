@@ -1,10 +1,11 @@
 import Mark from "components/Mark";
 import Layout from "components/Layout";
 import { NAV_HEIGHT } from "components/Constants";
+import Head from "components/Head";
 
 export default ({ children }) => (
   <Layout pt={[`${NAV_HEIGHT}px`]} pl={[3, 4]} pr={[3, 4]}>
-    {children}{" "}
+    {children} <Head title="About Me" />
   </Layout>
 );
 

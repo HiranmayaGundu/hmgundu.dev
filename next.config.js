@@ -3,10 +3,10 @@ const remarkSlug = require("remark-slug");
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkSlug]
-  }
+    remarkPlugins: [remarkSlug],
+  },
 });
 
 module.exports = withMDX({
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"]
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 });

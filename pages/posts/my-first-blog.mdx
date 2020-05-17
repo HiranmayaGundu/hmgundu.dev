@@ -1,4 +1,5 @@
 import Mark from "components/Mark";
+import Head from "components/Head";
 
 export const meta = {
   published: true,
@@ -6,6 +7,8 @@ export const meta = {
   title: "My First Blog",
   summary: "An explanation of how I built this blog as well as why I did it.",
 };
+
+<Head title={meta.title} description={meta.summary} />
 
 ## <Mark> My First Blog </Mark>
 

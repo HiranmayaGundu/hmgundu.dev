@@ -1,3 +1,5 @@
+import { darken, lighten } from "polished";
+
 const LIGHT_THEME_COLORS = {
   blueLight: "#CFD8EA", // light blue
   blueDark: "#C4D0E3", // slightly darker than above
@@ -74,6 +76,14 @@ export const COLORS = {
   "box-shadow": {
     light: LIGHT_THEME_COLORS.boxShadow,
     dark: DARK_THEME_COLORS.boxShadow,
+  },
+  "callout-border-info": {
+    light: LIGHT_THEME_COLORS.altColor,
+    dark: darken(0.2, DARK_THEME_COLORS.blueDark),
+  },
+  "callout-background-info": {
+    light: lighten(0.1, LIGHT_THEME_COLORS.altColor),
+    dark: lighten(0.1, DARK_THEME_COLORS.blueDark),
   },
 };
 

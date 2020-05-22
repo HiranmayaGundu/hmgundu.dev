@@ -5,21 +5,37 @@ import P from "./Paragraph";
 import styled from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
-import { HeadingProps } from "rebass";
+import { HeadingProps, Flex, Box, BoxProps } from "rebass/styled-components";
 import Layout from "./Layout";
 import Content from "./Content";
 import { NAV_HEIGHT } from "./Constants";
+import InkBlot from "./InkBlot";
 
 interface WrapperProps {
   children: React.ReactNode;
 }
 
+const HideBox: React.FC<BoxProps> = styled(Box)`
+  @media screen and (max-width: 40em) {
+    display: none;
+  }
+`;
+
 const Wrapper: React.FC<WrapperProps> = ({ children }) => (
-  <Content p={2} pb={5} mt={`${NAV_HEIGHT + 10}px`} ml="auto" mr="auto" mb="0">
-    <Layout pl={[3, 4]} pr={[3, 4]}>
-      {children}
-    </Layout>
-  </Content>
+  <>
+    <Content
+      p={2}
+      pb={5}
+      mt={`${NAV_HEIGHT + 10}px`}
+      ml="auto"
+      mr="auto"
+      mb="0"
+    >
+      <Layout pl={[3, 4]} pr={[3, 4]}>
+        {children}
+      </Layout>
+    </Content>
+  </>
 );
 
 const MarkdownLink = styled(Link)`
@@ -29,10 +45,20 @@ const MarkdownLink = styled(Link)`
     text-decoration: none;
   }
 `;
-const StyledHr = styled.hr`
-  margin-top: 16px;
-  border-top: 1px solid ${(props): string => props.theme.colors.text};
-`;
+
+const Hr = () => (
+  <Flex mt={[3, 4, 4]} justifyContent="center">
+    <Box>
+      <InkBlot height="40" width="40" />
+    </Box>
+    <Box>
+      <InkBlot height="40" width="40" />
+    </Box>
+    <Box>
+      <InkBlot height="40" width="40" />
+    </Box>
+  </Flex>
+);
 
 const heading = (Tag: React.ComponentType<HeadingProps>) => (
   props: HeadingProps
@@ -54,6 +80,6 @@ export default {
   li: ListItem,
   code: CodeBlock,
   inlineCode: InlineCode,
-  hr: StyledHr,
+  hr: Hr,
   wrapper: Wrapper,
 };

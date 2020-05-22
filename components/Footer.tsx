@@ -1,5 +1,5 @@
 import { Twitter, GitHub } from "react-feather";
-import { Flex } from "rebass/styled-components";
+import { Flex, Box } from "rebass/styled-components";
 import { ReactNode, ReactType } from "react";
 import Text from "./Text";
 import Link from "./Link";
@@ -94,6 +94,13 @@ const Footer: React.FC<{}> = () => {
           </FooterItem>
         </FooterColumn>
       </TwoColumnGrid>
+      <Box mb="4">
+        <Link href="https://monolisa.dev/" underline external css={textColor}>
+          <Text lineHeight={1.5}>
+            This website uses MonoLisa an awesome monospace font. Get it here.
+          </Text>
+        </Link>
+      </Box>
     </Layout>
   );
 };

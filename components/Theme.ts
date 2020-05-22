@@ -18,7 +18,7 @@ export const theme = {
   fonts: {
     body:
       'aileron, source-sans-pro, -apple-system, BlinkMacSystemFont,"Segoe UI", Helvetica, Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
-    monospace: "source-code-pro, menlo, monospace",
+    monospace: "MonoLisa,source-code-pro, menlo, monospace",
   },
   fontSizes: fontSizesInRem,
   fontWeights: {

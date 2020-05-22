@@ -16,6 +16,7 @@ import { Box } from "rebass/styled-components";
 import { ChildrenOnlyProps } from "components/Constants";
 import Head from "components/Head";
 import { textColor } from "components/textColor";
+import { useSpring, a } from "react-spring";
 
 const PrimarySection = styled.div`
   background-color: var(--color-primary-background);
@@ -24,21 +25,11 @@ const SecondarySection = styled.div`
   background-color: var(--color-secondary-background);
 `;
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
 const GondsWrapper = styled.div`
   position: absolute;
   z-index: 5;
   left: 50%;
   top: 5px;
-  animation: 1s ${fadeIn} ease-out;
   @media screen and (max-width: 40em) {
     display: none;
   }
@@ -53,6 +44,30 @@ const SectionDividerWrapper = styled.div`
 
 const SpacerDiv = styled.div`
   margin: 100px;
+`;
+
+const shake = keyframes`
+  10%, 90% {
+    transform: rotate(15deg);
+  }
+  
+  20%, 80% {
+    transform: rotate(-15deg);
+  }
+
+  30%, 50%, 70% {
+    transform: rotate(15deg);
+  }
+
+  40%, 60% {
+    transform: rotate(-15deg);
+  }
+`;
+
+const ShakeAnimation = styled.div`
+  animation-delay: 2s;
+  animation: 3s ${shake} ease-out;
+  display: inline-block;
 `;
 
 const OneColumnGrid: React.FC<ChildrenOnlyProps> = (props) => {
@@ -73,6 +88,7 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ posts }) => {
+  const springProps = useSpring({ opacity: 1, from: { opacity: 0 } });
   return (
     <>
       <Head title="Hi I'm Hiranmaya Gundu 👋" />
@@ -84,11 +100,14 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
         >
           <TwoColumnGrid>
             <H1>
-              Hi! I&apos;m <br /> <Mark>Hiranmaya Gundu</Mark>. 👋
+              Hi! I&apos;m <br /> <Mark>Hiranmaya Gundu</Mark>.{" "}
+              <ShakeAnimation>👋</ShakeAnimation>
             </H1>
-            <GondsWrapper>
-              <Gonds />
-            </GondsWrapper>
+            <a.div style={springProps}>
+              <GondsWrapper>
+                <Gonds />
+              </GondsWrapper>
+            </a.div>
           </TwoColumnGrid>
         </Layout>
         <SpacerDiv />

@@ -5,7 +5,7 @@ import P from "./Paragraph";
 import styled from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
-import { HeadingProps, Flex, Box, BoxProps } from "rebass/styled-components";
+import { HeadingProps, Flex, Box } from "rebass/styled-components";
 import Layout from "./Layout";
 import Content from "./Content";
 import { NAV_HEIGHT } from "./Constants";
@@ -14,12 +14,6 @@ import InkBlot from "./InkBlot";
 interface WrapperProps {
   children: React.ReactNode;
 }
-
-const HideBox: React.FC<BoxProps> = styled(Box)`
-  @media screen and (max-width: 40em) {
-    display: none;
-  }
-`;
 
 const Wrapper: React.FC<WrapperProps> = ({ children }) => (
   <>
@@ -46,7 +40,7 @@ const MarkdownLink = styled(Link)`
   }
 `;
 
-const Hr = () => (
+const Hr = (): JSX.Element => (
   <Flex mt={[3, 4, 4]} justifyContent="center">
     <Box>
       <InkBlot height="40" width="40" />

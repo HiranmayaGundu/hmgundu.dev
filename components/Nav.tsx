@@ -92,10 +92,8 @@ const NavWrapper: React.FC<FlexProps> = (props) => {
   const [showOnScroll, setShowOnScroll] = React.useState(false);
   useScrollPosition(
     ({ currPos }) => {
-      console.log(currPos);
       const isShow = currPos.y > 0;
       setShowOnScroll(isShow);
-      console.log(isShow);
     },
     [showOnScroll],
     undefined,

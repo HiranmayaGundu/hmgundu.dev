@@ -9,6 +9,7 @@ import { ServerStyleSheet } from "styled-components";
 import Terser from "terser";
 import { setColorsByTheme } from "components/SetColorsByTheme";
 import { COLORS } from "components/Constants";
+import { GA_TRACKING_ID } from "functions/gtag";
 
 const COLOR_MODE_KEY = "color-mode";
 const INITIAL_COLOR_MODE_CSS_PROP = "--initial-color-mode";
@@ -75,6 +76,22 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
           <style>{fallbackColors}</style>
           <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
         </Head>

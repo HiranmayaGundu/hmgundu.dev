@@ -10,6 +10,8 @@ import components from "../components/Markdown";
 import GlobalStyle from "../components/GlobalStyle";
 import { theme } from "../components/Theme";
 import { convertThemeToUseCustomProperties } from "functions/CustomPropertiesUtils";
+import * as gtag from "functions/gtag";
+import { Router } from "next/router";
 
 const newTheme = convertThemeToUseCustomProperties(theme, [
   "breakpoints",
@@ -24,6 +26,15 @@ export const DEFAULT_TITLE = "Hiranmaya Gundu- Software developer";
 const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+  React.useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    Router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      Router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, []);
   return (
     <>
       <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />

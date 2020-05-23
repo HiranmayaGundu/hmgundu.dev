@@ -99,7 +99,7 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
           pr={[3, 4]}
         >
           <TwoColumnGrid>
-            <H1>
+            <H1 fontSize={5}>
               Hi! I&apos;m <br /> <Mark>Hiranmaya Gundu</Mark>.{" "}
               <ShakeAnimation>👋</ShakeAnimation>
             </H1>

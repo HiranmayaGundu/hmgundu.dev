@@ -11,8 +11,8 @@ const BaseHeading: React.FC<HeadingProps> = (props) => (
   />
 );
 
-const H1: React.FC<HeadingProps> = (props) => (
-  <BaseHeading fontSize={[4, 5]} as="h1" mb={4} mt={5} {...props} />
+const H1: React.FC<HeadingProps> = ({ fontSize = [4, 5], ...rest }) => (
+  <BaseHeading fontSize={fontSize} as="h1" mb={4} mt={5} {...rest} />
 );
 
 const H2: React.FC<HeadingProps> = (props) => (

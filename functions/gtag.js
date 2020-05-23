@@ -18,7 +18,7 @@ export const event = ({ action, category, label, value }) => {
 export const sendToGoogleAnalytics = ({ id, name, label, value }) => {
   window.gtag("event", name, {
     event_category:
-      label === "wev-vital" ? "Web Vitals" : "Next.js custom metric",
+      label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
     event_label: id,
     value: Math.round(name === "CLS" ? value * 1000 : value),
     non_interaction: true,

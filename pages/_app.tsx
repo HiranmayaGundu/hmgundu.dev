@@ -61,8 +61,7 @@ interface WebVitals {
   value: number;
 }
 export function reportWebVitals(metric: WebVitals): void {
-  // These metrics can be sent to any analytics service
-  console.log(metric);
+  gtag.sendToGoogleAnalytics(metric);
 }
 
 export default App;

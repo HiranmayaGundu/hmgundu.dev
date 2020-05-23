@@ -1,6 +1,10 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import styled, { css, FlattenSimpleInterpolation } from "styled-components";
+import styled, {
+  css,
+  FlattenSimpleInterpolation,
+  keyframes,
+} from "styled-components";
 import { Box, Flex, FlexProps } from "rebass/styled-components";
 import Text from "./Text";
 import Link from "./Link";
@@ -29,13 +33,28 @@ const NavItem: React.FC<NavItemProps> = (props) => {
   );
 };
 
+const opacity = keyframes`
+  {
+    0% {
+      opacity: 0;
+    }
+    100 % {
+      opacity 1;
+    }
+  }
+`;
+
+const StyledBox = styled(Box)`
+  animation: 2s ${opacity} ease-out;
+`;
+
 const DarkToggle: React.FC<{}> = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
   if (!colorMode) {
     return null;
   }
   return (
-    <Box>
+    <StyledBox>
       <Text as="label" color="text" fontSize={1}>
         <input
           type="checkbox"
@@ -46,7 +65,7 @@ const DarkToggle: React.FC<{}> = () => {
         />
         {colorMode}
       </Text>
-    </Box>
+    </StyledBox>
   );
 };
 
@@ -102,10 +121,18 @@ const Nav: React.FC<{}> = () => (
   <NavWrapper py={3} as="nav">
     <Layout py={1} width={1}>
       <Flex alignItems="center" justifyContent={["center", "space-between"]}>
-        <StyledNavItem href="/" title="Hiranmaya Gundu" />
-        <StyledNavItem href="/about" title="About" />
-        <StyledNavItem href="/blog" title="Blog" />
-        <DarkToggle />
+        <Flex
+          alignItems="center"
+          justifyContent={["center", "space-between"]}
+          width={3 / 4}
+        >
+          <StyledNavItem href="/" title="Hiranmaya Gundu" />
+          <StyledNavItem href="/about" title="About" />
+          <StyledNavItem href="/blog" title="Blog" />
+        </Flex>
+        <Flex>
+          <DarkToggle />
+        </Flex>
       </Flex>
     </Layout>
   </NavWrapper>

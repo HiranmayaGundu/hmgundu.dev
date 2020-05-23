@@ -68,6 +68,10 @@ const ShakeAnimation = styled.div`
   animation-delay: 2s;
   animation: 3s ${shake} ease-out;
   display: inline-block;
+  cursor: default;
+  :hover {
+    animation: ${shake} 3s ease-in-out infinite alternate;
+  }
 `;
 
 const HideBox: React.FC<BoxProps> = styled(Box)`

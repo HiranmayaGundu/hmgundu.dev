@@ -75,12 +75,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="preload"
-            href="/fonts/MonoLisa-regular.woff2"
-            as="font"
-            crossOrigin=""
-          />
           <style>{fallbackColors}</style>
           <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
         </Head>

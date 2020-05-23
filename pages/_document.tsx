@@ -75,39 +75,11 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `
-              @font-face {
-                font-family: 'MonoLisa';
-                src: url('fonts/Lemonada/MonoLisa-Regular.woff2') format('woff2'),
-                  url('fonts/Lemonada/MonoLisa-Regular.woff') format('woff');
-                font-weight: regular;
-                font-style:	normal;
-              }
-              @font-face {
-                font-family: 'MonoLisa';
-                src: url('fonts/Lemonada/MonoLisa-Bold.woff2') format('woff2'),
-                  url('fonts/Lemonada/MonoLisa-Bold.woff') format('woff');
-                font-weight: bold;
-                font-style:	normal;
-              }
-              @font-face {
-                font-family: 'MonoLisa';
-                src: url('fonts/Lemonada/MonoLisa-BoldItalic.woff2') format('woff2'),
-                  url('fonts/Lemonada/MonoLisa-BoldItalic.woff') format('woff');
-                font-weight: bold;
-                font-style:	italic;
-              }
-              @font-face {
-                font-family: 'MonoLisa';
-                src: url('fonts/Lemonada/MonoLisa-RegularItalic.woff2') format('woff2'),
-                  url('fonts/Lemonada/MonoLisa-RegularItalic.woff') format('woff');
-                font-weight: regular;
-                font-style:	italic;
-              }
-              `,
-            }}
+          <link
+            rel="preload"
+            href="/fonts/MonoLisa-regular.woff2"
+            as="font"
+            crossOrigin=""
           />
           <style>{fallbackColors}</style>
           <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />

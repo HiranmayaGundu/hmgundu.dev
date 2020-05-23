@@ -75,6 +75,36 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+              @font-face {
+                font-family: 'MonoLisa';
+                src: url('fonts/Lemonada/MonoLisa-Regular.ttf');
+                font-weight: regular;
+                font-style:	normal;
+              }
+              @font-face {
+                font-family: 'MonoLisa';
+                src: url('fonts/Lemonada/MonoLisa-Bold.ttf');
+                font-weight: bold;
+                font-style:	normal;
+              }
+              @font-face {
+                font-family: 'MonoLisa';
+                src: url('fonts/Lemonada/MonoLisa-BoldItalic.ttf');
+                font-weight: bold;
+                font-style:	italic;
+              }
+              @font-face {
+                font-family: 'MonoLisa';
+                src: url('fonts/Lemonada/MonoLisa-RegularItalic.ttf');
+                font-weight: regular;
+                font-style:	italic;
+              }
+              `,
+            }}
+          />
           <style>{fallbackColors}</style>
           <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
         </Head>

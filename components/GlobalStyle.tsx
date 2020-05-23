@@ -10,14 +10,6 @@ const GlobalStyle = createGlobalStyle`
     ${toCustomProperties(theme, ["colors"])};
   }
 
-  @font-face {
-    font-family: 'MonoLisa';
-    src: url('fonts/Lemonada/MonoLisa-Regular.ttf');
-    src: url('fonts/Lemonada/MonoLisa-Bold.ttf');
-    src: url('fonts/Lemonada/MonoLisa-BoldItalic.ttf');
-    src: url('fonts/Lemonada/MonoLisa-RegularItalic.ttf');
-  }
-
   *, *:before, *:after {
     font-family: var(--font-family);
   }

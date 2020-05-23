@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 export const GA_TRACKING_ID = "UA-167400081-1";
 
 export const pageview = (url) => {

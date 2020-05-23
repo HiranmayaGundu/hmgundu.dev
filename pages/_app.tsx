@@ -27,11 +27,11 @@ const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   React.useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: string): void => {
       gtag.pageview(url);
     };
     Router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
+    return (): void => {
       Router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, []);

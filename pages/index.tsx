@@ -12,7 +12,7 @@ import Link from "components/Link";
 import SecondarySectionDivider from "components/SecondarySectionDivider";
 import { NAV_HEIGHT } from "components/Constants";
 import { PostInterface, getPosts } from "functions/ReadPosts";
-import { Box } from "rebass/styled-components";
+import { Box, BoxProps } from "rebass/styled-components";
 import { ChildrenOnlyProps } from "components/Constants";
 import Head from "components/Head";
 import { textColor } from "components/textColor";
@@ -70,6 +70,12 @@ const ShakeAnimation = styled.div`
   display: inline-block;
 `;
 
+const HideBox: React.FC<BoxProps> = styled(Box)`
+  @media (max-width: 630px) and (min-width: 530px) {
+    display: none;
+  }
+`;
+
 const OneColumnGrid: React.FC<ChildrenOnlyProps> = (props) => {
   return (
     <Box
@@ -116,9 +122,15 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
         <SectionDivider />
       </SectionDividerWrapper>
       <SecondarySection>
-        <Box mt={["-60px", "-30px"]} />
+        <HideBox mt={["-60px", "0px"]} />
         <Layout pl={[3, 4]} pr={[3, 4]}>
-          <Text as="p" pb={[2, 4]} pt={5} fontSize={[2, 3]} lineHeight={1.6}>
+          <Text
+            as="p"
+            pb={[2, 4]}
+            pt={[5, 5]}
+            fontSize={[2, 3]}
+            lineHeight={1.6}
+          >
             I&apos;m a software engineer from India, who&apos;s currently
             exploring the different fields Computer Science has to offer. This
             website was born from the desire to build a personal blog, as well
@@ -136,11 +148,11 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
       <PrimarySection>
         <Box mt={["-40px", "-80px", "-120px"]} />
         <Layout pl={[3, 4]} pr={[3, 4]}>
-          <H2>Recently Published</H2>
+          <H2 fontSize={4}>Recently Published</H2>
           <OneColumnGrid>
             {posts.slice(0, 3).map((post: PostInterface) => (
               <Link css={textColor} href={post.path} key={post.title}>
-                <H4>{post.title}</H4>
+                <H4 fontSize={2}>{post.title}</H4>
                 <Text as="p" fontSize={[0, 1]}>
                   {post.summary}
                 </Text>

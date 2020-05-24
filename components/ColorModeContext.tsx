@@ -38,8 +38,6 @@ export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
     undefined
   );
 
-  const matchMediaQuery = React.useRef<MediaQueryList | undefined>();
-
   const mqlHandler = (e: MediaQueryListEvent): void => {
     const root = window.document.documentElement;
     if (e.matches) {
@@ -51,6 +49,12 @@ export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
     }
   };
 
+  const mediaQueryHandler = React.useRef<(e: MediaQueryListEvent) => void>(
+    mqlHandler
+  );
+
+  const mqlList = React.useRef<MediaQueryList | undefined>();
+
   React.useEffect(() => {
     const root = window.document.documentElement;
 
@@ -59,10 +63,8 @@ export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
     ) as ThemeType;
     const persistedValue = localStorage.getItem(COLOR_MODE_KEY);
     if (typeof persistedValue !== "string") {
-      matchMediaQuery.current = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      );
-      matchMediaQuery.current.addListener(mqlHandler);
+      mqlList.current = window.matchMedia("(prefers-color-scheme: dark)");
+      mqlList.current.addListener(mediaQueryHandler.current);
     }
 
     rawSetColorMode(initialColorValue);
@@ -74,6 +76,7 @@ export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
       localStorage.setItem(COLOR_MODE_KEY, newValue);
       changeColorMode(root, newValue);
       rawSetColorMode(newValue);
+      mqlList.current?.removeListener(mediaQueryHandler.current);
     };
     return {
       colorMode,

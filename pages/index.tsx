@@ -2,7 +2,7 @@ import React from "react";
 import { GetStaticProps } from "next";
 import styled, { keyframes } from "styled-components";
 import Text from "components/Text";
-import { H1, H2, H4 } from "components/Heading";
+import { H1, H2, H3 } from "components/Heading";
 import Gonds from "components/Gonds";
 import Mark from "components/Mark";
 import Layout from "components/Layout";
@@ -159,7 +159,7 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
           <OneColumnGrid>
             {posts.slice(0, 3).map((post: PostInterface) => (
               <Link css={textColor} href={post.path} key={post.title}>
-                <H4 fontSize={2}>{post.title}</H4>
+                <H3 fontSize={2}>{post.title}</H3>
                 <Text as="p" fontSize={[0, 1]}>
                   {post.summary}
                 </Text>

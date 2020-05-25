@@ -81,14 +81,14 @@ const Footer: React.FC<{}> = () => {
           <FooterItem
             href="https://github.com/HiranmayaGundu/hmgundu.dev"
             IconComp={GitHub}
-            rel="me"
+            rel="me noopener"
           >
             View the source on GitHub
           </FooterItem>
           <FooterItem
             href="https://twitter.com/hiranmayagundu"
             IconComp={Twitter}
-            rel="me"
+            rel="me noopener"
           >
             You can follow me on twitter, though I don&apos;t do much there
           </FooterItem>

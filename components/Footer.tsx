@@ -46,7 +46,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
   prefetch,
 }) => {
   return (
-    <Text as="div" my={1}>
+    <Text as="div" my={[3, 1]}>
       <Link
         href={href}
         rel={rel}

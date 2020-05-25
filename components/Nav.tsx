@@ -21,14 +21,19 @@ interface NavItemProps {
   title: string;
 }
 
-const NavItem: React.FC<NavItemProps> = (props) => {
+const NavItem: React.FC<NavItemProps & BoxProps> = ({
+  href,
+  className,
+  title,
+  ...rest
+}) => {
   const { pathname } = useRouter();
-  const active: boolean = pathname.indexOf(props.href) === 0;
+  const active: boolean = pathname.indexOf(href) === 0;
   return (
-    <Box mr={4} className={props.className}>
-      <Link css={active ? textColor : undefined} href={props.href}>
+    <Box mr={4} className={className} {...rest}>
+      <Link css={active ? textColor : undefined} href={href}>
         <Text as="div" fontWeight="bold" fontSize={2}>
-          {props.title}
+          {title}
         </Text>
       </Link>
     </Box>
@@ -185,7 +190,13 @@ const Nav: React.FC<{}> = () => {
             justifyContent={["center", "space-between"]}
             width={3 / 4}
           >
-            <StyledNavItem href="/" title="Hiranmaya Gundu" />
+            <StyledNavItem
+              href="/"
+              title="Hiranmaya Gundu"
+              onClick={() =>
+                setMenu((menu) => (menu === false ? false : false))
+              }
+            />
             <DesktopBox>
               <StyledNavItem href="/about" title="About" />
             </DesktopBox>

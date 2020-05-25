@@ -9,7 +9,7 @@ export const TwoColumnGrid: React.FC<ChildrenOnlyProps> = (props) => {
         display: "grid",
         gridColumnGap: [0, 2],
         gridTemplateColumns: ["1fr", "1fr 1fr"],
-        gridRowGap: [0, 2],
+        gridRowGap: [2, 0],
       }}
       {...props}
     />

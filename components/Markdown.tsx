@@ -10,6 +10,7 @@ import Layout from "./Layout";
 import Content from "./Content";
 import { NAV_HEIGHT } from "./Constants";
 import InkBlot from "./InkBlot";
+import Callout from "./Callout";
 
 interface WrapperProps {
   children: React.ReactNode;
@@ -62,6 +63,14 @@ const heading = (Tag: React.ComponentType<HeadingProps>) => (
   </Tag>
 );
 
+const Strong = styled.strong`
+  font-weight: var(--font-weights-bold);
+`;
+
+const Emphasis = styled.em`
+  font-style: italic;
+`;
+
 export default {
   h1: heading(H1),
   h2: heading(H2),
@@ -76,4 +85,7 @@ export default {
   inlineCode: InlineCode,
   hr: Hr,
   wrapper: Wrapper,
+  strong: Strong,
+  em: Emphasis,
+  blockquote: Callout,
 };

@@ -17,6 +17,7 @@ import { ChildrenOnlyProps } from "components/Constants";
 import Head from "components/Head";
 import { textColor } from "components/textColor";
 import { useSpring, a } from "react-spring";
+import LinkTooltip from "components/Tooltip";
 
 const PrimarySection = styled.div`
   background-color: var(--color-primary-background);
@@ -143,8 +144,10 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
           </Text>
           <Text as="p" pb={[2, 4]} fontSize={[2, 3]} lineHeight={1.6}>
             You can follow me on{" "}
-            <Link href="https://twitter.com/hiranmayagundu">Twitter</Link>, if
-            you like.
+            <LinkTooltip href="https://twitter.com/hiranmayagundu">
+              <Link href="https://twitter.com/hiranmayagundu">Twitter</Link>
+            </LinkTooltip>
+            , if you like.
           </Text>
         </Layout>
       </SecondarySection>

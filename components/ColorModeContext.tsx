@@ -5,20 +5,20 @@
 import * as React from "react";
 import { ChildrenOnlyProps } from "./Constants";
 
-import {
-  COLORS,
-  COLOR_MODE_KEY,
-  INITIAL_COLOR_MODE_CSS_PROP,
-} from "./Constants";
+import { COLORS, COLOR_MODE_KEY } from "./Constants";
 
 export type ThemeType = "light" | "dark";
 
+export type ColorModeStringType = ThemeType | "auto";
+
 interface ColorModeType {
-  colorMode: ThemeType | undefined;
-  setColorMode: (newValue: ThemeType) => void;
+  colorMode: ColorModeStringType;
+  actualColor: ThemeType;
+  setColorMode: (newValue: ColorModeStringType) => void;
 }
 export const ColorModeContext = React.createContext<ColorModeType>({
-  colorMode: undefined,
+  colorMode: "auto",
+  actualColor: "light",
   setColorMode: () => {
     return;
   },
@@ -34,18 +34,19 @@ const changeColorMode = (root: HTMLElement, newValue: ThemeType): void => {
 export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
   children,
 }) => {
-  const [colorMode, rawSetColorMode] = React.useState<ThemeType | undefined>(
-    undefined
+  const [colorMode, rawSetColorMode] = React.useState<ColorModeStringType>(
+    "auto"
   );
+  const [actualColor, setActualColor] = React.useState<ThemeType>("light");
 
   const mqlHandler = (e: MediaQueryListEvent): void => {
     const root = window.document.documentElement;
     if (e.matches) {
       changeColorMode(root, "dark");
-      rawSetColorMode("dark");
+      setActualColor("dark");
     } else {
       changeColorMode(root, "light");
-      rawSetColorMode("light");
+      setActualColor("light");
     }
   };
 
@@ -56,33 +57,46 @@ export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
   const mqlList = React.useRef<MediaQueryList | undefined>();
 
   React.useEffect(() => {
-    const root = window.document.documentElement;
-
-    const initialColorValue: ThemeType = root.style.getPropertyValue(
-      INITIAL_COLOR_MODE_CSS_PROP
-    ) as ThemeType;
-    const persistedValue = localStorage.getItem(COLOR_MODE_KEY);
+    const persistedValue: ThemeType | null = localStorage.getItem(
+      COLOR_MODE_KEY
+    ) as ThemeType | null;
     if (typeof persistedValue !== "string") {
       mqlList.current = window.matchMedia("(prefers-color-scheme: dark)");
       mqlList.current.addListener(mediaQueryHandler.current);
+    } else {
+      rawSetColorMode(persistedValue);
+      setActualColor(persistedValue);
     }
-
-    rawSetColorMode(initialColorValue);
   }, []);
 
   const contextValue = React.useMemo(() => {
-    const setColorMode = (newValue: ThemeType): void => {
+    const setColorMode = (newValue: ColorModeStringType): void => {
       const root = window.document.documentElement;
-      localStorage.setItem(COLOR_MODE_KEY, newValue);
-      changeColorMode(root, newValue);
+      if (newValue !== "auto") {
+        localStorage.setItem(COLOR_MODE_KEY, newValue);
+        changeColorMode(root, newValue);
+        mqlList.current?.removeListener(mediaQueryHandler.current);
+        setActualColor(newValue);
+      } else {
+        localStorage.removeItem(COLOR_MODE_KEY);
+        mqlList.current = window.matchMedia("(prefers-color-scheme: dark)");
+        mqlList.current.addListener(mediaQueryHandler.current);
+        if (mqlList.current.matches) {
+          changeColorMode(root, "dark");
+          setActualColor("dark");
+        } else {
+          changeColorMode(root, "light");
+          setActualColor("light");
+        }
+      }
       rawSetColorMode(newValue);
-      mqlList.current?.removeListener(mediaQueryHandler.current);
     };
     return {
       colorMode,
+      actualColor,
       setColorMode,
     };
-  }, [colorMode, rawSetColorMode]);
+  }, [colorMode, rawSetColorMode, actualColor]);
 
   return (
     <ColorModeContext.Provider value={contextValue}>

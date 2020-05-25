@@ -8,8 +8,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.5.1",
-    "@next/mdx": "^9.1.4",
+    "@mdx-js/loader": "^1.6.4",
+    "@next/mdx": "^9.4.1",
+    "@tippyjs/react": "^4.0.2",
     "conditional-wrap": "^1.0.0",
     "date-fns": "^2.8.1",
     "lodash.kebabcase": "^4.1.1",

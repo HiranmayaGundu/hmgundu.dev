@@ -12,6 +12,8 @@ import { theme } from "../components/Theme";
 import { convertThemeToUseCustomProperties } from "functions/CustomPropertiesUtils";
 import * as gtag from "functions/gtag";
 import { Router } from "next/router";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/themes/light.css";
 
 const newTheme = convertThemeToUseCustomProperties(theme, [
   "breakpoints",

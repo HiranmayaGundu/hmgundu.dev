@@ -10,7 +10,6 @@ const HeadComponent: React.FC<HeadProps> = (props) => {
   const { pathname } = useRouter();
   return (
     <NextHead>
-      <meta charSet="UTF-8" />
       <title key="title">
         {props.title ? `${props.title}` : "unkown page"}
       </title>

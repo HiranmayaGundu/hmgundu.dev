@@ -3,7 +3,7 @@ import { ChildrenOnlyProps } from "./Constants";
 import { Text } from "rebass/styled-components";
 
 interface CalloutVariant {
-  variant: "info" | "warning" | "danger";
+  variant?: "info" | "warning" | "danger";
 }
 
 const Callout: React.FC<ChildrenOnlyProps & CalloutVariant> = ({

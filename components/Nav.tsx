@@ -12,7 +12,6 @@ import Layout from "./Layout";
 import { ColorModeContext } from "./ColorModeContext";
 import { textColor } from "./textColor";
 import { useScrollPosition } from "./UseScrollHook";
-import { COLOR_MODE_KEY } from "./Constants";
 
 interface NavItemProps {
   href: string;
@@ -58,7 +57,7 @@ const DarkToggle: React.FC<{}> = () => {
     <StyledBox>
       <Text as="label" color="text" fontSize={1}>
         <button
-          onClick={(ev): void => {
+          onClick={(): void => {
             if (colorMode === "auto") {
               setColorMode("light");
             } else if (colorMode === "light") {

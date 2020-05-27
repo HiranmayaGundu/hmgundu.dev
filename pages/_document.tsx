@@ -81,6 +81,7 @@ export default class MyDocument extends Document {
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
+          <link rel="preconnect" href="https://www.google-analytics.com" />
           <script
             dangerouslySetInnerHTML={{
               __html: `

@@ -90,7 +90,7 @@ const Footer: React.FC<{}> = () => {
             IconComp={Twitter}
             rel="me noopener"
           >
-            You can follow me on twitter, though I don&apos;t do much there
+            You can follow me on twitter
           </FooterItem>
         </FooterColumn>
       </TwoColumnGrid>

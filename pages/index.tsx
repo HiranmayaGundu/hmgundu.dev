@@ -102,7 +102,10 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } });
   return (
     <>
-      <Head title="Hi I'm Hiranmaya Gundu 👋" />
+      <Head
+        title="Hi I'm Hiranmaya Gundu 👋"
+        description="Hi! I'm Hiranmaya Gundu, and this is my personal weblog."
+      />
       <PrimarySection>
         <Layout
           pt={[`${NAV_HEIGHT}px`, `${NAV_HEIGHT / 2}px`]}

@@ -5,10 +5,12 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "analyze": "ANALYZE=true yarn build"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.4",
+    "@next/bundle-analyzer": "^9.4.2",
     "@next/mdx": "^9.4.1",
     "@tippyjs/react": "^4.0.2",
     "conditional-wrap": "^1.0.0",

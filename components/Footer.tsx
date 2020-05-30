@@ -68,7 +68,13 @@ const FooterItem: React.FC<FooterItemProps> = ({
 
 const Footer: React.FC<{}> = () => {
   return (
-    <Flex py={5} mt={5} as="footer" bg="var(--color-secondary-background)">
+    <Flex
+      py={5}
+      mt={5}
+      as="footer"
+      bg="var(--color-secondary-background)"
+      px={[3, 4]}
+    >
       <Layout width={[1, 0.5]}>
         <TwoColumnGrid>
           <FooterColumn title="About this website">

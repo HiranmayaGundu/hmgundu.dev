@@ -193,15 +193,16 @@ const Nav: React.FC<{}> = () => {
             <StyledNavItem
               href="/"
               title="Hiranmaya Gundu"
-              onClick={() =>
-                setMenu((menu) => (menu === false ? false : false))
-              }
+              onClick={() => setMenu(false)}
             />
             <DesktopBox>
               <StyledNavItem href="/about" title="About" />
             </DesktopBox>
             <DesktopBox>
               <StyledNavItem href="/blog" title="Blog" />
+            </DesktopBox>
+            <DesktopBox>
+              <StyledNavItem href="/references" title="References" />
             </DesktopBox>
           </Flex>
           <DesktopBox>
@@ -249,6 +250,12 @@ const Nav: React.FC<{}> = () => {
                   m={4}
                   href="/blog"
                   title="Blog"
+                  onClick={toggler}
+                />
+                <MobileNavItem
+                  m={4}
+                  href="/references"
+                  title="References"
                   onClick={toggler}
                 />
               </Flex>

@@ -68,40 +68,42 @@ const FooterItem: React.FC<FooterItemProps> = ({
 
 const Footer: React.FC<{}> = () => {
   return (
-    <Layout pt={5} pl={[3, 4]} pr={[3, 4]}>
-      <TwoColumnGrid>
-        <FooterColumn title="About this website">
-          <Text lineHeight={1.5}>
-            This is my website! I&apos;m Hiranmaya Gundu, a dev exploring web,
-            systems and AI trying to decide where to land. This is my personal
-            blog!
-          </Text>
-        </FooterColumn>
-        <FooterColumn last title="Social Media">
-          <FooterItem
-            href="https://github.com/HiranmayaGundu/hmgundu.dev"
-            IconComp={GitHub}
-            rel="me noopener"
-          >
-            View the source on GitHub
-          </FooterItem>
-          <FooterItem
-            href="https://twitter.com/hiranmayagundu"
-            IconComp={Twitter}
-            rel="me noopener"
-          >
-            You can follow me on twitter
-          </FooterItem>
-        </FooterColumn>
-      </TwoColumnGrid>
-      <Box mb="4">
-        <Link href="https://monolisa.dev/" underline external css={textColor}>
-          <Text lineHeight={1.5}>
-            This website uses MonoLisa an awesome monospace font. Get it here.
-          </Text>
-        </Link>
-      </Box>
-    </Layout>
+    <Flex py={5} mt={5} as="footer" bg="var(--color-secondary-background)">
+      <Layout width={[1, 0.5]}>
+        <TwoColumnGrid>
+          <FooterColumn title="About this website">
+            <Text lineHeight={1.5}>
+              This is my website! I&apos;m Hiranmaya Gundu, a dev exploring web,
+              systems and AI trying to decide where to land. This is my personal
+              blog!
+            </Text>
+          </FooterColumn>
+          <FooterColumn last title="Social Media">
+            <FooterItem
+              href="https://github.com/HiranmayaGundu/hmgundu.dev"
+              IconComp={GitHub}
+              rel="me noopener"
+            >
+              View the source on GitHub
+            </FooterItem>
+            <FooterItem
+              href="https://twitter.com/hiranmayagundu"
+              IconComp={Twitter}
+              rel="me noopener"
+            >
+              You can follow me on twitter
+            </FooterItem>
+          </FooterColumn>
+        </TwoColumnGrid>
+        <Box mb="4">
+          <Link href="https://monolisa.dev/" underline external css={textColor}>
+            <Text lineHeight={1.5}>
+              This website uses MonoLisa an awesome monospace font. Get it here.
+            </Text>
+          </Link>
+        </Box>
+      </Layout>
+    </Flex>
   );
 };
 

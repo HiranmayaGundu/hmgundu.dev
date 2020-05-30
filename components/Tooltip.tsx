@@ -9,11 +9,11 @@ interface LinkTooltipProps {
 // eslint-disable-next-line react/display-name
 const LinkTooltip = React.forwardRef(
   (props: LinkTooltipProps, ref: React.Ref<HTMLElement>) => {
-    const { colorMode } = React.useContext(ColorModeContext);
+    const { actualColor } = React.useContext(ColorModeContext);
     return (
       <Tippy
         duration={600}
-        theme={colorMode}
+        theme={actualColor}
         arrow={true}
         interactive={true}
         content={props.href}

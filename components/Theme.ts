@@ -22,11 +22,11 @@ export const theme = {
   },
   fontSizes: fontSizesInRem,
   fontWeights: {
-    body: "300",
+    body: "400",
     heading: "700",
     bold: "700",
-    light: "300",
-    medium: "400",
+    light: "400",
+    medium: "500",
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {

@@ -14,7 +14,7 @@ yarn dev
 
 ## Inspired By
 
-This is heavily inspired by ( basically stole some bits, sprinkled some typescript etc) of two other websites, check them out:
+This is heavily inspired by two other websites, check them out:
 
 - [mxstbr.com](https://github.com/mxstbr/mxstbr.com)
 - [jolvera.dev](https://github.com/j0lv3r4/jolvera.dev)

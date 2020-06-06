@@ -2,23 +2,27 @@ import React from "react";
 import { Link } from "rebass/styled-components";
 import NextLink from "next/link";
 import ConditionalWrap from "conditional-wrap";
-import styled from "styled-components";
+import styled, { FlattenSimpleInterpolation } from "styled-components";
 
-interface UniversalLinkProps {
+export interface UniversalLinkProps {
   href: string;
   rel?: string;
-  css?: string;
+  css?: FlattenSimpleInterpolation;
   prefetch?: boolean;
   underline?: boolean;
   children: React.ReactNode;
+  external?: boolean;
 }
-const UniversalLink: React.FC<UniversalLinkProps> = props => {
+
+const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
   const external =
-    props.href.indexOf("//") !== -1 && props.href.indexOf("hmgundu.dev") === -1;
+    props.external ||
+    (props.href.indexOf("//") !== -1 &&
+      props.href.indexOf("hmgundu.dev") === -1);
   return (
     <ConditionalWrap
       condition={!external}
-      wrap={(children: React.ReactNode) => (
+      wrap={(children: React.ReactNode): JSX.Element => (
         <NextLink href={props.href} prefetch={props.prefetch}>
           {children}
         </NextLink>
@@ -34,12 +38,13 @@ const UniversalLink: React.FC<UniversalLinkProps> = props => {
 };
 
 export default styled(UniversalLink)`
-  color: inherit;
+  color: var(--color-link);
   text-decoration: none;
 
   &:hover {
-    text-decoration: ${props => props.underline !== false && "underline"};
+    text-decoration: ${(props): false | "underline" =>
+      props.underline !== false && "underline"};
   }
 
-  ${props => props.css}
+  ${(props): FlattenSimpleInterpolation | undefined => props.css}
 `;

@@ -11,7 +11,7 @@ export default styled(Box).attrs(
           ? props.verticalAlign
           : "middle",
       display: "inline-block",
-      ...(props.css as object)
-    }
+      ...(props.css as object),
+    },
   })
 )``;

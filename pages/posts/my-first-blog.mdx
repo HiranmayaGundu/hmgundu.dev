@@ -1,93 +1,101 @@
+import Mark from "components/Mark";
+import Head from "components/Head";
+
 export const meta = {
-  "published": true,
-  "publishedAt": "2020-01-12",
-  "title": "My First Blog",
-  "summary": "An explanation of how I built this blog as well as why I did it."
-}
+  published: true,
+  publishedAt: "2020-01-12",
+  title: "My First Blog",
+  summary: "An explanation of how I built this blog as well as why I did it.",
+};
 
-## My First Blog
+<Head
+  title={meta.title}
+  description={meta.summary}
+  image="my-first-blog-seo.png"
+/>
 
-As part of my job, I googled for answers like we all do. As I did that, I found 
-some amazing personal blogs, such as this one by [Dan Abarmov](https://overreacted.io/). These 
+## <Mark> My First Blog </Mark>
+
+As part of my job, I googled for answers like we all do. As I did that, I found
+some amazing personal blogs, such as this one by [Dan Abarmov](https://overreacted.io/). These
 blogs inspired me to create my own. I wanted to be able to express jargon filled technical content
-in an easily consumable manner. Plus, it helps with your CV. 
+in an easily consumable manner.
 
 <br />
 
-Since it's my first time building a blog, I first decided the technologies I wanted to use. My only 
+Since it's my first time building a blog, I first decided the technologies I wanted to use. My only
 constraint was it has to be built with a stack I was not entirely comfortable with. The stack I decided upon was:-
+
 - Use TypeScript - According to the [StackOverflow 2019 Survey](https://insights.stackoverflow.com/survey/2019#technology-_-most-loved-dreaded-and-wanted-languages)
-TypeScript is one of the most loved languages. I wanted to see what the fuss was all about. 
-- Use Statically / Server rendered React - We use React at work, and wanted to explore features that I had not used yet. 
-- Use Styled-Components - Wanted to learn this so that I could use it at work 
-- Deploy this is a serverless manner.  
+  TypeScript is one of the most loved languages. I wanted to see what the fuss was all about.
+- Use Statically / Server rendered React - We use React at work, and wanted to explore features that I had not used yet.
+- Use Styled-Components - Wanted to learn this so that I could use it at work
+- Deploy this is a serverless manner.
 
 ---
 
 ### Whatever you want to do, it's almost always solved
 
 In the case of Statically / Server generated react, there are two main competitors, Next and Gatsby. A quick [google search](https://www.google.com/search?q=next+vs+gatsby)
-will show you the pros and cons of each. I went with Next.js primarily because of it's integration with [now.sh](https://zeit.co/home). I achieved serverless deployments 
+will show you the pros and cons of each. I went with Next.js primarily because of it's integration with [now.sh](https://zeit.co/home). I achieved serverless deployments
 and server rendered react in one go. An especially impressive feature of Next is [Automatic Static Optimization](https://nextjs.org/docs/advanced-features/automatic-static-optimization)
-It automatically emits a hydrated React application if you don't use the getInitialProps function. Plus, it helps that it uses PHP like pages directory!
+It automatically emits a hydrated React application if you don't use the `getInitialProps` function. Plus, it helps that it uses PHP like pages directory!
 
 <br />
 
 Having decided to use Next.js, I looked for prior art. I found [Juan Olvera's blog](https://jolvera.dev/) and through that [Max Stoiber's blog](https://mxstbr.com/).
 Serendipitously, Max Stoiber is one of the co-founder's of Styled-Components! So I used their code bases as \*ahem\* inspiration, and made my own.
-A shoutout to both of them, I would not have a website without their blogs. 
+A shoutout to both of them, I would not have a website without their blogs.
 
 ---
 
 ### Things I learned while building this website
 
+#### TypeScript and Rebass
 
-#### TypeScript and Rebass 
 TypeScript is worth it, but in larger, ever changing code bases. Recently, at work I had to use a component I had written just a couple
-of months ago. I could not remember what props I had to pass and what types they were! TypeScript in such situations is amazing. 
+of months ago. I could not remember what props I had to pass and what types they were! TypeScript in such situations is amazing.
 
 <br />
 
-On a small blog app however, types were an hinderance. Quite frequently, I found the compilation errors next to useless and hard to debug. 
-But this disenchantment could just be due to the fact that I'm learning the language as I build. I also could not use it on the NodeJS code. 
-At least, not easily. Next.js, TypeScript and Node.js seemed to require conflicting JavaScript module systems, which I had learned 
+On a small blog app however, types were an hinderance. Quite frequently, I found the compilation errors next to useless and hard to debug.
+But this disenchantment could just be due to the fact that I'm learning the language as I build. I also could not use it on the NodeJS code.
+At least, not easily. Next.js, TypeScript and Node.js seemed to require conflicting JavaScript module systems, which I had learned
 about just because of this. TypeScript does not support the require syntax, while Node.js demands it. Facing all these issues, I reverted
-to JavaScript for the get-blog-posts.js helper module. If any one could point me in the correct direction to overcome this, I would love
+to JavaScript for the `get-blog-posts.js` helper module. If any one could point me in the correct direction to overcome this, I would love
 to learn!
 
 <br />
 
-Another thing to note is that rebass v4.0+ has moved to use Theme-UI, so to use styled-components with rebass, you have to import it like so: 
+Another thing to note is that rebass v4.0+ has moved to use Theme-UI, so to use styled-components with rebass, you have to import it like so:
 
 <br />
 
 ```javascript
-import { Box } from 'rebass/styled-components'
-import styled from 'styled-components'
+import { Box } from "rebass/styled-components";
+import styled from "styled-components";
 
 // Use Box now and style it as you wish
 
 const StyledBox = styled(Box)`
   color='blue';
-`
+`;
 ```
 
-Also, to use it with TypeScript, you will have to edit your tsconfig.json file and add the following: 
+Also, to use it with TypeScript, you will have to edit your tsconfig.json file and add the following:
 
 ```json
 {
   "baseUrl": ".",
-    "paths": {
-      "rebass/styled-components": [
-        "node_modules/@types/rebass"
-      ]
-    }
+  "paths": {
+    "rebass/styled-components": ["node_modules/@types/rebass"]
+  }
 }
 ```
 
 #### CSS and Design is still hard
 
-If you look at my website closely (well, you don't really need to look at it closely) you'll find that in terms of styling it's 
+If you look at my website closely (well, you don't really need to look at it closely) you'll find that in terms of styling it's
 a mix of the two blogs I've previously mentioned. Styling and design is really hard. I hope to rebuild this blog soon. Will need
 to learn how to design a web page first though!
 
@@ -95,10 +103,19 @@ to learn how to design a web page first though!
 
 ### Features yet to be built
 
-As I was working on this website, I realized there are somethings that still have to be built to get a proper blog. 
-- A commenting system. I'll probably have a look at webmentions or some other component that can be used. 
+As I was working on this website, I realized there are somethings that still have to be built to get a proper blog.
+
+- A commenting system. I'll probably have a look at webmentions or some other component that can be used.
 - A RSS Feed
 
-<br /> 
+<br />
 
 I'll be adding these as and when I have time, but my primary focus will be on writing some blog posts!
+
+### Updates
+
+It's been a couple of months since this blog post, and some updates since:-
+
+- Next.js has become even more awesome. They have new data fetching methods so that your site is much faster!
+- I used one of them for `getStaticProps` and got rid of the `get-blog-posts.js` file.
+- I redid the CSS of the entire website.

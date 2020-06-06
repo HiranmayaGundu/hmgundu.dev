@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default styled(Box).attrs({
   as: "pre",
   p: 3,
-  mb: 3
+  mb: 3,
 })`
   display: block;
   white-space: pre;
@@ -13,7 +13,6 @@ export default styled(Box).attrs({
   margin: 1em 0;
   padding: 0.5em;
   line-height: 1.3;
-  font-family: ${(props): string => props.theme.fonts.monospace.join()};
-  font-size: ${(props): string => props.theme.fontSizes[0]};
+  font-family: var(--fonts-monospace);
   overflow: auto;
 `;

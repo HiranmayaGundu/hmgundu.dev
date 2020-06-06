@@ -39,11 +39,16 @@ const HeadComponent: React.FC<HeadProps> = ({ title, description, image }) => {
       />
       {/* And this stuff is for twitter! */}
       <meta
-        property=""
         name="twitter:card"
         key="twitter:card"
         content="summary_large_image"
       />
+      <meta
+        name="twitter:description"
+        key="twitter:description"
+        content={description}
+      />
+      <meta name="twitter:title" key="twitter:title" content={title} />
 
       <meta name="twitter:site" key="twitter:site" content="@hiranmayagundu" />
       <meta

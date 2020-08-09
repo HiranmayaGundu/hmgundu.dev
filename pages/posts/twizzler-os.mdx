@@ -1,0 +1,95 @@
+import Mark from "components/Mark";
+import Head from "components/Head";
+
+export const meta = {
+  published: true,
+  publishedAt: "2020-08-09",
+  title: "Paper Read- Twizzler: A Data Centric OS",
+  summary:
+    "A new series where I document my reading of a paper I find interesting. Starting off with Twizzler",
+};
+
+<Head
+  title={meta.title}
+  description={meta.summary}
+  image="my-first-blog-seo.png"
+/>
+
+## <Mark> Paper Read- Twizzler: A Data Centric OS </Mark>
+
+The current progamming model is predicated upon the fact that the fastest memory access is via the RAM,
+which is volatile. Due to the violatile nature of RAM, programming systems have had to guard against crashes.
+Especially data centric systems like databases. Power loss _**cannot**_ be an excuse for someone losing money in their
+bank account. But these durability settings negatively affect performace. PostgresSQL in fact
+[has](https://www.postgresql.org/docs/11/non-durability.html) turning off durability as a performace tip!
+
+<br />
+
+NVDIMM represents a change in this paradigm. NVDIMM is a type of non-volatile storage that sits in the DIMM slots
+in the motherboard. It's latency sits squarely between an NVME SSD and DRAM. But the key takeway is that we now
+have access to a large amount of persistent memory at relatively low latency!
+
+<br />
+
+Daniel Bittman, et al., in their [paper](http://dbittman.github.io/pubs/atc20-twizzler.pdf) argue that software needs
+to be rebuilt from the ground up keeping in mind that persistent RAM exsists. Kernel's generally need to seperate volatile
+and non-violatle memory, by maintaining a copy of the data in RAM and flushing to disk as necessary. Managing these copies of
+data incurs a performance cost that does not need be borne. Kernels need to allow direct
+manipulation of RAM for NVDIMMs to be used to thier full potential.
+
+<br />
+
+Twizzler is an OS that explores this idea. The kernel gets out of the way when manipulating data. They do so by
+providing primitives to directly read and write data via a concept called persistent pointers. Persistent pointers
+are a way to directly address data in RAM. They can be named, and the OS provides a way to use a custom name resolver,
+so that a name points to a particular piece of data. An OS that allows for direct manipulation of persistent data and
+has persistent pointers is what the paper calls a data centric OS.
+
+<br />
+
+One of the intersting consequences of this approach is that the process abstraction is no longer needed. Processes
+use virtual address space along with a security role(permissions like read, write and read-write) and state in
+kernel (a proces table, page table etc) to maintain isolation. However, now that the thread can access data
+without asking the kernel, security and virtual address's are decoupled.
+
+<br />
+
+In Twizzler OS, a single mapped piece of data is called an Object with it's own Object ID. Objects can vary in size,
+and the access control is directly defined by the memory managemnt unit. An object can be a single node of a B-tree,
+or the entire B-tree itself! The choice is down to the programmer. To allow programs to directly access data, there is
+an object called the "view", which maps the data onto the DIMM using a virtual addrees. Adding new entries is free,
+without kernel intervention, but deleting or changing the entry is not. To allow for persistent pointers, another
+object called the Foriegn Object Table exists. This handles the name resolution and binding, and also has permission
+request flags.
+
+<br />
+
+Another interesting concept is that security in Twizzler is _late bound_. If you ask for a Read-Write permisson on a read
+only object, but only read the data in the program, no error is thrown! Threads in Twizzler run in a securit context,
+which stores the access rights the thread has for objects.
+
+<br />
+
+The team implemented a new kernel, and also built a translation layer to map `musl (libc)` to their library. They then
+ported `SQLLite` to Twizzler and compared the performace. `SQLLite` is 4x times fater than any competiting platform!
+The work done here is really impressive.
+
+<br />
+
+Also, a special shout out to `logboi`, which is the name of the logging daemon they built!
+
+<br />
+
+This paper reminds us that the Operating Systems software that we have today are built to combat the restrictions of the
+hardware they had to deal with. Abstractions like processes were bulit because you had to enable multi-tasking. You
+had to implement a control to ensure one program does not wipe another program's data without permission. You needed
+to be able to efficiently manage the memory a process had access to because only RAM provided a desireable user experience.
+With advancing hardware innovations, these restrictions are no longer at play.
+
+### Bibliography:-
+
+- [Daniel Bittman's twitter thread](https://twitter.com/danielbittman/status/1278394236698628096)
+- A [video](https://www.usenix.org/conference/atc20/presentation/bittman) by Daniel Bittman explaning Twizzler.
+- The [paper](http://dbittman.github.io/pubs/atc20-twizzler.pdf) itself.
+- A couple of [illuminating](https://blog.acolyer.org/2019/12/09/a-persistent-problem/) [articles](https://blog.acolyer.org/2019/12/11/a-tale-of-two-abstractions/)
+  in The Morning Paper by Adrian Coyler

@@ -14,16 +14,15 @@ export interface UniversalLinkProps {
   external?: boolean;
 }
 
-const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
+const UniversalLink = ({ css, ...rest }: UniversalLinkProps) => {
   const external =
-    props.external ||
-    (props.href.indexOf("//") !== -1 &&
-      props.href.indexOf("hmgundu.dev") === -1);
+    rest.external ||
+    (rest.href.indexOf("//") !== -1 && rest.href.indexOf("hmgundu.dev") === -1);
   return (
     <ConditionalWrap
       condition={!external}
       wrap={(children: React.ReactNode): JSX.Element => (
-        <NextLink href={props.href} prefetch={props.prefetch}>
+        <NextLink href={rest.href} prefetch={rest.prefetch}>
           {children}
         </NextLink>
       )}
@@ -31,7 +30,8 @@ const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
       <Link
         target={external ? "_blank" : undefined}
         rel={external ? "noopener" : undefined}
-        {...props}
+        css={css?.toString() ?? ""}
+        {...rest}
       />
     </ConditionalWrap>
   );

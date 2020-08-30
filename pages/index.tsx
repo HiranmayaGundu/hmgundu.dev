@@ -117,6 +117,7 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
               Hi! I&apos;m <br /> <Mark>Hiranmaya Gundu</Mark>.{" "}
               <ShakeAnimation>👋</ShakeAnimation>
             </H1>
+            {/* @ts-expect-error */}
             <a.div style={springProps}>
               <GondsWrapper>
                 <Gonds />

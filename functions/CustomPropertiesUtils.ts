@@ -1,4 +1,4 @@
-import kebabCase from "lodash.kebabcase";
+import { kebabCase } from "lodash-es";
 
 export const toCustomProperties = (
   theme: Record<string, unknown>,
@@ -6,6 +6,7 @@ export const toCustomProperties = (
 ): Record<string, string | number> => {
   const customProperties: Record<string, string | number> = {};
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   const generateProperties = (object: object, keyPrefix?: string): void => {
     Object.entries(object).forEach(([key, value]) => {
       if (!escapeKeys.includes(key)) {
@@ -35,6 +36,7 @@ export const convertThemeToUseCustomProperties = (
   escapeKeys: Array<string> = []
 ): Record<string, any> => {
   const generateProperties = (
+    // eslint-disable-next-line @typescript-eslint/ban-types
     object: object,
     keyPrefix?: string
   ): Record<string, any> => {

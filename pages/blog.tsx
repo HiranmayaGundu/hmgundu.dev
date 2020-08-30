@@ -1,7 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import paginaton from "pagination";
-import _range from "lodash.range";
+import { range as _range } from "lodash-es";
 import Mark from "components/Mark";
 import { H1 } from "components/Heading";
 import Post from "components/Post";

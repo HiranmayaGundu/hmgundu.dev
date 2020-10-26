@@ -14,8 +14,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withBundleAnalyzer(
   withMDX({
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-    experimental: {
-      productionBrowserSourceMaps: true,
-    },
+    reactStrictMode: true,
   })
 );

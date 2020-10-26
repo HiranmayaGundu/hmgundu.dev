@@ -1,6 +1,6 @@
 import { Twitter, GitHub } from "react-feather";
 import { Flex, Box } from "rebass/styled-components";
-import { ReactNode, ReactType } from "react";
+import { ReactNode, ElementType } from "react";
 import Text from "./Text";
 import Link from "./Link";
 import Layout from "./Layout";
@@ -16,13 +16,13 @@ interface FooterColumnProps {
 }
 
 interface FooterItemProps {
-  IconComp?: ReactType;
+  IconComp?: ElementType;
   children: ReactNode;
   href: string;
   rel?: string;
   prefetch?: boolean;
 }
-const FooterColumn: React.FC<FooterColumnProps> = (props) => {
+const FooterColumn = (props: FooterColumnProps) => {
   return (
     <Flex
       flexDirection="column"
@@ -38,13 +38,13 @@ const FooterColumn: React.FC<FooterColumnProps> = (props) => {
   );
 };
 
-const FooterItem: React.FC<FooterItemProps> = ({
+const FooterItem = ({
   IconComp,
   href,
   rel,
   children,
   prefetch,
-}) => {
+}: FooterItemProps) => {
   return (
     <Text as="div" my={[3, 1]}>
       <Link
@@ -66,7 +66,7 @@ const FooterItem: React.FC<FooterItemProps> = ({
   );
 };
 
-const Footer: React.FC<{}> = () => {
+const Footer = () => {
   return (
     <Flex
       py={5}
@@ -79,9 +79,8 @@ const Footer: React.FC<{}> = () => {
         <TwoColumnGrid>
           <FooterColumn title="About this website">
             <Text lineHeight={1.5}>
-              This is my website! I&apos;m Hiranmaya Gundu, a dev exploring web,
-              systems and AI trying to decide where to land. This is my personal
-              blog!
+              I&apos;m Hiranmaya Gundu, a dev exploring web and systems
+              programming. This is my personal blog!
             </Text>
           </FooterColumn>
           <FooterColumn last title="Social Media">

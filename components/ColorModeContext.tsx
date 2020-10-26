@@ -62,7 +62,7 @@ export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
     ) as ThemeType | null;
     if (typeof persistedValue !== "string") {
       mqlList.current = window.matchMedia("(prefers-color-scheme: dark)");
-      mqlList.current.addListener(mediaQueryHandler.current);
+      mqlList.current.addEventListener("change", mediaQueryHandler.current);
     } else {
       rawSetColorMode(persistedValue);
       setActualColor(persistedValue);
@@ -75,12 +75,15 @@ export const ColorModeProvider: React.FC<ChildrenOnlyProps> = ({
       if (newValue !== "auto") {
         localStorage.setItem(COLOR_MODE_KEY, newValue);
         changeColorMode(root, newValue);
-        mqlList.current?.removeListener(mediaQueryHandler.current);
+        mqlList.current?.removeEventListener(
+          "change",
+          mediaQueryHandler.current
+        );
         setActualColor(newValue);
       } else {
         localStorage.removeItem(COLOR_MODE_KEY);
         mqlList.current = window.matchMedia("(prefers-color-scheme: dark)");
-        mqlList.current.addListener(mediaQueryHandler.current);
+        mqlList.current.addEventListener("change", mediaQueryHandler.current);
         if (mqlList.current.matches) {
           changeColorMode(root, "dark");
           setActualColor("dark");

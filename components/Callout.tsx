@@ -6,10 +6,10 @@ interface CalloutVariant {
   variant?: "info" | "warning" | "danger";
 }
 
-const Callout: React.FC<ChildrenOnlyProps & CalloutVariant> = ({
+const Callout = ({
   variant = "info",
   ...rest
-}) => (
+}: ChildrenOnlyProps & CalloutVariant) => (
   <Text
     as="aside"
     fontSize={[0, 1]}

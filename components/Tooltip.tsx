@@ -1,6 +1,8 @@
 import * as React from "react";
 import { ColorModeContext } from "./ColorModeContext";
 import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/themes/light.css";
 
 interface LinkTooltipProps {
   href: string;

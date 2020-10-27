@@ -14,7 +14,7 @@ export interface UniversalLinkProps {
   external?: boolean;
 }
 
-const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
+const UniversalLink = (props: UniversalLinkProps) => {
   const external =
     props.external ||
     (props.href.indexOf("//") !== -1 &&
@@ -28,6 +28,7 @@ const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
         </NextLink>
       )}
     >
+      {/*@ts-expect-error idk what's happening here */}
       <Link
         target={external ? "_blank" : undefined}
         rel={external ? "noopener" : undefined}

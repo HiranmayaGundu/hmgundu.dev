@@ -5,6 +5,7 @@ import styled, {
   FlattenSimpleInterpolation,
   keyframes,
 } from "styled-components";
+import { hideVisually } from "polished";
 import { Box, Flex, FlexProps, BoxProps } from "rebass/styled-components";
 import Text from "./Text";
 import Link from "./Link";
@@ -76,8 +77,15 @@ const StyledBox = styled(Box)`
   animation: 2s ${opacity} ease-out;
 `;
 
-const StyledDiv = styled.div`
+const StyledButton = styled.button`
   cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--color-text);
+`;
+
+const HiddenSpan = styled.span`
+  ${hideVisually()}
 `;
 
 const DesktopBox: React.FC<BoxProps> = styled(Box)`
@@ -98,10 +106,18 @@ const DarkToggle: React.FC<{}> = () => {
   if (!colorMode) {
     return null;
   }
+  let nextMode = "light";
+  if (colorMode === "auto") {
+    nextMode = "light";
+  } else if (colorMode === "light") {
+    nextMode = "dark";
+  } else {
+    nextMode = "automatic";
+  }
   return (
     <StyledBox>
       <Text as="label" color="text" fontSize={1}>
-        <StyledDiv
+        <StyledButton
           onClick={(): void => {
             if (colorMode === "auto") {
               setColorMode("light");
@@ -114,12 +130,28 @@ const DarkToggle: React.FC<{}> = () => {
         >
           {colorMode === "auto" && (
             <>
-              <Sun height="20" width="20" /> <Moon height="20" width="20" />
+              <Sun
+                height="20"
+                width="20"
+                aria-hidden="true"
+                focusable="false"
+              />{" "}
+              <Moon
+                height="20"
+                width="20"
+                aria-hidden="true"
+                focusable="false"
+              />
             </>
           )}
-          {colorMode === "light" && <Sun height="20" width="20" />}
-          {colorMode === "dark" && <Moon height="20" width="20" />}
-        </StyledDiv>
+          {colorMode === "light" && (
+            <Sun height="20" width="20" aria-hidden="true" focusable="false" />
+          )}
+          {colorMode === "dark" && (
+            <Moon height="20" width="20" aria-hidden="true" focusable="false" />
+          )}
+          <HiddenSpan>{`Click here to change to ${nextMode} mode!`}</HiddenSpan>
+        </StyledButton>
       </Text>
     </StyledBox>
   );
@@ -217,10 +249,15 @@ const Nav: React.FC<{}> = () => {
             position: "absolute",
             right: "30px",
             top: "15px",
+            background: "none",
+            color: "var(--color-text)",
+            border: "none",
           }}
+          as="button"
           onClick={toggler}
         >
           <MenuIcon isOpened={menu} height="30" width="30" />
+          <HiddenSpan>{menu ? "Close Menu" : "Open Menu"}</HiddenSpan>
         </MobileBox>
         {menu && (
           <MobileBox>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
-export const GA_TRACKING_ID = "UA-167400081-1";
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_ANALYTICS_ID;
 
 export const pageview = (url) => {
   window.gtag("config", GA_TRACKING_ID, {

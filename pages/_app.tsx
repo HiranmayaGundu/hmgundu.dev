@@ -30,7 +30,9 @@ const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   React.useEffect(() => {
     const handleRouteChange = (url: string): void => {
-      gtag.pageview(url);
+      if (process.env.NEXT_PUBLIC_MODE === "PROD") {
+        gtag.pageview(url);
+      }
     };
     Router.events.on("routeChangeComplete", handleRouteChange);
     return (): void => {
@@ -63,7 +65,9 @@ interface WebVitals {
   value: number;
 }
 export function reportWebVitals(metric: WebVitals): void {
-  gtag.sendToGoogleAnalytics(metric);
+  if (process.env.NEXT_PUBLIC_MODE === "PROD") {
+    gtag.sendToGoogleAnalytics(metric);
+  }
 }
 
 export default App;

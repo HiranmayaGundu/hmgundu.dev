@@ -1,0 +1,98 @@
+import Mark from "components/Mark";
+import Head from "components/Head";
+import Callout from "components/Callout";
+
+export const meta = {
+  published: true,
+  publishedAt: "2020-12-20",
+  title: "Using Files as ConfigMaps in Kubernetes",
+  summary: "How to use and templatize your properties files in ConfigMaps",
+};
+
+<Head
+  title={meta.title}
+  description={meta.summary}
+  image="using-files-as-configmaps-in-k8s-seo.png"
+/>
+
+## <Mark> Using Files as ConfigMaps in Kubernetes </Mark>
+
+The canonical example for ConfigMaps in K8S looks something like this
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: special-config
+  namespace: default
+data:
+  SPECIAL_LEVEL: very
+  SPECIAL_TYPE: charm
+```
+
+Personally, I have some issues with this:-
+
+1. When a developer manages the properties, I don't want the dev to accidentally mess with the other metadata that exists in the file.
+2. It's YAML. YAML with its indentation based namespacing is _super easy_ to get wrong.
+3. When you have a large number of properties, or multiple properties files, you have either multiple ConfigMaps or a really large ConfigMap YAML file.
+
+Configuration changes based on environment, so you're probably using some form of templatization over the YAML. The following is an example in [Helm](https://helm.sh/)
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: special-config
+  namespace: default
+data:
+  SPECIAL_LEVEL: { { .Values.special_level } }
+  SPECIAL_TYPE: { { .Values.special_type } }
+```
+
+So my goals were to:-
+
+1. Have propeties files seperate from the ConfigMap definition itself.
+2. It should be templatized.
+3. It should not be YAML.
+
+So this is my solution!
+
+File directory structure:
+
+```
+application-charts
+|
+|---config
+|   |--- file.properties
+|   |--- file2.properties
+|---templates
+|   |--- configmap.yaml
+|   |--- deployment.yaml
+|   |--- ...
+|---values.production.yaml
+|---values.qa.yaml
+|--- ...
+```
+
+My ConfigMap.yaml looks like this
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: special-config
+data: { { - (tpl (.Files.Glob "config/*"").AsConfig . ) | nindent 2 } }
+```
+
+And my properties file looks like this
+
+```
+somePropertyThatIsConstant=HELLO
+somePropertyThatChanges={{ .Values.some_property_that_changes }}
+```
+
+### Explanation
+
+`.Files.Glob` is a helper that Helm provides to read directories inside the Helm chart folder structure, and `.AsConfig` is a helper
+that reads the files as configuration. We then pass those files to the `tpl` function to replace the template strings in the files.
+We pipe the result to `nindent 2` to correctly indent it with 2 spaces.

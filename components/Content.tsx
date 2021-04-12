@@ -1,6 +1,7 @@
 import { Box, BoxProps } from "rebass/styled-components";
+import { CSSProp } from "styled-components";
 
-const Content: React.FC<BoxProps> = (props) => (
+const Content = (props: BoxProps & { css?: CSSProp }): JSX.Element => (
   <Box
     bg="var(--color-secondary-background)"
     as="article"

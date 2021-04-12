@@ -2,7 +2,7 @@ import * as React from "react";
 import { H1, H2, H3, H4 } from "./Heading";
 import Link from "./Link";
 import P from "./Paragraph";
-import styled from "styled-components";
+import styled, { CSSProp } from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { CodeBlock, InlineCode } from "./CodeBlock";
 import { HeadingProps, Flex, Box } from "rebass/styled-components";
@@ -16,7 +16,7 @@ interface WrapperProps {
   children: React.ReactNode;
 }
 
-const Wrapper: React.FC<WrapperProps> = ({ children }) => (
+const Wrapper = ({ children }: WrapperProps): JSX.Element => (
   <>
     <Content
       p={2}
@@ -55,9 +55,11 @@ const Hr = (): JSX.Element => (
   </Flex>
 );
 
-const heading = (Tag: React.ComponentType<HeadingProps>) => (
-  props: HeadingProps
-): JSX.Element => (
+// eslint-disable-next-line react/display-name
+const heading = (
+  Tag: React.ComponentType<HeadingProps & { css?: CSSProp }>
+  // eslint-disable-next-line react/display-name
+) => (props: HeadingProps & { css?: CSSProp }): JSX.Element => (
   <Tag {...props}>
     <Link href={`#${props.id}`}>{props.children}</Link>
   </Tag>

@@ -7,13 +7,14 @@ import javaLang from "refractor/lang/java";
 import { ExpanderDiv } from "./ExpanderDiv";
 import { TextProps } from "rebass/styled-components";
 import Text from "./Text";
+import { CSSProp } from "styled-components";
 javaLang(Prism);
 interface CodeBlockProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
+const CodeBlock = ({ children, className }: CodeBlockProps): JSX.Element => {
   const language = className?.replace(/language-/, "");
   return (
     <Highlight
@@ -48,7 +49,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   );
 };
 
-const InlineCode: React.FC<TextProps> = (props) => (
+const InlineCode = (props: TextProps & { css?: CSSProp }): JSX.Element => (
   <Text
     fontFamily="monospace"
     fontWeight="light"

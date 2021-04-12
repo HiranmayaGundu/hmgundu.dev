@@ -100,13 +100,6 @@ const Footer = () => {
             </FooterItem>
           </FooterColumn>
         </TwoColumnGrid>
-        <Box mb="4">
-          <Link href="https://monolisa.dev/" underline external css={textColor}>
-            <Text lineHeight={1.5}>
-              This website uses MonoLisa an awesome monospace font. Get it here.
-            </Text>
-          </Link>
-        </Box>
       </Layout>
     </Flex>
   );

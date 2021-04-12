@@ -11,8 +11,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'MonoLisa';
-    src: url('fonts/MonoLisa-Regular.woff2') format('woff2');
+    font-family: 'Source Code Pro';
+    src: url('fonts/source-code-pro.woff2') format('woff2');
     font-weight: regular;
     font-style:	normal;
     font-display: swap;

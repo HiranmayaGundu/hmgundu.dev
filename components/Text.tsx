@@ -1,6 +1,7 @@
 import { Text, TextProps } from "rebass/styled-components";
+import { CSSProp } from "styled-components";
 
-const StyledText: React.FC<TextProps> = (props) => (
+const StyledText = (props: TextProps & { css?: CSSProp }): JSX.Element => (
   <Text fontFamily="body" as="p" color="text" {...props} />
 );
 

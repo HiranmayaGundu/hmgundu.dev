@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, CSSProp } from "styled-components";
 import { Box, TextProps } from "rebass/styled-components";
 import Paragraph from "./Paragraph";
 
@@ -22,6 +22,6 @@ export const OrderedList = styled(Box).attrs({
   list-style: decimal;
 `;
 
-export const ListItem: React.FC<TextProps> = (props) => (
+export const ListItem = (props: TextProps & { css?: CSSProp }): JSX.Element => (
   <Paragraph my={1} {...props} as="li" />
 );

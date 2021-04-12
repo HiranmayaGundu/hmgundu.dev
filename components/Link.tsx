@@ -2,23 +2,25 @@ import React from "react";
 import { Link } from "rebass/styled-components";
 import NextLink from "next/link";
 import ConditionalWrap from "conditional-wrap";
-import styled, { FlattenSimpleInterpolation } from "styled-components";
+import styled from "styled-components";
+import type { CSSProp } from "styled-components";
 
 export interface UniversalLinkProps {
   href: string;
   rel?: string;
-  css?: FlattenSimpleInterpolation;
+  css?: CSSProp;
   prefetch?: boolean;
   underline?: boolean;
   children: React.ReactNode;
   external?: boolean;
 }
 
-const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
+const UniversalLink = (props: UniversalLinkProps): JSX.Element => {
   const external =
     props.external ||
     (props.href.indexOf("//") !== -1 &&
       props.href.indexOf("hmgundu.dev") === -1);
+  const { css: _, ...other } = props;
   return (
     <ConditionalWrap
       condition={!external}
@@ -31,7 +33,7 @@ const UniversalLink: React.FC<UniversalLinkProps> = (props) => {
       <Link
         target={external ? "_blank" : undefined}
         rel={external ? "noopener" : undefined}
-        {...props}
+        {...other}
       />
     </ConditionalWrap>
   );
@@ -46,5 +48,5 @@ export default styled(UniversalLink)`
       props.underline !== false && "underline"};
   }
 
-  ${(props): FlattenSimpleInterpolation | undefined => props.css}
+  ${(props): CSSProp | undefined => props.css}
 `;

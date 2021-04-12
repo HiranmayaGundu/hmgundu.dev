@@ -1,5 +1,5 @@
 import { Twitter, GitHub } from "react-feather";
-import { Flex, Box } from "rebass/styled-components";
+import { Flex } from "rebass/styled-components";
 import { ReactNode, ElementType } from "react";
 import Text from "./Text";
 import Link from "./Link";
@@ -66,7 +66,7 @@ const FooterItem = ({
   );
 };
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <Flex
       py={5}

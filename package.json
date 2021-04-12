@@ -70,11 +70,6 @@
     "typescript": "3.8.3"
   },
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{ts,tsx,js,css,json}": [
       "prettier --write"

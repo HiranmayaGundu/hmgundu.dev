@@ -4,7 +4,7 @@ import { Flex, Box } from "rebass/styled-components";
 import { NAV_HEIGHT } from "components/Constants";
 import Layout from "components/Layout";
 import Head from "components/Head";
-const Custom404: React.FC<{}> = () => {
+const Custom404: React.FC<Record<string, never>> = () => {
   return (
     <>
       <Head title="404 page" />

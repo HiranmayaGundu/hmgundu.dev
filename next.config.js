@@ -15,8 +15,5 @@ module.exports = withBundleAnalyzer(
   withMDX({
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
     reactStrictMode: true,
-    future: {
-      webpack5: true,
-    },
   })
 );

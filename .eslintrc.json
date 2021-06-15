@@ -11,7 +11,8 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:mdx/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:@next/next/recommended"
   ],
   "globals": {
     "Atomics": "readonly",

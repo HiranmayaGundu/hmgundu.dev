@@ -101,7 +101,7 @@ const MobileBox: React.FC<BoxProps> = styled(Box)`
   }
 `;
 
-const DarkToggle: React.FC<{}> = () => {
+const DarkToggle: React.FC<Record<string, never>> = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
   if (!colorMode) {
     return null;
@@ -210,7 +210,7 @@ const NavWrapper: React.FC<FlexProps & { isOpen: boolean }> = (props) => {
   );
 };
 
-const Nav: React.FC<{}> = () => {
+const Nav: React.FC<Record<string, never>> = () => {
   const [menu, setMenu] = React.useState(false);
   const toggler = React.useCallback(() => setMenu((menu) => !menu), [setMenu]);
   return (

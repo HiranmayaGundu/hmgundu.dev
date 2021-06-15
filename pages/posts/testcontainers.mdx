@@ -1,6 +1,7 @@
 import Mark from "components/Mark";
 import Head from "components/Head";
 import Image from "next/image";
+import lifecycle from "../../public/images/testcontainers-lifecycle.png";
 
 export const meta = {
   published: true,
@@ -86,10 +87,9 @@ to just one line of code. You can take a look at the [examples](https://www.test
 <br />
 
 <Image
-  src="/images/testcontainers-lifecycle.png"
+  src={lifecycle}
   alt="Example lifecycle of conatiners when using the @Rule and @ClassRule annotations"
-  width={1826}
-  height={910}
+  placeholder="blur"
 />
 
 ---

@@ -1,0 +1,90 @@
+import Mark from "components/Mark";
+import Head from "components/Head";
+import Callout from "components/Callout";
+
+export const meta = {
+  published: true,
+  publishedAt: "2021-06-21",
+  title: "Remote debug Java Applications running on Kubernetes",
+  summary: "A guide to debugging Java applications running on Kubernetes",
+};
+
+<Head
+  title={meta.title}
+  description={meta.summary}
+  image="debug-java-kube-seo.png"
+/>
+
+## <Mark> Remote Debugging Java Applications in Kubernetes </Mark>
+
+Recently, when implementing a feature in our application, I had a `NullPointerException` issue that would occur only on Kubernetes.
+This issue was not reproducible on local, and was not reproducible running the docker container either. To debug this issue,
+I had to set up a remote debugging session. These are the steps to setup this session:-
+
+First, change the Java startup command by adding the jdb parameters.
+In my applications case, it meant changing it from
+
+```bash
+java -cp ".:./conf/:./lib/\*" -noverify com.app.name
+```
+
+to
+
+```bash
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=_:5005 -cp ".:./conf/:./lib/_" -noverify com.app.name
+```
+
+<Callout>
+
+Note that the exact parameters differ based on JDK version. The above example is valid for JDK 9 or higher.
+
+</Callout>
+
+At this point you have an application that has exposed a debug port on port 5005. If you run this application, the first printed
+line would be: `Listening for transport dt_socket at address: 5005`. If this gets printed you know that the java application has
+been correctly configured.
+
+This application can now be deployed on K8S. We need to expose the 5005 port in the container section of our deployment so that it
+is accessible from outside Kubernetes. In your `deployment.yaml` make the following
+change to expose the port:
+
+```yaml
+spec:
+  template:
+    spec:
+      containers:
+        - name: java-app
+          ports:
+            - containerPort: 5005
+              name: "debug"
+```
+
+Kubectl provides us a port forward command to be able to access a pods port as if it were a local port.
+To set this up do the following:
+
+Get the name of the pod using the `get pods` command.
+
+```bash
+$ kubectl get pods -n app-namespace
+NAME READY STATUS RESTARTS AGE
+java-app-6c54c9b858-7bpbp 3/3 Running 1 6d2h
+```
+
+Then use the `kubectl port-forward` command to forward the 5005 port of the pod to your local machine.
+
+```bash
+$ kubectl port-forward java-app-6c54c9b858-7bpbp 5005:5005 -n app-namespace
+ # With this, the debug session should be available at localhost:5005.
+```
+
+Next, you need to setup the debug configuration in your favourite IDE. My preference is to use IntelliJ IDEA. In IDEA, the steps are as follows:
+
+- From the main menu, select Run | Edit Configurations or press `⌃⌥R` then 0.
+- In the Run/Debug Configurations dialog, click the Add New Configuration button and select Remote.
+- Fill out the details for host as localhost and port and 5005. Make sure you select the correct JDK version.
+- Save the configuration
+
+<br />
+
+With this configuration is saved you can click on the debug icon to debug
+at any time!

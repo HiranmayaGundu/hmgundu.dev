@@ -139,18 +139,18 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
             fontSize={[2, 3]}
             lineHeight={1.6}
           >
-            I&apos;m a software engineer from India, who&apos;s currently
-            exploring the different fields Computer Science has to offer. This
-            website was born from the desire to build a personal blog, as well
-            as a desire to explore static server-rendered sites in React. You
-            can find more details in the blogs!
+            I&apos;m a student at the University of Southern California.
+            I&apos;m currently pursuing my Master&apos;s degree in Computer
+            Science. This website is my personal blog, where I write about
+            software development, testing, Kubernetes and anything else I find
+            interesting in the field of software!
           </Text>
           <Text as="p" pb={[2, 4]} fontSize={[2, 3]} lineHeight={1.6}>
             You can follow me on{" "}
             <LinkTooltip href="https://twitter.com/hiranmayagundu">
               <Link href="https://twitter.com/hiranmayagundu">Twitter</Link>
             </LinkTooltip>
-            , if you like.
+            .
           </Text>
         </Layout>
       </SecondarySection>

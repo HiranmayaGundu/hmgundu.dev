@@ -98,6 +98,8 @@ export default class MyDocument extends Document {
           />
           <style>{fallbackColors}</style>
           <script
+            /*
+            // @ts-expect-error just expect an error */
             dangerouslySetInnerHTML={{ __html: this.props.colorModeScript }}
           />
         </Head>

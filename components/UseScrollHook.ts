@@ -49,7 +49,7 @@ export const useScrollPosition = (
   wait?: number
 ): void => {
   const position = React.useRef<Position>(getScrollPosition({ useWindow }));
-  let throttleTimeout: number | null = null;
+  let throttleTimeout: NodeJS.Timeout | null = null;
 
   const callBack = (): void => {
     const currPos = getScrollPosition({ element, useWindow });

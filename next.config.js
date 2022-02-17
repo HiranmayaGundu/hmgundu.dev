@@ -11,9 +11,18 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-module.exports = withBundleAnalyzer(
+const bundleAnalyzerConfig = withBundleAnalyzer(
   withMDX({
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
     reactStrictMode: true,
   })
 );
+
+const config = {
+  ...bundleAnalyzerConfig,
+  compiler: {
+    styledComponents: true,
+  },
+};
+
+module.exports = config;

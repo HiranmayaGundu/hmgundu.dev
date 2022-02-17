@@ -23,7 +23,8 @@
     "baseUrl": ".",
     "paths": {
       "rebass/styled-components": ["node_modules/@types/rebass"]
-    }
+    },
+    "incremental": true
   },
   "exclude": ["node_modules", "types"],
   "include": [

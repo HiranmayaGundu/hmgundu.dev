@@ -6,7 +6,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import Terser from "terser";
+import { minify } from "terser";
 import { setColorsByTheme } from "components/SetColorsByTheme";
 import { COLORS } from "components/Constants";
 import { GA_TRACKING_ID } from "functions/gtag";
@@ -17,7 +17,7 @@ const INITIAL_COLOR_MODE_CSS_PROP = "--initial-color-mode";
 // This is from https://joshwcomeau.com/gatsby/dark-mode/.
 // It is a fantastic blog post on how to avoid the
 // horrible flash effect when having themes in SSG.
-const autoColorModeScript = (): string => {
+const autoColorModeScript = async (): Promise<string> => {
   const boundFn = String(setColorsByTheme)
     .replace('"🌈"', JSON.stringify(COLORS))
     .replace("🔑", COLOR_MODE_KEY)
@@ -25,7 +25,8 @@ const autoColorModeScript = (): string => {
 
   let calledFunction = `(${boundFn})()`;
 
-  const minifiedCode = Terser.minify(calledFunction).code;
+  const minifiedCodePromise = await minify(calledFunction);
+  const minifiedCode = minifiedCodePromise.code;
   calledFunction = minifiedCode ? minifiedCode : "";
   return calledFunction;
 };
@@ -47,6 +48,7 @@ export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
+    const colorModeScript = await autoColorModeScript();
 
     try {
       ctx.renderPage = () =>
@@ -64,6 +66,7 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
+        colorModeScript,
       };
     } finally {
       sheet.seal();
@@ -71,7 +74,6 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    const colorModeScript = autoColorModeScript();
     const fallbackColors = fallbackStyles();
     return (
       <Html lang="en">
@@ -95,7 +97,9 @@ export default class MyDocument extends Document {
             }}
           />
           <style>{fallbackColors}</style>
-          <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
+          <script
+            dangerouslySetInnerHTML={{ __html: this.props.colorModeScript }}
+          />
         </Head>
         <body>
           <Main />

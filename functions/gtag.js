@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_ANALYTICS_ID;
 
 export const pageview = (url) => {

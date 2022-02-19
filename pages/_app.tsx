@@ -44,6 +44,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
       <ColorModeProvider>
         <ThemeProvider theme={newTheme}>
+          {/* @ts-expect-error expect error */}
           <MDXProvider components={components}>
             <>
               <Nav />

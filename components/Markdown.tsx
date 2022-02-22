@@ -4,7 +4,7 @@ import Link from "./Link";
 import P from "./Paragraph";
 import styled, { CSSProp } from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
-import { CodeBlock, InlineCode } from "./CodeBlock";
+import { Code } from "./CodeBlock";
 import { HeadingProps, Flex, Box } from "rebass/styled-components";
 import Layout from "./Layout";
 import Content from "./Content";
@@ -56,14 +56,15 @@ const Hr = (): JSX.Element => (
 );
 
 // eslint-disable-next-line react/display-name
-const heading = (
-  Tag: React.ComponentType<HeadingProps & { css?: CSSProp }>
+const heading =
+  (Tag: React.ComponentType<HeadingProps & { css?: CSSProp }>) =>
   // eslint-disable-next-line react/display-name
-) => (props: HeadingProps & { css?: CSSProp }): JSX.Element => (
-  <Tag {...props}>
-    <Link href={`#${props.id}`}>{props.children}</Link>
-  </Tag>
-);
+  (props: HeadingProps & { css?: CSSProp }): JSX.Element =>
+    (
+      <Tag {...props}>
+        <Link href={`#${props.id}`}>{props.children}</Link>
+      </Tag>
+    );
 
 const Strong = styled.strong`
   font-weight: var(--font-weights-bold);
@@ -83,8 +84,7 @@ export default {
   ul: UnorderedList,
   ol: OrderedList,
   li: ListItem,
-  code: CodeBlock,
-  inlineCode: InlineCode,
+  code: Code,
   hr: Hr,
   wrapper: Wrapper,
   strong: Strong,

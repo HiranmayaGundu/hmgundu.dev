@@ -3,12 +3,16 @@ import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import Prism from "prism-react-renderer/prism";
 import theme from "prism-react-renderer/themes/nightOwl";
 import Pre from "./Pre";
-import javaLang from "refractor/lang/java";
 import { ExpanderDiv } from "./ExpanderDiv";
 import { TextProps } from "rebass/styled-components";
 import Text from "./Text";
 import { CSSProp } from "styled-components";
-javaLang(Prism);
+
+// @ts-expect-error need to check how to add prism to global
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-java");
+require("prismjs/components/prism-bash");
+
 interface CodeBlockProps {
   children: React.ReactNode;
   className?: string;
@@ -66,4 +70,23 @@ const InlineCode = (props: TextProps & { css?: CSSProp }): JSX.Element => (
   />
 );
 
-export { CodeBlock, InlineCode };
+const Code = ({
+  className,
+  children,
+  ...props
+}: {
+  className: string;
+  children: React.ReactNode;
+  props: unknown;
+}): JSX.Element => {
+  const match = /language-(\w+)/.exec(className || "");
+  return match ? (
+    <CodeBlock className={match[1]}>{children}</CodeBlock>
+  ) : (
+    <InlineCode className={className} {...props}>
+      {children}
+    </InlineCode>
+  );
+};
+
+export { CodeBlock, InlineCode, Code };

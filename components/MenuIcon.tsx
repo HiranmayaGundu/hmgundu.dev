@@ -1,6 +1,6 @@
 // from https://roabramov.space/blog/hamburger-animation/
 import * as React from "react";
-import { useSpring, config, a } from "react-spring";
+import { useSpring, config, a } from "@react-spring/web";
 
 const openedTransformationConfig = {
   top: "translate(2, 7) rotate(0)",

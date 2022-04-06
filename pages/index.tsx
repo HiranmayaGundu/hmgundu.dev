@@ -16,7 +16,7 @@ import { Box, BoxProps } from "rebass/styled-components";
 import { ChildrenOnlyProps } from "components/Constants";
 import Head from "components/Head";
 import { textColor } from "components/textColor";
-import { useSpring, a } from "react-spring";
+import { useSpring, a } from "@react-spring/web";
 import LinkTooltip from "components/Tooltip";
 
 const PrimarySection = styled.div`

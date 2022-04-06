@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useSpring, animated as a } from "react-spring";
+import { useSpring, animated as a } from "@react-spring/web";
 interface GondsProps {
   children?: React.ReactNode;
 }

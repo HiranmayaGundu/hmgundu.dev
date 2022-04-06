@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useSpring, a } from "react-spring";
+import { useSpring, a } from "@react-spring/web";
 
 interface LightSaberProps {
   title?: string;

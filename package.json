@@ -34,7 +34,7 @@
     "refractor": "^4.5.0",
     "remark-slug": "^7.0.1",
     "styled-components": "^5.3.5",
-    "terser": "^5.12.1"
+    "terser": "^5.14.2"
   },
   "devDependencies": {
     "@types/lodash.kebabcase": "^4.1.6",

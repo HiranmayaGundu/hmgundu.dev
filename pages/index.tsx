@@ -139,10 +139,15 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
             fontSize={[2, 3]}
             lineHeight={1.6}
           >
-            I&apos;m a student at the University of Southern California.
-            I&apos;m currently pursuing my Master&apos;s degree in Computer
-            Science. This website is my personal blog, where I write about
-            software development, testing, Kubernetes and anything else I find
+            I&apos;m a Software Engineer at{" "}
+            <LinkTooltip href="https://www.sigmacomputing.com/">
+              <Link href="https://www.sigmacomputing.com/">
+                Sigma Computing
+              </Link>
+            </LinkTooltip>
+            , working on building a better business intelligence tool. This
+            website is my personal blog, where I write about software
+            development, testing, Kubernetes and anything else I find
             interesting in the field of software!
           </Text>
           <Text as="p" pb={[2, 4]} fontSize={[2, 3]} lineHeight={1.6}>

@@ -10,8 +10,7 @@ import components from "../components/Markdown";
 import GlobalStyle from "../components/GlobalStyle";
 import { theme } from "../components/Theme";
 import { convertThemeToUseCustomProperties } from "functions/CustomPropertiesUtils";
-import * as gtag from "functions/gtag";
-import { Router } from "next/router";
+
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 
@@ -28,17 +27,6 @@ export const DEFAULT_TITLE = "Hiranmaya Gundu- Software developer";
 const DEFAULT_DESCRIPTION = "Hiranmaya Gundu's personal website";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
-  React.useEffect(() => {
-    const handleRouteChange = (url: string): void => {
-      if (process.env.NEXT_PUBLIC_MODE === "PROD") {
-        gtag.pageview(url);
-      }
-    };
-    Router.events.on("routeChangeComplete", handleRouteChange);
-    return (): void => {
-      Router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, []);
   return (
     <>
       <Head title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} />
@@ -58,17 +46,5 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     </>
   );
 };
-interface WebVitals {
-  id: string;
-  label: string;
-  name: string;
-  startTime: number;
-  value: number;
-}
-export function reportWebVitals(metric: WebVitals): void {
-  if (process.env.NEXT_PUBLIC_MODE === "PROD") {
-    gtag.sendToGoogleAnalytics(metric);
-  }
-}
 
 export default App;

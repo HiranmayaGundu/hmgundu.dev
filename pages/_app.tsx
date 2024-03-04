@@ -4,12 +4,12 @@ import { ThemeProvider } from "styled-components";
 import { ColorModeProvider } from "../components/ColorModeContext";
 import { MDXProvider } from "@mdx-js/react";
 import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import Nav from "../components/old-nav";
 import Head from "../components/Head";
 import components from "../components/Markdown";
 import GlobalStyle from "../components/GlobalStyle";
 import { theme } from "../components/Theme";
-import { convertThemeToUseCustomProperties } from "functions/CustomPropertiesUtils";
+import { convertThemeToUseCustomProperties } from "@/functions/CustomPropertiesUtils";
 
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";

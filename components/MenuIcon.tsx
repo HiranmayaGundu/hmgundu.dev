@@ -1,5 +1,5 @@
 // from https://roabramov.space/blog/hamburger-animation/
-import * as React from "react";
+"use client";
 import { useSpring, config, a } from "@react-spring/web";
 
 const openedTransformationConfig = {
@@ -19,11 +19,7 @@ interface MenuIconProps {
   height?: string;
   width?: string;
 }
-const MenuIcon: React.FC<MenuIconProps> = ({
-  isOpened,
-  height = "44",
-  width = "44",
-}) => {
+const MenuIcon = ({ isOpened, height = "44", width = "44" }: MenuIconProps) => {
   const { top, center, bottom } = useSpring({
     to: isOpened ? closedTransformationConfig : openedTransformationConfig,
     config: config.stiff,

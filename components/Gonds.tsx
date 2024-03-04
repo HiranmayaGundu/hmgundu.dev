@@ -1,5 +1,6 @@
-import * as React from "react";
+"use client";
 import { useSpring, animated as a } from "@react-spring/web";
+import { MouseEventHandler, useCallback } from "react";
 interface GondsProps {
   children?: React.ReactNode;
 }
@@ -8,21 +9,22 @@ const calc = (x: number, y: number): number[] => [
   y - window.innerHeight / 2,
 ];
 
-const Gonds: React.FC<GondsProps> = (props) => {
+const Gonds = (props: GondsProps) => {
   const [springProps, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 10, tension: 800, friction: 140 },
   }));
-  const onMove = React.useCallback(
-    ({ clientX: x, clientY: y }) => set({ xy: calc(x, y) }),
+  const onMouseMove: MouseEventHandler<HTMLDivElement> = useCallback(
+    ({ clientX: x, clientY: y }) => set.start({ xy: calc(x, y) }),
     [set]
   );
+
   const interpolateBackground = springProps.xy.to(
     (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
   );
 
   return (
-    <div onMouseMove={onMove}>
+    <div onMouseMove={onMouseMove}>
       <svg width="380px" height="380px" viewBox="0 0 595.3 841.9" {...props}>
         <style>
           {

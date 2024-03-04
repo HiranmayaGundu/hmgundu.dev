@@ -1,23 +1,23 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import styled, { keyframes } from "styled-components";
-import Text from "components/Text";
-import { H1, H2, H3 } from "components/Heading";
-import Gonds from "components/Gonds";
-import Mark from "components/Mark";
-import Layout from "components/Layout";
-import SectionDivider from "components/SectionDivider";
-import { TwoColumnGrid } from "components/TwoColumnGrid";
-import Link from "components/Link";
-import SecondarySectionDivider from "components/SecondarySectionDivider";
-import { NAV_HEIGHT } from "components/Constants";
-import { PostInterface, getPosts } from "functions/ReadPosts";
+import Text from "@/components/Text";
+import { H1, H2, H3 } from "@/components/Heading";
+import Gonds from "@/components/gonds";
+import Mark from "@/components/Mark";
+import Layout from "@/components/Layout";
+import SectionDivider from "@/components/section-divider";
+import { TwoColumnGrid } from "@/components/TwoColumnGrid";
+import Link from "@/components/Link";
+import SecondarySectionDivider from "@/components/secondary-section-divider";
+import { NAV_HEIGHT } from "@/components/Constants";
+import { PostInterface, getPosts } from "@/functions/ReadPosts";
 import { Box, BoxProps } from "rebass/styled-components";
-import { ChildrenOnlyProps } from "components/Constants";
-import Head from "components/Head";
-import { textColor } from "components/textColor";
+import { ChildrenOnlyProps } from "@/components/Constants";
+import Head from "@/components/Head";
+import { textColor } from "@/components/textColor";
 import { useSpring, a } from "@react-spring/web";
-import LinkTooltip from "components/Tooltip";
+import LinkTooltip from "@/components/Tooltip";
 
 const PrimarySection = styled.div`
   background-color: var(--color-primary-background);
@@ -117,6 +117,7 @@ const Index: React.FC<IndexProps> = ({ posts }) => {
               Hi! I&apos;m <br /> <Mark>Hiranmaya Gundu</Mark>.{" "}
               <ShakeAnimation>👋</ShakeAnimation>
             </H1>
+            {/* @ts-expect-error  */}
             <a.div style={springProps}>
               <GondsWrapper>
                 <Gonds />

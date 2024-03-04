@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DividerSvg } from "./DividerSvg";
+import { DividerSvg } from "./divider-svg";
 
 const SecondarySectionDivider = (): JSX.Element => {
   return (

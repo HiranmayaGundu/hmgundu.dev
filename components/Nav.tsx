@@ -1,309 +1,130 @@
-import * as React from "react";
-import { useRouter } from "next/router";
-import styled, {
-  css,
-  FlattenSimpleInterpolation,
-  keyframes,
-} from "styled-components";
-import { hideVisually } from "polished";
-import { Box, Flex, FlexProps, BoxProps } from "rebass/styled-components";
-import Text from "./Text";
-import Link from "./Link";
-import Layout from "./Layout";
-import { ColorModeContext } from "./ColorModeContext";
-import { textColor } from "./textColor";
-import { useScrollPosition } from "./UseScrollHook";
-import { Sun, Moon } from "react-feather";
+"use client";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import MenuIcon from "./MenuIcon";
+import { useCallback, useState } from "react";
+import { cn } from "@/lib/utils";
+import { ModeToggle } from "./mode-toggle";
+import { Button } from "./ui/button";
 
-interface NavItemProps {
-  href: string;
-  className?: string;
-  title: string;
-}
-
-const NavItem: React.FC<NavItemProps & BoxProps> = ({
-  href,
-  className,
-  title,
-  ...rest
-}) => {
-  const { pathname } = useRouter();
-  const active: boolean = pathname.indexOf(href) === 0;
+export function Nav() {
   return (
-    <Box mr={4} className={className} {...rest}>
-      <Link css={active ? textColor : undefined} href={href}>
-        <Text as="div" fontWeight="bold" fontSize={2}>
-          {title}
-        </Text>
-      </Link>
-    </Box>
+    <>
+      <DesktopNav />
+      <MobileNav />
+    </>
   );
-};
-
-interface MobileNavItemProps {
-  onClick: () => void;
-  href: string;
-  title: string;
 }
 
-const MobileNavItem: React.FC<BoxProps & MobileNavItemProps> = ({
-  onClick,
-  href,
-  title,
-  ...rest
-}) => (
-  <Box p={3} onClick={onClick} {...rest}>
-    <Link href={href}>
-      <Text color="var(--color-text)" as="div" fontSize={2} fontWeight="bold">
-        {title}
-      </Text>
-    </Link>
-  </Box>
-);
-
-const opacity = keyframes`
-  {
-    0% {
-      opacity: 0;
-    }
-    100 % {
-      opacity 1;
-    }
-  }
-`;
-
-const StyledBox = styled(Box)`
-  animation: 2s ${opacity} ease-out;
-`;
-
-const StyledButton = styled.button`
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: var(--color-text);
-`;
-
-const HiddenSpan = styled.span`
-  ${hideVisually()}
-`;
-
-const DesktopBox: React.FC<BoxProps> = styled(Box)`
-  @media screen and (max-width: 40em) {
-    display: none;
-  }
-`;
-
-const MobileBox: React.FC<BoxProps> = styled(Box)`
-  display: none;
-  @media screen and (max-width: 40em) {
-    display: block;
-  }
-`;
-
-const DarkToggle: React.FC<Record<string, never>> = () => {
-  const { colorMode, setColorMode } = React.useContext(ColorModeContext);
-  if (!colorMode) {
-    return null;
-  }
-  let nextMode = "light";
-  if (colorMode === "auto") {
-    nextMode = "light";
-  } else if (colorMode === "light") {
-    nextMode = "dark";
-  } else {
-    nextMode = "automatic";
-  }
+function DesktopNav() {
+  const pathname = usePathname();
   return (
-    <StyledBox>
-      <Text as="label" color="text" fontSize={1}>
-        <StyledButton
-          onClick={(): void => {
-            if (colorMode === "auto") {
-              setColorMode("light");
-            } else if (colorMode === "light") {
-              setColorMode("dark");
-            } else {
-              setColorMode("auto");
-            }
-          }}
+    <nav className="hidden sm:block w-full p-4">
+      <div className="max-w-[800px] my-0 mx-auto flex items-center justify-center sm:justify-start gap-24">
+        <Link
+          href="/"
+          className={cn(
+            "text-xl font-bold",
+            pathname === "/" ? "text" : "text-muted-foreground"
+          )}
         >
-          {colorMode === "auto" && (
-            <>
-              <Sun
-                height="20"
-                width="20"
-                aria-hidden="true"
-                focusable="false"
-              />{" "}
-              <Moon
-                height="20"
-                width="20"
-                aria-hidden="true"
-                focusable="false"
-              />
-            </>
-          )}
-          {colorMode === "light" && (
-            <Sun height="20" width="20" aria-hidden="true" focusable="false" />
-          )}
-          {colorMode === "dark" && (
-            <Moon height="20" width="20" aria-hidden="true" focusable="false" />
-          )}
-          <HiddenSpan>{`Click here to change to ${nextMode} mode!`}</HiddenSpan>
-        </StyledButton>
-      </Text>
-    </StyledBox>
-  );
-};
-
-const StyledNavItem = styled(NavItem)`
-  &:last-of-type {
-    margin-right: 0;
-  }
-`;
-
-interface StyledFlexWrapperProps {
-  readonly isScrolled: boolean;
-  readonly isOpen: boolean;
-}
-
-const StyledFlexWrapper = styled(Flex)<FlexProps & StyledFlexWrapperProps>`
-  ${({ isScrolled }): false | FlattenSimpleInterpolation =>
-    isScrolled &&
-    css`
-      transition: box-shadow 250ms ease-in-out;
-      box-shadow: var(--color-box-shadow) 0px 1px 4px 0px;
-    `}
-  ${({ isOpen }) =>
-    isOpen &&
-    `@media screen and (max-width: 40em) {
-    height: 100%;
-    width: 100%;
-  }`}
-`;
-
-const NavWrapper: React.FC<FlexProps & { isOpen: boolean }> = (props) => {
-  const [showOnScroll, setShowOnScroll] = React.useState(false);
-  useScrollPosition(
-    ({ currPos }) => {
-      const isShow = currPos.y > 0;
-      setShowOnScroll(isShow);
-    },
-    [showOnScroll],
-    undefined,
-    true
-  );
-  return (
-    <StyledFlexWrapper
-      bg="var(--color-primary-background)"
-      sx={{
-        top: 0,
-        left: 0,
-        width: "100%",
-        zIndex: 15,
-        position: "fixed",
-      }}
-      isScrolled={showOnScroll}
-      {...props}
-    />
-  );
-};
-
-const Nav: React.FC<Record<string, never>> = () => {
-  const [menu, setMenu] = React.useState(false);
-  const toggler = React.useCallback(() => setMenu((menu) => !menu), [setMenu]);
-  return (
-    <NavWrapper py={3} as="nav" isOpen={menu}>
-      <Layout py={1} width={1}>
-        <Flex alignItems="center" justifyContent={["center", "space-between"]}>
-          <Flex
-            alignItems="center"
-            justifyContent={["center", "space-between"]}
-            width={3 / 4}
+          Hiranmaya Gundu
+        </Link>
+        <div className="hidden sm:flex items-center justify-between gap-8">
+          <Link
+            href="/about"
+            className={cn(
+              "text-xl font-bold",
+              pathname === "/about" ? "text" : "text-muted-foreground"
+            )}
           >
-            <StyledNavItem
-              href="/"
-              title="Hiranmaya Gundu"
-              onClick={() => setMenu(false)}
-            />
-            <DesktopBox>
-              <StyledNavItem href="/about" title="About" />
-            </DesktopBox>
-            <DesktopBox>
-              <StyledNavItem href="/blog" title="Blog" />
-            </DesktopBox>
-            <DesktopBox>
-              <StyledNavItem href="/references" title="References" />
-            </DesktopBox>
-          </Flex>
-          <DesktopBox>
-            <Flex>
-              <DarkToggle />
-            </Flex>
-          </DesktopBox>
-        </Flex>
-        <MobileBox
-          sx={{
-            cursor: "pointer",
-            position: "absolute",
-            right: "30px",
-            top: "15px",
-            background: "none",
-            color: "var(--color-text)",
-            border: "none",
-          }}
-          as="button"
-          onClick={toggler}
-        >
-          <MenuIcon isOpened={menu} height="30" width="30" />
-          <HiddenSpan>{menu ? "Close Menu" : "Open Menu"}</HiddenSpan>
-        </MobileBox>
-        {menu && (
-          <MobileBox>
-            <Flex
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="center"
-              sx={{
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Flex
-                flexDirection="column"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <MobileNavItem
-                  mx={4}
-                  mb={4}
-                  mt={5}
-                  href="/about"
-                  title="About"
-                  onClick={toggler}
-                />
-                <MobileNavItem
-                  m={4}
-                  href="/blog"
-                  title="Blog"
-                  onClick={toggler}
-                />
-                <MobileNavItem
-                  m={4}
-                  href="/references"
-                  title="References"
-                  onClick={toggler}
-                />
-              </Flex>
-              <Flex m={4}>
-                <DarkToggle />
-              </Flex>
-            </Flex>
-          </MobileBox>
-        )}
-      </Layout>
-    </NavWrapper>
+            About
+          </Link>
+          <Link
+            href="/blog"
+            className={cn(
+              "text-xl font-bold",
+              pathname === "/blog" ? "text" : "text-muted-foreground"
+            )}
+          >
+            Blog
+          </Link>
+          <Link
+            href="/references"
+            className={cn(
+              "text-xl font-bold",
+              pathname === "/references" ? "text" : "text-muted-foreground"
+            )}
+          >
+            References
+          </Link>
+        </div>
+        <div className="hidden sm:flex">
+          <ModeToggle />
+        </div>
+      </div>
+    </nav>
   );
-};
-export default Nav;
+}
+
+function MobileNav() {
+  const [menu, setMenu] = useState(false);
+  const toggler = useCallback(() => setMenu((menu) => !menu), []);
+  const pathname = usePathname();
+  return (
+    <nav className="sm:hidden w-full h-full p-4">
+      <div className="w-full flex flex-col gap-4">
+        <div className="w-full flex justify-between">
+          <Button variant="outline" size="icon" onClick={toggler}>
+            <MenuIcon isOpened={menu} height="30" width="30" />
+            <span className="sr-only">Toggle menu</span>
+          </Button>
+          <Link
+            href="/"
+            className={cn(
+              "text-2xl font-bold",
+              pathname === "/" ? "text" : "text-muted-foreground"
+            )}
+          >
+            Hiranmaya Gundu
+          </Link>
+          <ModeToggle />
+        </div>
+        <div className={cn(menu ? "block" : "hidden")}>
+          <div className="flex flex-col gap-4 items-center">
+            <Link
+              href="/about"
+              className={cn(
+                "text-2xl font-bold",
+                pathname === "/about" ? "text" : "text-muted-foreground"
+              )}
+              onClick={toggler}
+            >
+              About
+            </Link>
+            <Link
+              href="/blog"
+              className={cn(
+                "text-2xl font-bold",
+                pathname === "/blog" ? "text" : "text-muted-foreground"
+              )}
+              onClick={toggler}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/references"
+              className={cn(
+                "text-2xl font-bold",
+                pathname === "/references" ? "text" : "text-muted-foreground"
+              )}
+              onClick={toggler}
+            >
+              References
+            </Link>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}

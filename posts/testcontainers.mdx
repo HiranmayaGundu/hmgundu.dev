@@ -1,0 +1,193 @@
+import Mark from "@/components/Mark";
+import Head from "@/components/Head";
+import Image from "next/image";
+import lifecycle from "../public/images/testcontainers-lifecycle.png";
+
+export const metadata = {
+  published: true,
+  publishedAt: "2020-06-13",
+  title: "TestContainers: The Modern Way of Writing Database Tests",
+  summary: "A guide to testing databases in Java.",
+};
+
+<Head
+  title={meta.title}
+  description={meta.description}
+  image="testcontainers-seo.png"
+/>
+
+## <Mark> TestContainers: The Modern Way of Writing Database Tests </Mark>
+
+When testing Java code that interacts directly with your database, it is common practice to let the test cases target
+in-memory databases like H2 or Fongo (an in-memory MongoDB). This ensures that we do not mock the database calls.
+The H2 database is **maintained by** the test cases. The lack of the need to maintain the database is a **huge win**.
+There is no need to worry about keeping the port open, bring up a clean instance, spin it down etc.
+
+<br />
+
+However, we write automated test cases to build confidence in our code base. Test cases help us catch bugs and
+rectify them before we push it to production. The golden [rule](https://twitter.com/kentcdodds/status/977018512689455106)
+of testing is:**_“The more your tests resemble the way your software is used, the more confidence they can give you”_**.
+Our clients do not use H2. These test cases do not guarantee that our code will work with Postgres or Mongo,
+as those databases may react differently to the same code.
+
+<br />
+
+The drawbacks do not stop there. Say we are migrating from one major version of PostgresDB to another.
+Major semantic-version changes generally do not ensure backwards compatibility. Test cases written to target
+H2 will not catch any bugs that occur because of any breaking/compatibility issues between the two versions.
+This would force us to write tests against PostgresDB anyway.
+
+<br />
+
+Another issue, and the issue we faced at the place I work, is that H2 may not have the features
+that your production DB has. PostgresDB has had `JSONB` since the end of 2018, while it took H2 almost a
+year to add the same feature. Our choices when testing against H2 are limited. We can either not write
+tests for them, or not use that feature at all. If we do not use that feature, a testing choice dictates
+production technological choices. This prompted our search for an alternative.
+
+<br />
+
+So why is H2 so popular? The overhead of maintaining a test DB outweighs the drawbacks of using H2 as your test DB.
+But, this difficulty can be solved using docker containers. You can spin up a clean database when you need it
+and then spin it down and destroy it when you don’t. We can, of course, integrate this into our build steps ourselves.
+But we want a solution where the DB is maintained by the test cases.
+
+<br />
+
+This is where TestContainers comes in. TestContainers is an open-source [project](https://github.com/testcontainers) that
+provides lightweight, throwaway instances of anything that can run in a Docker container. Spinning up a MySQL database is
+as simple as adding 3 lines of code:-
+
+```java
+class SimpleMySQLTest {
+  private MySQLContainer mysql = new MySQLContainer();
+
+  @Before
+  void before() {
+    mysql.start();
+    // You can use mysql.getJdbcUrl(), mysql.getUsername() and
+    // mysql.getPassword() to connect to the container
+
+  }
+
+  @After
+  void after() {
+      mysql.stop();
+  }
+
+  // @Test test cases here.
+}
+```
+
+TestContainers provides `@Rule`/ `@ClassRule` integration to allow JUnit 4 to control the lifecycle
+of the container. It also provides an `@Container` annotation for Junit5. These utilities reduce it
+to just one line of code. You can take a look at the [examples](https://www.testcontainers.org/test_framework_integration/junit_4/).
+
+<br />
+
+<Image
+  src={lifecycle}
+  alt="Example lifecycle of conatiners when using the @Rule and @ClassRule annotations"
+  placeholder="blur"
+/>
+
+---
+
+<br />
+
+HibernateORM is the most popular choice for interacting with databases in Java.
+To connect your Hibernate classes to TestContainers, you can do it like this:
+
+```java
+class SampleHibernateTest {
+  @Rule
+  private MySQLContainer mysql = new MySQLContainer().withDatabaseName("local").withUsername("USER").withPassword("PWD");
+
+  @Before
+  public void before() {
+    final Configuration hibernateConfiguration = new Configuration();
+    // Base configuration
+    hibernateConfiguration.configure("hibernate.cfg.xml")
+    final Properties properties = new Properties();
+    hibernateConfiguration.setProperty("hibernate.hikari.dataSource.url", mysql.getJdbcUrl());
+    hibernateConfiguration.setProperty("hibernate.hikari.datasource.user", "USER");
+    properties.setProperty("hibernate.hikari.datasource.password", "PWD");
+    hibernateConfiguration.addProperties(properties);
+    hibernateConfiguration.addAnnotatedClass(ClassToTest.class);
+  }
+
+  @Test
+  public void test() {
+  // write test case here
+  }
+}
+
+```
+
+So, to migrate our existing H2 tests to TestContainers based Postgres tests, we made the following changes:-
+
+We removed H2 related properties from hibernate.cfg.xml and added Postgres related ones.
+
+```xml
+// remove this
+<property name="hibernate.connection.driver_class">org.h2.Driver</property>
+<property name="hibernate.connection.url">
+jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;INIT=CREATE domain IF NOT EXISTS jsonb AS
+other;
+</property>
+<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+
+// add this
+
+<property name="hibernate.hikari.dataSourceClassName">
+  org.postgresql.ds.PGSimpleDataSource
+</property>
+```
+
+<br />
+
+And then added the `@Before` and `@Rule` code as shown above.
+
+<br />
+
+And that’s it! Our test cases are now migrated.
+
+### Limitations
+
+There are of course drawbacks to using TestContainers. Test cases will be much slower compared to H2.
+There are ways to mitigate this. The `@Rule` annotation brings up a new database for every test case
+in your class. Bringing up a database is a costly operation, and we can optimize this by using `@ClassRule`.
+When you use `@ClassRule`, one database is brought up for all the tests in the class. In this scenario,
+it becomes important to ensure that you are cleaning up the data in the database after a test case runs,
+to ensure test isolation. This can be done by using the `@After` lifecycle.
+
+<br />
+
+Another drawback is that the test cases can fail if it is unable to download the docker image. These drawbacks
+are minor, however, compared to the benefits of using TestContainers.
+
+---
+
+<br />
+
+TestContainers has bindings in Java, Python,Rust, Go, Scala and many more languages! Go check out the project
+on GitHub.
+
+---
+
+### Further Reading
+
+- I found this [post](https://phauer.com/2017/dont-use-in-memory-databases-tests-h2/) that
+  echoed my sentiments exactly! Philipp Hauer goes in more depth and also shows an implementation where the
+  container is managed by the Gradle / Maven build step (instead of relying on a Jenkins Pipeline, for example).
+  Highly recommend reading it!
+
+- This is a [post](https://mydeveloperplanet.com/2020/05/05/easy-integration-testing-with-testcontainers/) that
+  shows how you can use it easily with Spring Boot.
+
+- [JOOQ](https://www.jooq.org/) is an interesting approach to SQL in Java. Hibernate is pretty heavy handed when it
+  comes to updates (normally, it just overwrites the _whole_ row, and you make sure you change whatever is necessary).
+  SQL does not really work that way, you can update a specific value. To enable that the JOOQ project has an SQL like
+  DSL. I personally have not tried it out yet, but would love to! I found this
+  [gist](https://gist.github.com/smacharacek/9006d0abab92c948c817c359299810e2) showing how to use TestContainers with it.

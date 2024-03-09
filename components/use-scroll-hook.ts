@@ -1,8 +1,7 @@
-/* eslint-disable mdx/no-unused-expressions */
 // This is from use-scroll-hook on github and dev.to
 // redid in typescript to learn
 
-import * as React from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 const isBrowser = typeof window !== "undefined";
 
@@ -11,9 +10,7 @@ export interface Position {
   y: number;
 }
 
-const useIsomorphicLayoutEffect = isBrowser
-  ? React.useLayoutEffect
-  : React.useEffect;
+const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;
 
 const getScrollPosition = ({
   element,
@@ -48,7 +45,7 @@ export const useScrollPosition = (
   useWindow?: boolean,
   wait?: number
 ): void => {
-  const position = React.useRef<Position>(getScrollPosition({ useWindow }));
+  const position = useRef<Position>(getScrollPosition({ useWindow }));
   let throttleTimeout: NodeJS.Timeout | null = null;
 
   const callBack = (): void => {

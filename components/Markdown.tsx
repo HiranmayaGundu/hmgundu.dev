@@ -1,15 +1,12 @@
 import * as React from "react";
 import { H1, H2, H3, H4 } from "./Heading";
-import Link from "./Link";
+
 import P from "./Paragraph";
 import styled, { CSSProp } from "styled-components";
 import { UnorderedList, OrderedList, ListItem } from "./ListComponents";
 import { Code } from "./CodeBlock";
 import { HeadingProps, Flex, Box } from "rebass/styled-components";
-import Layout from "./Layout";
-import Content from "./Content";
-import { NAV_HEIGHT } from "./Constants";
-import InkBlot from "./InkBlot";
+import InkBlot from "./ink-blot";
 import Callout from "./Callout";
 
 interface WrapperProps {
@@ -18,22 +15,13 @@ interface WrapperProps {
 
 const Wrapper = ({ children }: WrapperProps): JSX.Element => (
   <>
-    <Content
-      p={2}
-      pb={5}
-      mt={`${NAV_HEIGHT + 10}px`}
-      ml="auto"
-      mr="auto"
-      mb="0"
-    >
-      <Layout pl={[3, 4]} pr={[3, 4]}>
-        {children}
-      </Layout>
-    </Content>
+    <article>
+      <main>{children}</main>
+    </article>
   </>
 );
 
-const MarkdownLink = styled(Link)`
+const MarkdownLink = styled.a`
   text-decoration: underline;
 
   &:hover {
@@ -62,17 +50,13 @@ const heading =
   (props: HeadingProps & { css?: CSSProp }): JSX.Element =>
     (
       <Tag {...props}>
-        <Link href={`#${props.id}`}>{props.children}</Link>
+        <a href={`#${props.id}`}>{props.children}</a>
       </Tag>
     );
 
-const Strong = styled.strong`
-  font-weight: var(--font-weights-bold);
-`;
+const Strong = <strong />;
 
-const Emphasis = styled.em`
-  font-style: italic;
-`;
+const Emphasis = <em />;
 
 export default {
   h1: heading(H1),

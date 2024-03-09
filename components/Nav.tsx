@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import MenuIcon from "./MenuIcon";
+import MenuIcon from "./menu-icon";
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";

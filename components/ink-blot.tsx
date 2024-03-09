@@ -1,11 +1,9 @@
-import * as React from "react";
-
 interface InkBlotProps {
   height: string;
   width: string;
 }
 
-const InkBlot: React.FC<InkBlotProps> = ({ height, width }) => {
+const InkBlot = ({ height, width }: InkBlotProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

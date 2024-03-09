@@ -1,9 +1,5 @@
-import Gonds from "@/components/gonds";
-import SecondarySectionDivider from "@/components/secondary-section-divider";
-import SectionDivider from "@/components/section-divider";
 import type { Metadata } from "next";
 import { readPosts } from "@/lib/read-posts";
-import { Link } from "@/components/ui/link";
 import { format, parse } from "date-fns";
 
 export const metadata: Metadata = {

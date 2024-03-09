@@ -25,7 +25,7 @@ function DesktopNav() {
           href="/"
           className={cn(
             "text-xl font-bold",
-            pathname === "/" ? "text" : "text-muted-foreground"
+            pathname === "/" ? "text" : "text-muted-foreground",
           )}
         >
           Hiranmaya Gundu
@@ -35,7 +35,7 @@ function DesktopNav() {
             href="/about"
             className={cn(
               "text-xl font-bold",
-              pathname === "/about" ? "text" : "text-muted-foreground"
+              pathname === "/about" ? "text" : "text-muted-foreground",
             )}
           >
             About
@@ -44,7 +44,7 @@ function DesktopNav() {
             href="/blog"
             className={cn(
               "text-xl font-bold",
-              pathname === "/blog" ? "text" : "text-muted-foreground"
+              pathname === "/blog" ? "text" : "text-muted-foreground",
             )}
           >
             Blog
@@ -53,7 +53,7 @@ function DesktopNav() {
             href="/references"
             className={cn(
               "text-xl font-bold",
-              pathname === "/references" ? "text" : "text-muted-foreground"
+              pathname === "/references" ? "text" : "text-muted-foreground",
             )}
           >
             References
@@ -83,7 +83,7 @@ function MobileNav() {
             href="/"
             className={cn(
               "text-2xl font-bold",
-              pathname === "/" ? "text" : "text-muted-foreground"
+              pathname === "/" ? "text" : "text-muted-foreground",
             )}
           >
             Hiranmaya Gundu
@@ -96,7 +96,7 @@ function MobileNav() {
               href="/about"
               className={cn(
                 "text-2xl font-bold",
-                pathname === "/about" ? "text" : "text-muted-foreground"
+                pathname === "/about" ? "text" : "text-muted-foreground",
               )}
               onClick={toggler}
             >
@@ -106,7 +106,7 @@ function MobileNav() {
               href="/blog"
               className={cn(
                 "text-2xl font-bold",
-                pathname === "/blog" ? "text" : "text-muted-foreground"
+                pathname === "/blog" ? "text" : "text-muted-foreground",
               )}
               onClick={toggler}
             >
@@ -116,7 +116,7 @@ function MobileNav() {
               href="/references"
               className={cn(
                 "text-2xl font-bold",
-                pathname === "/references" ? "text" : "text-muted-foreground"
+                pathname === "/references" ? "text" : "text-muted-foreground",
               )}
               onClick={toggler}
             >

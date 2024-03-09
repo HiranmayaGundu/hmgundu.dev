@@ -16,11 +16,11 @@ const Gonds = (props: GondsProps) => {
   }));
   const onMouseMove: MouseEventHandler<HTMLDivElement> = useCallback(
     ({ clientX: x, clientY: y }) => set.start({ xy: calc(x, y) }),
-    [set]
+    [set],
   );
 
   const interpolateBackground = springProps.xy.to(
-    (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
+    (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`,
   );
 
   return (

@@ -43,7 +43,7 @@ export const useScrollPosition = (
   deps?: React.DependencyList,
   element?: React.MutableRefObject<HTMLElement | null>,
   useWindow?: boolean,
-  wait?: number
+  wait?: number,
 ): void => {
   const position = useRef<Position>(getScrollPosition({ useWindow }));
   let throttleTimeout: NodeJS.Timeout | null = null;

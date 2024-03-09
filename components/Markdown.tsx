@@ -47,12 +47,11 @@ const Hr = (): JSX.Element => (
 const heading =
   (Tag: React.ComponentType<HeadingProps & { css?: CSSProp }>) =>
   // eslint-disable-next-line react/display-name
-  (props: HeadingProps & { css?: CSSProp }): JSX.Element =>
-    (
-      <Tag {...props}>
-        <a href={`#${props.id}`}>{props.children}</a>
-      </Tag>
-    );
+  (props: HeadingProps & { css?: CSSProp }): JSX.Element => (
+    <Tag {...props}>
+      <a href={`#${props.id}`}>{props.children}</a>
+    </Tag>
+  );
 
 const Strong = <strong />;
 

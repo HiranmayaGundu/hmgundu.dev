@@ -29,7 +29,7 @@ export default async function Page() {
                 <time className="font-medium">
                   {format(
                     parse(post.metadata.publishedAt, "yyyy-MM-dd", new Date()),
-                    "MMMM dd, yyyy"
+                    "MMMM dd, yyyy",
                   )}
                 </time>
               </a>

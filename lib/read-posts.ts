@@ -23,7 +23,7 @@ export async function readPosts() {
         metadata,
         slug: file.split("/")[0],
       };
-    })
+    }),
   );
 
   const sortedPosts = posts
@@ -31,7 +31,7 @@ export async function readPosts() {
     .sort(
       (a, b) =>
         new Date(b.metadata?.publishedAt).getTime() -
-        new Date(a.metadata?.publishedAt).getTime()
+        new Date(a.metadata?.publishedAt).getTime(),
     );
 
   return sortedPosts;

@@ -19,7 +19,7 @@ export function Nav() {
 function DesktopNav() {
   const pathname = usePathname();
   return (
-    <nav className="hidden sm:block w-full p-4">
+    <nav className="hidden sm:block w-full p-4 z-40">
       <div className="max-w-[800px] my-0 mx-auto flex items-center justify-center sm:justify-start gap-24">
         <Link
           href="/"

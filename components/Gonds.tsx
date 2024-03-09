@@ -28,7 +28,7 @@ const Gonds = (props: GondsProps) => {
       <svg width="380px" height="380px" viewBox="0 0 595.3 841.9" {...props}>
         <style>
           {
-            ".prefix__st0{display:none}.prefix__st4{fill:#f4c59a}.prefix__st5{fill:#e5b389}.prefix__st7{fill:#202223}.prefix__st11{fill:var(--color-icon-shirt-secondary)}.prefix__st13{display:inline;fill:#f9af37}"
+            ".prefix__st0{display:none}.prefix__st4{fill:#f4c59a}.prefix__st5{fill:#e5b389}.prefix__st7{fill:#202223}.prefix__st11{fill:hsl(var(--icon-shirt-secondary))}.prefix__st13{display:inline;fill:#f9af37}"
           }
         </style>
         <g id="prefix__BG1">
@@ -37,7 +37,7 @@ const Gonds = (props: GondsProps) => {
             cx={292.1}
             cy={482.9}
             r={268}
-            fill="var(--color-icon-background)"
+            fill="hsl(var(--icon-background))"
           />
         </g>
         <g id="prefix__BG2" className="prefix__st0">
@@ -165,7 +165,7 @@ const Gonds = (props: GondsProps) => {
             <path
               id="prefix__XMLID_80_"
               d="M459.2 652.4c-1.5 1.5-3.3 2.7-5.2 3.8-11.1 6-28.2 4.5-48.9-1.4-1.6-.5-3.3-1-5-1.5-1.7 19.6-3 45.6-3 45.6-1.2 11.1-3.1 21.7-2.3 30.1 1.8 10.6 1.4 20.1-1.3 28.6v.1c-.4 1.2-.8 2.3-1.2 3.5H194.1c-1.7-20.1 1.9-40.5 8.9-61.1 2.8-10.1 5.3-19.2 7.4-26.9l.3-1.8v-.1c.3-2.1.4-4.7.4-7.7-.1-7.3-1.2-16.8-2.8-27.5-.6.8-1.5 1.1-2.9.8-.7.1-1.4.2-2.1.2-17.7 1.8-29.8 0-35.8-5.9 2.1-.7 2.5-1.8 1.6-3.3-1.4-2.1-5.5-5.1-11.8-8.6-1.5-9.1 2.2-24.6 5.7-39.9 1.1-6.6 2.6-11.7 1.4-26.9 1.9-16.6 12.7-30.8 24-45v-.1c.6-.7 1.2-1.5 1.8-2.2l8.4-3L226 491l37.4-22.6c-15.1 25.1 22.1 58 51.3 57.3 21.4-2.7 55.4-37.6 27.6-54.3 3.8-.9 14.9 5.5 24.9 11.4 7.1 4.2 13.7 8 16.8 8.7 15.3.7 39 17.8 48.1 23.3 15.7 30.4 19.4 67 23 102.5 1.3 12 2.5 23.7 4.1 35.1z"
-              fill="var(--color-icon-shirt-main)"
+              fill="hsl(var(--icon-shirt-primary))"
             />
             <path
               id="prefix__XMLID_79_"

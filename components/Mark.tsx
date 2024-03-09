@@ -1,7 +1,5 @@
-import styled from "styled-components";
+import { HTMLAttributes } from "react";
 
-const Mark = styled.mark`
-  background-color: var(--color-heading-background);
-  color: var(--color-heading-text);
-`;
-export default Mark;
+export default function MarK(props: HTMLAttributes<HTMLDivElement>) {
+  return <div {...props} />;
+}

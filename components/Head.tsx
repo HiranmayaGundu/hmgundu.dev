@@ -1,6 +1,3 @@
-import * as React from "react";
-import { useRouter } from "next/router";
-import NextHead from "next/head";
 interface HeadProps {
   title?: string;
   description?: string;
@@ -8,9 +5,8 @@ interface HeadProps {
 }
 
 const HeadComponent: React.FC<HeadProps> = ({ title, description, image }) => {
-  const { pathname } = useRouter();
   return (
-    <NextHead>
+    <>
       <title key="title">{title ? `${title}` : "unkown page"}</title>
       <meta name="description" key="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,11 +18,7 @@ const HeadComponent: React.FC<HeadProps> = ({ title, description, image }) => {
         key="og:description"
         content={description}
       />
-      <meta
-        property="og:url"
-        key="og:url"
-        content={`https://hmgundu.dev${pathname}`}
-      />
+
       <meta property="og:title" content={title} key="og:title" />
       <meta
         property="og:image"
@@ -78,7 +70,7 @@ const HeadComponent: React.FC<HeadProps> = ({ title, description, image }) => {
         href="/static/images/android-chrome-192x192.png"
       />
       <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png" />
-    </NextHead>
+    </>
   );
 };
 

@@ -1,31 +1,21 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-import remarkSlug from "remark-slug";
-import mdx from "@next/mdx";
-import bundleAnalyzer from "@next/bundle-analyzer";
-const withMDX = mdx({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkSlug],
-    providerImportSource: "@mdx-js/react",
-  },
-});
+import rehypeSlug from "rehype-slug";
+import rehypePrism from "mdx-prism";
+import createMDX from "@next/mdx";
 
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
-
-const bundleAnalyzerConfig = withBundleAnalyzer(
-  withMDX({
-    pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  })
-);
-
-const config = {
-  ...bundleAnalyzerConfig,
-  compiler: {
-    styledComponents: true,
-  },
-  reactStrictMode: true,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Configure `pageExtensions`` to include MDX files
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  // Optionally, add any other Next.js config below
 };
 
-export default config;
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [rehypeSlug, rehypePrism],
+  },
+});
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig);

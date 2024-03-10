@@ -1,3 +1,5 @@
+// @ts-nocheck
+"use client";
 import * as React from "react";
 import { useSpring, a } from "@react-spring/web";
 

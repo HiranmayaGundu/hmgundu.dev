@@ -17,7 +17,9 @@ export const metadata = {
 
 # <Mark> Working With Time in Java </Mark>
 
-### A Brief History of Time in Java
+<br />
+
+## A Brief History of Time in Java
 
 JDK 1.0 introduced the Date API as part of `java.util.date`. The date API was always _weird_.
 For example, let's look at this particular Date API:-
@@ -150,7 +152,7 @@ Fri Aug 15 00:00:00 IST 1947
 So 7 years after the release of JDK 1.1, in Java 8 new `java.time` package was introduced to
 replace `Date` and `Calendar`.
 
-### Date is Dead, Long Live DateTime!
+## Date is Dead, Long Live DateTime!
 
 [The ThreeTen project](https://www.threeten.org/) was created in 2014 to introduce a new Date and Time API
 in Java. This new project was championed by the author of `Joda-Time`, a popular DateTime library that was used
@@ -170,7 +172,7 @@ This provided:-
 
 As a developer, you would normally interact with the `java.time` package.
 
-#### Clock
+### Clock
 
 The [`Clock`](https://docs.oracle.com/javase/8/docs/api/java/time/Clock.html) class provides access to the current instant.
 You can picture it as a normal wall clock, whose clock hands are always ticking. All the other classes in the package provide
@@ -186,12 +188,12 @@ With this clock, you can always get the same Date using the `DateTime` classes.
 
 You can find the example in the [tips section](#testing).
 
-#### Instant
+### Instant
 
 The [`Instant`](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) class is an instantaneous point on the time-line.
 You can imagine it as the number of epoch seconds that have passed when the picture of the clock was taken.
 
-#### LocalDate / LocalTime / LocalDateTime
+### LocalDate / LocalTime / LocalDateTime
 
 The [`LocalDate`](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) /
 [`LocalTime`](https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html) /
@@ -213,20 +215,20 @@ The above describes a date that is the first day of 2014. But to know whether th
 we would need time zone information. Another example is birthdays. They always occur on the same date, but we would only want
 to show a "Happy Birthday!" message if that is the date in the user's time zone.
 
-#### ZonedDateTime
+### ZonedDateTime
 
 The [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) class provides the date and time
 with a time zone. It is aware of things like Daylight Saving Time (DST) and other anomalies in time zone rules like that. So,
 if you want to calculate tomorrow's date time in US Central Time, you should use this class.
 
-#### OffsetTime / OffsetDateTime
+### OffsetTime / OffsetDateTime
 
 The [`OffsetTime`](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetTime.html) and
 [`OffsetDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) classes provide the instant of time,
 as well as the offset from UTC. This class is useful when communicating over the network or to a database. You can (and should)
 convert this to `ZonedDateTime` if you are doing any time zone sensitive calculations.
 
-#### Period / Duration
+### Period / Duration
 
 The [`Period`](https://docs.oracle.com/javase/8/docs/api/java/time/Period.html) class represents a date-based amount of time.
 If you want to add '1 year, 5 months and 3 days' to a date, you should make use of the `Period` API.
@@ -236,9 +238,9 @@ If you want to add '1 year, 5 months and 3 days' to a date, you should make use 
 The [`Duration`](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) class represents quantity of time in seconds
 and nanoseconds. You can use this to add '500 seconds' to a time for example.
 
-### Tips and Tricks
+## Tips and Tricks
 
-#### Usage with JPA / Hibernate
+### Usage with JPA / Hibernate
 
 When working with JPA / Hibernate, prefer the `Local` based classes if you need date time without time zone
 and `Offset` based classes if you need date time with time zone.
@@ -248,7 +250,7 @@ and `Offset` based classes if you need date time with time zone.
 You can also use `ZonedDateTime` and `Duration` / `Instant` based classes, but this works only with Hibernate and can be
 dangerous. For a full explanation go [here](https://thorben-janssen.com/hibernate-jpa-date-and-time/).
 
-#### Testing
+### Testing
 
 Be incredibly careful when using the `.now()` method as this can affect testability. For example
 
@@ -314,7 +316,7 @@ public class MyAwesomeDateUtilitiesTest {
 
 Much better!
 
-### Conclusion
+## Conclusion
 
 The issue that I see is that unfortunately `java.util.Date` is what shows up in autocomplete when you start typing out `Date` in
 Java IDE's. This leads to `Date` being used even though it should not be. The key takeaway from this post is avoid `Date` and

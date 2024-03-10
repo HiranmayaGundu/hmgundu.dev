@@ -13,7 +13,9 @@ export const metadata = {
 
 # <Mark> RAFT: - An Understandable Consensus Algorithm </Mark>
 
-### Introduction to Consensus
+<br />
+
+## Introduction to Consensus
 
 At work, we use a lot of products that guarantee consistency in a distributed system. For example,
 we use Apache Kafka and Apache NiFi. We use these internally for message queues, to stream large
@@ -42,7 +44,7 @@ add all the real world factors (for example, changes in cluster configuration), 
 difficult to understand. Also, Paxos allows for lot of variations in its implementation. If there is no
 “true to spec” implementation, it becomes difficult to formally prove that your implementation does consensus correctly.
 
-### Glossary of Terms
+## Glossary of Terms
 
 - **Client:** The machine that issues an instruction. An instruction consists of the operation and a unique serial number
   that can identify the instruction.
@@ -55,7 +57,7 @@ difficult to understand. Also, Paxos allows for lot of variations in its impleme
   time of persistence. I.e., all the entries with same index number and term are the same command.
 - **Committed Entry:** An entry that has been recreated in most of the servers.
 
-### How Raft Works
+## How Raft Works
 
 Raft works on a leader-follower basis. The leader serves the clients, leader sends the data to the followers to replicate.
 It's the leader's resposibility to ensure that the consistency is maintained.
@@ -66,7 +68,7 @@ To explain how Raft works, I will split this section into multiple scenarios. In
 the current “setup” of the Raft system and then explains what happens in that scenario. These scenarios cover
 every possible the state the system can be in, and some states resolve into older states.
 
-#### The Start Scenario
+### The Start Scenario
 
 **Setup:** The system has just been deployed. The system has not yet received a request from a client.
 
@@ -104,7 +106,7 @@ The candidate that receives the most votes is the leader. The system can now ser
   its candidate / leader state and then updates its term number.
 </Callout>
 
-#### The Normal Operation Scenario
+### The Normal Operation Scenario
 
 **Setup:**In this scenario, there is an established leader and all the servers are connected to the leader and
 have up to date logs.
@@ -123,7 +125,7 @@ the client to the leader. The leader receives a request, then
 In this situation, all the servers have the exact same log as the leader. This is the ideal scenario, and
 the leader continues to perform requests.
 
-#### The Lagging Follower
+### The Lagging Follower
 
 **Setup:** In this scenario, there is an established leader and all the servers are connected to the leader. This
 follower has not received all the requests to replicate the last two requests.
@@ -141,7 +143,7 @@ follower has not received all the requests to replicate the last two requests.
 4. The above steps repeat until the previous entry matches what the leader sends. Then the follower commits
    the requested entry. Then it again receives the subsequent commands and commits them into its log.
 
-#### The Partitioned Follower Type A
+### The Partitioned Follower Type A
 
 **Setup:** An up to date follower has lost connectivity from the other servers. In this time its timer runs out and
 turns into a candidate. At this point it also regains connectivity with the other servers.
@@ -156,7 +158,7 @@ No new request has been made at this time.
 3. Leader gets a request for a vote from a candidate with a higher term. It becomes a follower and accepts the vote.
 4. Candidate becomes leader.
 
-#### The Partitioned Follower Type B
+### The Partitioned Follower Type B
 
 **Setup:** An up to date follower has lost connectivity from the other servers. In this time its timer runs out
 and turns into a candidate. At this point it also regains connectivity with the other servers.
@@ -171,7 +173,7 @@ New requests have been made and committed by the leader.
 3. The servers that reject the vote, however, increment their term. A new election
    process will start, and a new leader will be elected.
 
-#### The Partitioned Leader Type A
+### The Partitioned Leader Type A
 
 **Setup:** The leader has lost connectivity from the other servers. The leader has received 2 requests
 in this time and adds them to its log. No follower times out, and connectivity is regained.
@@ -184,7 +186,7 @@ in this time and adds them to its log. No follower times out, and connectivity i
 2. The followers receive the heartbeat where the previous entry does not match. This resolves
    into The Lagging Follower situation.
 
-#### The Partitioned Leader Type B
+### The Partitioned Leader Type B
 
 **Setup:** The leader has lost connectivity from the other servers. The leader has received 2 requests in
 this time and adds them to its log. A new leader is elected among the other clusters. The partitioned
@@ -203,7 +205,7 @@ The actual leader has also accepted a request.
 **Note:** This is one scenario. The partitioned leader may also receive a call, which
 it accepts as it has a higher term. Either way, it becomes a follower.
 
-#### Leader Crash
+### Leader Crash
 
 **Setup:**:: The leader crashes **after committing** the result but before returning the result to the client.
 
@@ -214,11 +216,11 @@ it accepts as it has a higher term. Either way, it becomes a follower.
 1. The client resends the same command with the same serial number.
 2. The new leader has the serial number in it is committed log so immediately returns the result.
 
-#### Partitioned Candidates
+### Partitioned Candidates
 
 A partitioned candidate will resolve to the same scenarios as a partitioned follower.
 
-### Additional Notes
+## Additional Notes
 
 - The leader always appends data. The overwrite only happens if it has converted to a follower.
 - The leader always has the highest committed index.
@@ -230,7 +232,7 @@ I am not going into those details here as they are extensions to these basic ope
 The fact that these are only so few possible states for the system is why Raft is understandable.
 The authors of the paper call this the reduction of state space.
 
-### Further Reading
+## Further Reading
 
 As mentioned, the [paper](https://raft.github.io/raft.pdf) itself talks about **log compaction**,
 **cluster membership changes** and **configuration changes**.
@@ -242,7 +244,7 @@ Yugabyte DB is a new distributed database that internally uses Raft.
 lecture where they talk about the challenges of using Raft in a DB and how they overcome it
 using Leader Leases and other interesting solutions.
 
-### References
+## References
 
 - [The Extended Version of the Raft Paper](https://raft.github.io/raft.pdf)
 - [The Raft Website](https://raft.github.io/)

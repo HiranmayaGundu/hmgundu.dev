@@ -9,7 +9,7 @@ export const metadata = {
 
 # <Mark> Using Files as ConfigMaps in Kubernetes </Mark>
 
-<br />{" "}
+<br />
 
 The canonical example for ConfigMaps in K8S looks something like this
 
@@ -85,7 +85,7 @@ somePropertyThatIsConstant=HELLO
 somePropertyThatChanges={{ .Values.some_property_that_changes }}
 ```
 
-### Explanation
+## Explanation
 
 `.Files.Glob` is a helper that Helm provides to read directories inside the Helm chart folder structure, and `.AsConfig` is a helper
 that reads the files as configuration. We then pass those files to the `tpl` function to replace the template strings in the files.

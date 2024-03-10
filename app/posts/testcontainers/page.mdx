@@ -17,6 +17,8 @@ export const metadata = {
 
 # <Mark> TestContainers: The Modern Way of Writing Database Tests </Mark>
 
+<br />
+
 When testing Java code that interacts directly with your database, it is common practice to let the test cases target
 in-memory databases like H2 or Fongo (an in-memory MongoDB). This ensures that we do not mock the database calls.
 The H2 database is **maintained by** the test cases. The lack of the need to maintain the database is a **huge win**.
@@ -152,7 +154,7 @@ And then added the `@Before` and `@Rule` code as shown above.
 
 And that’s it! Our test cases are now migrated.
 
-### Limitations
+## Limitations
 
 There are of course drawbacks to using TestContainers. Test cases will be much slower compared to H2.
 There are ways to mitigate this. The `@Rule` annotation brings up a new database for every test case
@@ -175,7 +177,7 @@ on GitHub.
 
 ---
 
-### Further Reading
+## Further Reading
 
 - I found this [post](https://phauer.com/2017/dont-use-in-memory-databases-tests-h2/) that
   echoed my sentiments exactly! Philipp Hauer goes in more depth and also shows an implementation where the

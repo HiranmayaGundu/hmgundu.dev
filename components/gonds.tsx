@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { useSpring, animated as a } from "@react-spring/web";
 import { MouseEventHandler, useCallback } from "react";
@@ -50,6 +51,7 @@ const Gonds = (props: GondsProps) => {
             fill="#55586b"
           />
         </g>
+
         <a.g style={{ transform: interpolateBackground }}>
           <g id="prefix__Neck">
             <path

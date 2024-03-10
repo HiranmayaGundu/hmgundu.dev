@@ -4,7 +4,7 @@ import SectionDivider from "@/components/section-divider";
 import type { Metadata } from "next";
 import { readPosts } from "@/lib/read-posts";
 import { Link } from "@/components/ui/link";
-import Mark from "@/components/mark";
+import Mark from "@/components/ui/mark";
 
 export const metadata: Metadata = {
   title: "Hi I'm Hiranmaya Gundu 👋",

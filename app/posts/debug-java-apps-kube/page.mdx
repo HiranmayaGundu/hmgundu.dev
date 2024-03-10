@@ -10,12 +10,12 @@ export const metadata = {
 };
 
 <Head
-  title={meta.title}
-  description={meta.summary}
+  title={metadata.title}
+  description={metadata.summary}
   image="debug-java-kube-seo.png"
 />
 
-## <Mark> Remote Debugging Java Applications in Kubernetes </Mark>
+# <Mark> Remote Debugging Java Applications in Kubernetes </Mark>
 
 Recently, when implementing a feature in our application, I had a `NullPointerException` issue that would occur only on Kubernetes.
 This issue was not reproducible on local, and was not reproducible running the docker container either. To debug this issue,

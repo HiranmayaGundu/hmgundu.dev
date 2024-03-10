@@ -4,6 +4,7 @@ import SectionDivider from "@/components/section-divider";
 import type { Metadata } from "next";
 import { readPosts } from "@/lib/read-posts";
 import { Link } from "@/components/ui/link";
+import Mark from "@/components/mark";
 
 export const metadata: Metadata = {
   title: "Hi I'm Hiranmaya Gundu 👋",
@@ -19,7 +20,7 @@ export default async function Page() {
           <div className="self-center place-self-center">
             <h1 className="text-5xl font-bold leading-tight text-foreground">
               Hi! I&apos;m <br />{" "}
-              <span className="bg-icon-shirt-primary">Hiranmaya Gundu</span>.{" "}
+              <Mark className="bg-icon-shirt-primary">Hiranmaya Gundu</Mark>.{" "}
               <div className="inline-block motion-safe:animate-[shake_3s_ease-in-out] motion-safe:hover:animate-shake motion-safe:hover:ease-in-out motion-safe:hover:repeat-infinite">
                 👋
               </div>

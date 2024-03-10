@@ -3,5 +3,11 @@ export default function AboutLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="max-w-[800px] mx-auto">{children}</main>;
+  return (
+    <main>
+      <article className="max-w-[58em] bg-secondary-background mx-auto rounded-lg px-16 py-8 box-border shadow shadow-current/50">
+        {children}
+      </article>
+    </main>
+  );
 }

@@ -3,7 +3,6 @@ import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import Prism from "prism-react-renderer/prism";
 import theme from "prism-react-renderer/themes/nightOwl";
 import Pre from "./Pre";
-import { ExpanderDiv } from "./ExpanderDiv";
 import { TextProps } from "rebass/styled-components";
 import Text from "./Text";
 import { CSSProp } from "styled-components";
@@ -35,7 +34,7 @@ const CodeBlock = ({ children, className }: CodeBlockProps): JSX.Element => {
         getLineProps,
         getTokenProps,
       }): React.ReactNode => (
-        <ExpanderDiv>
+        <div>
           <Pre className={className} style={{ ...style, padding: "20px" }}>
             <code>
               {tokens.map((line, i) => (
@@ -47,7 +46,7 @@ const CodeBlock = ({ children, className }: CodeBlockProps): JSX.Element => {
               ))}
             </code>
           </Pre>
-        </ExpanderDiv>
+        </div>
       )}
     </Highlight>
   );

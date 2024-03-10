@@ -53,7 +53,7 @@ So this is my solution!
 
 File directory structure:
 
-```sh
+```bash
 application-charts
 |
 |---config
@@ -80,7 +80,7 @@ data: { { - (tpl (.Files.Glob "config/*").AsConfig . ) | nindent 2 } }
 
 And my properties file looks like this
 
-```sh
+```bash
 somePropertyThatIsConstant=HELLO
 somePropertyThatChanges={{ .Values.some_property_that_changes }}
 ```

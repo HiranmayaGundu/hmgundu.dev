@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { Link } from "./components/ui/link";
 import { Separator } from "./components/ui/separator";
+import Pre from "./components/Pre";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -28,6 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: (props) => (
       <blockquote className="mt-6 border-l-2 pl-6" {...props} />
     ),
+    pre: (props) => <Pre {...props} />,
     hr: (props) => <Separator className="my-4" {...props} />,
     ...components,
   };

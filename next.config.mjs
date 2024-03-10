@@ -1,4 +1,5 @@
 import rehypeSlug from "rehype-slug";
+import rehypePrism from "mdx-prism";
 import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
@@ -12,7 +13,7 @@ const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
     remarkPlugins: [],
-    rehypePlugins: [rehypeSlug],
+    rehypePlugins: [rehypeSlug, rehypePrism],
   },
 });
 

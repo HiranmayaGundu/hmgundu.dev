@@ -16,6 +16,10 @@
     --icon-shirt-primary: 39 90% 64%;
     --icon-shirt-secondary: 37 94% 60%;
 
+    --info: 208 96% 32%;
+    --warning: 38 92% 50%;
+    --danger: 0 84% 60%;
+
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
 
@@ -53,6 +57,10 @@
     --icon-background: 37 96% 65%;
     --icon-shirt-primary: 1 58% 45%;
     --icon-shirt-secondary: 0 44% 35%;
+
+    --info: 199 95% 74%;
+    --warning: 46 97% 65%;
+    --danger: 0 94% 82%;
 
     --card: 20 14.3% 4.1%;
     --card-foreground: 60 9.1% 97.8%;

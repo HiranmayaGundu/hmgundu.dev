@@ -12,7 +12,7 @@ export default async function Page() {
   return (
     <main className="max-w-[800px] mx-auto">
       <section className="flex flex-col gap-4">
-        <h1 className="text-5xl font-bold leading-tight text-foreground">
+        <h1 className="text-4xl font-bold leading-tight text-foreground">
           Blog
         </h1>
         <div className="flex flex-col gap-16">

@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
-import Pre from "@/components/pre-new";
+import Pre from "@/components/pre";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

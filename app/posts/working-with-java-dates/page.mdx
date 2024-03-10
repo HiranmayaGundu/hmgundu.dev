@@ -152,6 +152,7 @@ Fri Aug 15 00:00:00 IST 1947
 So 7 years after the release of JDK 1.1, in Java 8 new `java.time` package was introduced to
 replace `Date` and `Calendar`.
 
+<br />
 ## Date is Dead, Long Live DateTime!
 
 [The ThreeTen project](https://www.threeten.org/) was created in 2014 to introduce a new Date and Time API
@@ -172,6 +173,7 @@ This provided:-
 
 As a developer, you would normally interact with the `java.time` package.
 
+<br />
 ### Clock
 
 The [`Clock`](https://docs.oracle.com/javase/8/docs/api/java/time/Clock.html) class provides access to the current instant.
@@ -188,11 +190,13 @@ With this clock, you can always get the same Date using the `DateTime` classes.
 
 You can find the example in the [tips section](#testing).
 
+<br />
 ### Instant
 
 The [`Instant`](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) class is an instantaneous point on the time-line.
 You can imagine it as the number of epoch seconds that have passed when the picture of the clock was taken.
 
+<br />
 ### LocalDate / LocalTime / LocalDateTime
 
 The [`LocalDate`](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) /
@@ -215,12 +219,14 @@ The above describes a date that is the first day of 2014. But to know whether th
 we would need time zone information. Another example is birthdays. They always occur on the same date, but we would only want
 to show a "Happy Birthday!" message if that is the date in the user's time zone.
 
+<br />
 ### ZonedDateTime
 
 The [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) class provides the date and time
 with a time zone. It is aware of things like Daylight Saving Time (DST) and other anomalies in time zone rules like that. So,
 if you want to calculate tomorrow's date time in US Central Time, you should use this class.
 
+<br />
 ### OffsetTime / OffsetDateTime
 
 The [`OffsetTime`](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetTime.html) and
@@ -228,6 +234,7 @@ The [`OffsetTime`](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetTim
 as well as the offset from UTC. This class is useful when communicating over the network or to a database. You can (and should)
 convert this to `ZonedDateTime` if you are doing any time zone sensitive calculations.
 
+<br />
 ### Period / Duration
 
 The [`Period`](https://docs.oracle.com/javase/8/docs/api/java/time/Period.html) class represents a date-based amount of time.
@@ -238,6 +245,7 @@ If you want to add '1 year, 5 months and 3 days' to a date, you should make use 
 The [`Duration`](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) class represents quantity of time in seconds
 and nanoseconds. You can use this to add '500 seconds' to a time for example.
 
+<br />
 ## Tips and Tricks
 
 ### Usage with JPA / Hibernate
@@ -250,6 +258,7 @@ and `Offset` based classes if you need date time with time zone.
 You can also use `ZonedDateTime` and `Duration` / `Instant` based classes, but this works only with Hibernate and can be
 dangerous. For a full explanation go [here](https://thorben-janssen.com/hibernate-jpa-date-and-time/).
 
+<br />
 ### Testing
 
 Be incredibly careful when using the `.now()` method as this can affect testability. For example
@@ -316,6 +325,7 @@ public class MyAwesomeDateUtilitiesTest {
 
 Much better!
 
+<br />
 ## Conclusion
 
 The issue that I see is that unfortunately `java.util.Date` is what shows up in autocomplete when you start typing out `Date` in

@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import fg from "fast-glob";
+import JSON5 from "json5";
 
 const postsDir = path.join(process.cwd(), "app", "posts");
 
@@ -18,9 +19,9 @@ export async function readPosts() {
       if (!match || typeof match[1] !== "string") {
         throw new Error(`${file} needs to export const metadata = {}`);
       }
-      const metadata = JSON.parse(
-        match[1].replace(/([\w]+):/g, '"$1":').replace(/'/g, '"'),
-      );
+      // The metadata block is a JS object literal (unquoted keys, trailing
+      // commas), i.e. valid JSON5. Parse it as data instead of eval'ing it.
+      const metadata = JSON5.parse(match[1]);
       return {
         metadata,
         slug: file.split("/")[0],

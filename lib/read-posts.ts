@@ -16,7 +16,7 @@ export async function readPosts() {
       const contents = await fs.readFile(filePath, "utf-8");
       const match = META.exec(contents);
       if (!match || typeof match[1] !== "string") {
-        throw new Error(`${name} needs to export const meta = {}`);
+        throw new Error(`${file} needs to export const metadata = {}`);
       }
       const metadata = eval("(" + match[1] + ")");
       return {

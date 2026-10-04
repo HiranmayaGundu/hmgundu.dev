@@ -6,6 +6,16 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   reactCompiler: true,
   // Optionally, add any other Next.js config below
+
+  async redirects() {
+    return [
+      {
+        source: "/posts/:slug*",
+        destination: "/blog/:slug*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({

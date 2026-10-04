@@ -51,7 +51,6 @@
     "lint-staged": "^17.6.0",
     "oxfmt": "^0.71.0",
     "oxlint": "^1.86.0",
-    "postcss": "^8.4.35",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2"
   },

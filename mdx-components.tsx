@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import { Link } from "@/components/ui/link";
+import { LinkTooltip } from "@/components/link-tooltip";
 import { Separator } from "@/components/ui/separator";
 import Pre from "@/components/pre";
 import Code from "./components/ui/code";
@@ -21,7 +22,24 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: (props) => (
       <p className="text-lg font-medium leading-normal" {...props} />
     ),
-    a: (props) => <Link {...props} />,
+    a: ({ href, children, ...rest }) => {
+      // Only links leaving the site get the destination popover. In-page
+      // anchors and relative links render as plain links.
+      if (href && /^https?:\/\//.test(href)) {
+        return (
+          <LinkTooltip href={href}>
+            <Link href={href} {...rest}>
+              {children}
+            </Link>
+          </LinkTooltip>
+        );
+      }
+      return (
+        <Link href={href} {...rest}>
+          {children}
+        </Link>
+      );
+    },
     ul: (props) => <ul className="list-disc list-outside pl-4" {...props} />,
     ol: (props) => <ol className="list-decimal list-outside pl-4" {...props} />,
     li: (props) => (

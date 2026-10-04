@@ -1,6 +1,115 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-info: hsl(var(--info));
+  --color-warning: hsl(var(--warning));
+  --color-danger: hsl(var(--danger));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-secondary-background: hsl(var(--secondary-background));
+  --color-icon-shirt-primary: hsl(var(--icon-shirt-primary));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-shake: 3s shake ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes shake {
+    10%,
+    90% {
+      transform: rotate(15deg);
+    }
+    20%,
+    80% {
+      transform: rotate(-15deg);
+    }
+    30%,
+    50%,
+    70% {
+      transform: rotate(15deg);
+    }
+    40%,
+    60% {
+      transform: rotate(-15deg);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /* 216,12.2%,24.1% */
 /* hsl(210,38.9%,92.9%) */
@@ -98,27 +207,6 @@
   }
 }
 
-/* LinkTooltip (components/link-tooltip.tsx) uses Tippy's theme="link".
-   Tippy renders:
-     <div class="tippy-box" data-theme="link">
-       <div class="tippy-content">…</div>
-       <div class="tippy-arrow" />
-     </div>
-
-   These rules are deliberately NOT inside an `@layer` block: Tailwind's
-   components layer is dropped from the compiled stylesheet here (verified
-   with `tailwindcss -i app/globals.css`), so anything declared in it never
-   reaches the browser. Keep them at the top level.
-
-   Colours come from the --popover tokens rather than Tippy's built-in
-   light/dark themes, so the tooltip tracks the .dark class that next-themes
-   toggles and needs no JS theme plumbing.
-
-   The arrow is painted with `color`, not background-color: tippy.css leaves
-   .tippy-arrow::before's border transparent and resolves the placement's
-   facing border to `initial` (= currentColor). It also ships a default
-   `.tippy-arrow { color: #333 }`, so this selector needs to be more specific
-   than that to win. */
 .tippy-box[data-theme~="link"] {
   @apply bg-popover text-popover-foreground border border-border;
   border-radius: calc(var(--radius) - 2px);

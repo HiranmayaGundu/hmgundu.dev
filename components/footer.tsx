@@ -1,5 +1,6 @@
 import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { Link } from "./ui/link";
+import { LinkTooltip } from "./link-tooltip";
 
 export function Footer() {
   return (
@@ -17,18 +18,25 @@ export function Footer() {
             <h3 className="font-bold text-xl">Social Media</h3>
             <div className="flex gap-2">
               <GitHubLogoIcon width={24} height={24} />
-              <Link
-                href="https://github.com/HiranmayaGundu/hmgundu.dev"
-                rel="me noopener"
-              >
-                View the source on GitHub
-              </Link>
+              <LinkTooltip href="https://github.com/HiranmayaGundu/hmgundu.dev">
+                <Link
+                  href="https://github.com/HiranmayaGundu/hmgundu.dev"
+                  rel="me noopener"
+                >
+                  View the source on GitHub
+                </Link>
+              </LinkTooltip>
             </div>
             <div className="flex gap-2">
               <TwitterLogoIcon width={24} height={24} />
-              <Link href="https://twitter.com/hiranmayagundu" rel="me noopener">
-                Follow me on twitter
-              </Link>
+              <LinkTooltip href="https://twitter.com/hiranmayagundu">
+                <Link
+                  href="https://twitter.com/hiranmayagundu"
+                  rel="me noopener"
+                >
+                  Follow me on twitter
+                </Link>
+              </LinkTooltip>
             </div>
           </div>
         </footer>

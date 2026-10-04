@@ -4,6 +4,7 @@ import SectionDivider from "@/components/section-divider";
 import type { Metadata } from "next";
 import { readPosts } from "@/lib/read-posts";
 import { LinkTooltip } from "@/components/link-tooltip";
+import { Link } from "@/components/ui/link";
 import Mark from "@/components/ui/mark";
 
 export const metadata: Metadata = {
@@ -31,7 +32,7 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      <div className="relative w-full pt-8 z-[100]">
+      <div className="relative w-full pt-8 z-100">
         <SectionDivider />
       </div>
       <div className="bg-secondary-background">
@@ -39,7 +40,9 @@ export default async function Page() {
           <p className="text-2xl font-medium leading-normal max-w-[800px] mx-auto">
             I&apos;m a Software Engineer at{" "}
             <LinkTooltip href="https://www.sigmacomputing.com/">
-              Sigma Computing
+              <Link href="https://www.sigmacomputing.com/">
+                Sigma Computing
+              </Link>
             </LinkTooltip>
             , working on building a better business intelligence tool. This
             website is my personal blog, where I write about software
@@ -47,7 +50,7 @@ export default async function Page() {
             interesting in the field of software! <br /> <br />
             You can follow me on{" "}
             <LinkTooltip href="https://twitter.com/hiranmayagundu">
-              Twitter
+              <Link href="https://twitter.com/hiranmayagundu">Twitter</Link>
             </LinkTooltip>
             .
           </p>

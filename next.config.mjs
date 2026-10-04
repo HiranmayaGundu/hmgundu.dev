@@ -16,7 +16,13 @@ const withMDX = createMDX({
   // Tuple form [name, options] is supported; options must be plain JSON.
   options: {
     remarkPlugins: [],
-    rehypePlugins: ["rehype-slug", ["@shikijs/rehype", { theme: "night-owl" }]],
+    rehypePlugins: [
+      "rehype-slug",
+      [
+        "@shikijs/rehype",
+        { themes: { light: "night-owl-light", dark: "night-owl" } },
+      ],
+    ],
   },
 });
 

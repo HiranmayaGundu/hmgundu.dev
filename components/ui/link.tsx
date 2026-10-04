@@ -1,9 +1,11 @@
-import { LinkHTMLAttributes, forwardRef } from "react";
+import { type LinkHTMLAttributes, type Ref } from "react";
 
-export const Link = forwardRef<
-  HTMLAnchorElement,
-  LinkHTMLAttributes<HTMLAnchorElement>
->(function Link(props, ref) {
+export function Link({
+  ref,
+  ...props
+}: LinkHTMLAttributes<HTMLAnchorElement> & {
+  ref?: Ref<HTMLAnchorElement>;
+}) {
   return (
     <a
       ref={ref}
@@ -11,4 +13,4 @@ export const Link = forwardRef<
       {...props}
     />
   );
-});
+}

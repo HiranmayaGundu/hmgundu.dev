@@ -29,5 +29,15 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# MonoLisa is a commercial font - never commit font binaries.
+# Served via next/font/local; files come from app/fonts/ locally or from a
+# private Vercel Blob store at build time (see scripts/fetch-fonts.mjs).
+app/fonts/*.woff
+app/fonts/*.woff2
+app/fonts/*.ttf
+app/fonts/*.otf
+
 
 /pages/seo.tsx
+.vercel
+.env*

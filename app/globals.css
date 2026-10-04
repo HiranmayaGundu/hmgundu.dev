@@ -4,6 +4,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* MonoLisa (commercial) is served via next/font/local in app/layout.tsx,
+   which defines --font-monolisa. Binaries stay out of git (see .gitignore). */
+
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
@@ -92,6 +95,11 @@
       transform: rotate(-15deg);
     }
   }
+}
+
+/* font-mono resolves to the next/font/local MonoLisa variable. */
+@theme inline {
+  --font-mono: var(--font-monolisa);
 }
 
 .dark {

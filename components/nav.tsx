@@ -69,7 +69,7 @@ function DesktopNav() {
 
 function MobileNav() {
   const [menu, setMenu] = useState(false);
-  const toggler = useCallback(() => setMenu((menu) => !menu), []);
+  const toggler = useCallback(() => setMenu((m) => !m), []);
   const pathname = usePathname();
   return (
     <nav className="sm:hidden w-full h-full p-4">

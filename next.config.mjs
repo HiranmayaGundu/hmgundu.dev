@@ -6,6 +6,11 @@ import createMDX from "@next/mdx";
 const nextConfig = {
   // Configure `pageExtensions`` to include MDX files
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  // Linting is handled by oxlint (`npm run lint`); never let Next.js builds
+  // depend on ESLint being installed.
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   // Optionally, add any other Next.js config below
 };
 

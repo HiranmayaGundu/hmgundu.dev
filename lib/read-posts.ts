@@ -18,7 +18,9 @@ export async function readPosts() {
       if (!match || typeof match[1] !== "string") {
         throw new Error(`${file} needs to export const metadata = {}`);
       }
-      const metadata = eval("(" + match[1] + ")");
+      const metadata = JSON.parse(
+        match[1].replace(/([\w]+):/g, '"$1":').replace(/'/g, '"'),
+      );
       return {
         metadata,
         slug: file.split("/")[0],
@@ -27,8 +29,8 @@ export async function readPosts() {
   );
 
   const sortedPosts = posts
-    .filter((posts) => posts.metadata?.published)
-    .sort(
+    .filter((post) => post.metadata?.published)
+    .toSorted(
       (a, b) =>
         new Date(b.metadata?.publishedAt).getTime() -
         new Date(a.metadata?.publishedAt).getTime(),

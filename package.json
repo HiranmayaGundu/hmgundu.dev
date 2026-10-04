@@ -1,14 +1,17 @@
 {
   "name": "hmgundu.dev",
   "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest",
     "analyze": "ANALYZE=true yarn build",
-    "prepare": "husky install",
-    "lint": "next lint"
+    "prepare": "husky",
+    "lint": "oxlint",
+    "fmt": "oxfmt --write",
+    "fmt:check": "oxfmt --check"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
@@ -42,30 +45,24 @@
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.18",
-    "eslint": "^8",
-    "eslint-config-next": "^14.1.1",
-    "eslint-config-prettier": "^8.5.0",
-    "husky": "^7.0.4",
+    "husky": "^9.1.7",
     "install": "^0.13.0",
-    "lint-staged": ">=12.3.7",
+    "lint-staged": "^17.6.0",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
     "postcss": "^8.4.35",
-    "prettier": "^3",
     "tailwindcss": "^3",
     "typescript": "^5"
   },
-  "engines": {
-    "node": ">= 18.0.0"
-  },
-  "license": "MIT",
   "lint-staged": {
-    "*.{ts,tsx,js,css,json}": [
-      "prettier --write"
+    "*": [
+      "oxfmt --no-error-on-unmatched-pattern"
     ],
     "*.{js,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.mdx": [
-      "prettier --write --parser mdx"
+      "oxlint --fix"
     ]
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }

@@ -1,5 +1,4 @@
 import { Twitter, Github } from "lucide-react";
-import { Separator } from "./ui/separator";
 import { Link } from "./ui/link";
 
 export function Footer() {

@@ -23,10 +23,14 @@ export default async function Page() {
                   {post.metadata.title}
                 </h3>
                 <time className="font-medium">
-                  {format(
-                    parse(post.metadata.publishedAt, "yyyy-MM-dd", new Date()),
-                    "MMMM dd, yyyy",
-                  )}
+                  {(() => {
+                    const date = parse(
+                      post.metadata.publishedAt,
+                      "yyyy-MM-dd",
+                      new Date(),
+                    );
+                    return format(date, "MMMM dd, yyyy");
+                  })()}
                 </time>
               </a>
               <p className="text-lg font-medium leading-normal ">

@@ -46,13 +46,13 @@ export const useScrollPosition = (
   wait?: number,
 ): void => {
   const position = useRef<Position>(getScrollPosition({ useWindow }));
-  let throttleTimeout: NodeJS.Timeout | null = null;
+  const throttleTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const callBack = (): void => {
     const currPos = getScrollPosition({ element, useWindow });
     effect({ prevPos: position.current, currPos });
     position.current = currPos;
-    throttleTimeout = null;
+    throttleTimeout.current = null;
   };
 
   useIsomorphicLayoutEffect(() => {
@@ -62,8 +62,8 @@ export const useScrollPosition = (
 
     const handleScroll = (): void => {
       if (wait) {
-        if (throttleTimeout === null) {
-          throttleTimeout = setTimeout(callBack, wait);
+        if (throttleTimeout.current === null) {
+          throttleTimeout.current = setTimeout(callBack, wait);
         }
       } else {
         callBack();
@@ -74,7 +74,9 @@ export const useScrollPosition = (
 
     const cleanup = (): void => {
       window.removeEventListener("scroll", handleScroll);
-      throttleTimeout && clearTimeout(throttleTimeout);
+      if (throttleTimeout.current) {
+        clearTimeout(throttleTimeout.current);
+      }
     };
 
     return cleanup;

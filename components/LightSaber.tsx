@@ -8,11 +8,9 @@ interface LightSaberProps {
   titleId?: string;
 }
 
-const LightSaber: React.FC<React.SVGProps<SVGSVGElement> & LightSaberProps> = ({
-  title,
-  titleId,
-  ...props
-}) => {
+const LightSaber: React.FC<React.SVGProps<SVGSVGElement> & LightSaberProps> = (
+  props,
+) => {
   const springProps = useSpring({ x: 450, from: { x: 0 } });
   return (
     <svg width={40} height={40} viewBox="279.9 40.6 35.5 236.4" {...props}>

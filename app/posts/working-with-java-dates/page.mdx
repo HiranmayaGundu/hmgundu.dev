@@ -52,7 +52,7 @@ as a new API [here](https://maggiepint.com/2017/04/09/fixing-javascript-date-get
 
 </Callout>
 
-<br />{" "}
+<br />
 
 The Calendar class fixed many of these issues. It gave constants to all the Month's and Days of the week. It handled
 timezones and locales. So, to create a new `Calendar` object with `2014-Jan-1`, you can now do
@@ -159,7 +159,7 @@ replace `Date` and `Calendar`.
 in Java. This new project was championed by the author of `Joda-Time`, a popular DateTime library that was used
 prior to Java 8. This project introduced the `java.time` package into Java 8.
 
-<br />{" "}
+<br />
 
 This provided:-
 
@@ -169,7 +169,7 @@ This provided:-
 - [`java.time.temporal`](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/package-summary.html) - Gives access to date and time fileds (like Hours, Days etc) and date time adjustors (`firstDayOfMonth()`).
 - [`java.time.zone`](https://docs.oracle.com/javase/8/docs/api/java/time/zone/package-summary.html) - Support for time-zones and their rules.
 
-<br />{" "}
+<br />
 
 As a developer, you would normally interact with the `java.time` package.
 
@@ -181,7 +181,7 @@ You can picture it as a normal wall clock, whose clock hands are always ticking.
 an _instant_ of this date. You can imagine `LocalDateTime` as you are clicking a picture of that clock. The value of the time at that
 instant is stored in the class.
 
-<br />{" "}
+<br />
 
 This class is particularly useful for testing. You can create a clock this is fixed to a particular date (think of it as a broken clock).
 With this clock, you can always get the same Date using the `DateTime` classes.
@@ -213,7 +213,7 @@ this:
 final LocalDateTime firstDayOf2014 = LocalDateTime.of(2014, Month.JANUARY, 1, 0, 0);
 ```
 
-<br />{" "}
+<br />
 
 The above describes a date that is the first day of 2014. But to know whether the time right now is greater than that date,
 we would need time zone information. Another example is birthdays. They always occur on the same date, but we would only want

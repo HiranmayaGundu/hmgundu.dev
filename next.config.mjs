@@ -13,9 +13,10 @@ const withMDX = createMDX({
   // function. @next/mdx resolves string references at compile time, and
   // Turbopack requires loader options to be serializable - imported
   // functions fail the build with "does not have serializable options".
+  // Tuple form [name, options] is supported; options must be plain JSON.
   options: {
     remarkPlugins: [],
-    rehypePlugins: ["rehype-slug", "mdx-prism"],
+    rehypePlugins: ["rehype-slug", ["@shikijs/rehype", { theme: "night-owl" }]],
   },
 });
 

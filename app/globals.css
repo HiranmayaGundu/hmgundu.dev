@@ -217,3 +217,13 @@
 .tippy-box[data-theme~="link"] > .tippy-arrow {
   @apply text-popover;
 }
+
+/* Fenced code blocks are highlighted by shiki (see rehype-shiki in
+   next.config.mjs), which paints the <pre> itself. The shared Code
+   component also styles inline <code>, so neutralize its chip background
+   and padding inside shiki blocks. Unlayered on purpose: it must win over
+   the utilities layer. */
+.shiki code {
+  background-color: transparent;
+  padding: 0;
+}

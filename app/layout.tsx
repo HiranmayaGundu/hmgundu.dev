@@ -24,12 +24,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          href="https://unpkg.com/prism-theme-night-owl@1.4.0/build/style.css"
-          rel="stylesheet"
-        />
-      </head>
       <body
         className={cn("bg-background font-sans antialiased", fontSans.variable)}
       >

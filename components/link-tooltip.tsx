@@ -8,9 +8,6 @@ interface LinkTooltipProps {
   children: React.ReactNode;
 }
 
-/**
- * A link that reveals its destination URL on hover.
- */
 export function LinkTooltip({ href, children }: LinkTooltipProps) {
   const [reference, setReference] = React.useState<Element | null>(null);
 

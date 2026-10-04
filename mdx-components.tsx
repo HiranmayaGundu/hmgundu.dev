@@ -23,8 +23,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <p className="text-lg font-medium leading-normal" {...props} />
     ),
     a: ({ href, children, ...rest }) => {
-      // Only links leaving the site get the destination popover. In-page
-      // anchors and relative links render as plain links.
       if (href && /^https?:\/\//.test(href)) {
         return (
           <LinkTooltip href={href}>

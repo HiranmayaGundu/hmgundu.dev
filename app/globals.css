@@ -121,8 +121,8 @@
 
     --secondary-background: 217 36% 83%;
 
-    --inline-code-bg: #fbfbfb;
-    --inline-code-fg: #403f53;
+    --inline-code-bg: #eff1f5;
+    --inline-code-fg: #4c4f69;
 
     --icon-background: 232 11% 38%;
     --icon-shirt-primary: 39 90% 64%;
@@ -224,12 +224,6 @@
   @apply text-popover;
 }
 
-/* Fenced code blocks are highlighted by shiki with dual themes (see
-   rehype-shiki `themes` in next.config.mjs): light values render inline,
-   dark values ride along as --shiki-dark* variables. This override flips
-   them when the site is in dark mode (next-themes `.dark` class).
-   The !important flags are required: token spans carry literal light
-   colors inline, which beat normal declarations. */
 .dark .shiki,
 .dark .shiki span {
   color: var(--shiki-dark) !important;
@@ -239,11 +233,6 @@
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
-/* Fenced code blocks are highlighted by shiki (see rehype-shiki in
-   next.config.mjs), which paints the <pre> itself. The shared Code
-   component also styles inline <code>, so neutralize its chip background
-   and padding inside shiki blocks. Unlayered on purpose: it must win over
-   the utilities layer. */
 .shiki code {
   background-color: transparent;
   padding: 0;

@@ -19,8 +19,6 @@ export async function readPosts() {
       if (!match || typeof match[1] !== "string") {
         throw new Error(`${file} needs to export const metadata = {}`);
       }
-      // The metadata block is a JS object literal (unquoted keys, trailing
-      // commas), i.e. valid JSON5. Parse it as data instead of eval'ing it.
       const metadata = JSON5.parse(match[1]);
       return {
         metadata,

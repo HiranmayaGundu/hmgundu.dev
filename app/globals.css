@@ -16,6 +16,7 @@
 }
 
 @theme {
+  --background-image-paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.2'/%3E%3C/svg%3E");
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -225,4 +226,10 @@
 .shiki code {
   background-color: transparent;
   padding: 0;
+}
+
+@utility paper {
+  background-image:
+    linear-gradient(180deg, hsl(var(--foreground) / 0.05), transparent 15rem),
+    var(--background-image-paper-grain);
 }

@@ -5,11 +5,8 @@ This is the source code for my personal website! It's a server-side react app, b
 ## Install it and run:
 
 ```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 ## Inspired By

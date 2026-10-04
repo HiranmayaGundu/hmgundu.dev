@@ -23,7 +23,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-**/.vscode/
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
 
 /pages/seo.tsx

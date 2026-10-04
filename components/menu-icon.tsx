@@ -30,7 +30,7 @@ const MenuIcon = ({ isOpened, height = "44", width = "44" }: MenuIconProps) => {
       width={width}
       height={height}
       viewBox="0 0 44 44"
-      fill="var(--color-text)"
+      className="fill-foreground"
       xmlns="http://www.w3.org/2000/svg"
     >
       <a.rect width="40" height="6" rx="3" transform={top} />

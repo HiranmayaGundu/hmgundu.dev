@@ -57,7 +57,7 @@ function DropdownMenuSubContent({
 }) {
   return (
     <Menu.Portal>
-      <Menu.Positioner sideOffset={sideOffset} className="z-50">
+      <Menu.Positioner sideOffset={sideOffset} className="z-[130]">
         <Menu.Popup
           ref={ref}
           className={cn(
@@ -84,7 +84,11 @@ function DropdownMenuContent({
 }) {
   return (
     <Menu.Portal>
-      <Menu.Positioner sideOffset={sideOffset} align={align} className="z-50">
+      <Menu.Positioner
+        sideOffset={sideOffset}
+        align={align}
+        className="z-[130]"
+      >
         <Menu.Popup
           ref={ref}
           className={cn(

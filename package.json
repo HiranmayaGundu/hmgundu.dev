@@ -53,7 +53,7 @@
     "oxlint": "^1.86.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3",
-    "typescript": "^5"
+    "typescript": "^7.0.2"
   },
   "lint-staged": {
     "*": [

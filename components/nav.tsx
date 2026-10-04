@@ -20,12 +20,12 @@ function DesktopNav() {
   const pathname = usePathname();
   return (
     <nav className="hidden sm:block w-full p-4 z-40">
-      <div className="max-w-[800px] my-0 mx-auto flex items-center justify-center sm:justify-start gap-24">
+      <div className="max-w-200 my-0 mx-auto flex items-center justify-center sm:justify-start gap-24">
         <Link
           href="/"
           className={cn(
-            "text-xl font-bold",
-            pathname === "/" ? "text" : "text-muted-foreground",
+            "text-xl font-bold text-foreground",
+            pathname === "/" ? "underline underline-offset-4" : "",
           )}
         >
           Hiranmaya Gundu
@@ -34,8 +34,8 @@ function DesktopNav() {
           <Link
             href="/about"
             className={cn(
-              "text-xl font-bold",
-              pathname === "/about" ? "text" : "text-muted-foreground",
+              "text-xl font-bold text-foreground",
+              pathname === "/about" ? "underline underline-offset-4" : "",
             )}
           >
             About
@@ -43,8 +43,8 @@ function DesktopNav() {
           <Link
             href="/blog"
             className={cn(
-              "text-xl font-bold",
-              pathname === "/blog" ? "text" : "text-muted-foreground",
+              "text-xl font-bold text-foreground",
+              pathname === "/blog" ? "underline underline-offset-4" : "",
             )}
           >
             Blog
@@ -52,8 +52,8 @@ function DesktopNav() {
           <Link
             href="/references"
             className={cn(
-              "text-xl font-bold",
-              pathname === "/references" ? "text" : "text-muted-foreground",
+              "text-xl font-bold text-foreground",
+              pathname === "/references" ? "underline underline-offset-4" : "",
             )}
           >
             References
@@ -88,8 +88,8 @@ function MobileNav() {
             <Link
               href="/"
               className={cn(
-                "text-xl font-bold",
-                pathname === "/" ? "text" : "text-muted-foreground",
+                "text-xl font-bold text-foreground",
+                pathname === "/" ? "underline underline-offset-4" : "",
               )}
               onClick={toggler}
             >
@@ -98,8 +98,8 @@ function MobileNav() {
             <Link
               href="/about"
               className={cn(
-                "text-xl font-bold",
-                pathname === "/about" ? "text" : "text-muted-foreground",
+                "text-xl font-bold text-foreground",
+                pathname === "/about" ? "underline underline-offset-4" : "",
               )}
               onClick={toggler}
             >
@@ -108,8 +108,8 @@ function MobileNav() {
             <Link
               href="/blog"
               className={cn(
-                "text-xl font-bold",
-                pathname === "/blog" ? "text" : "text-muted-foreground",
+                "text-xl font-bold text-foreground",
+                pathname === "/blog" ? "underline underline-offset-4" : "",
               )}
               onClick={toggler}
             >
@@ -118,8 +118,10 @@ function MobileNav() {
             <Link
               href="/references"
               className={cn(
-                "text-xl font-bold",
-                pathname === "/references" ? "text" : "text-muted-foreground",
+                "text-xl font-bold text-foreground",
+                pathname === "/references"
+                  ? "underline underline-offset-4"
+                  : "",
               )}
               onClick={toggler}
             >

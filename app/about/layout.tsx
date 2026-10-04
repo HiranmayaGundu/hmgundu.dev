@@ -3,5 +3,5 @@ export default function AboutLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="max-w-[800px] mx-auto">{children}</main>;
+  return <main className="max-w-[800px] mx-auto px-4">{children}</main>;
 }

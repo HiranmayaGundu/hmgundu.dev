@@ -82,7 +82,7 @@ function MobileNav() {
           <Link
             href="/"
             className={cn(
-              "text-2xl font-bold",
+              "text-xl font-bold",
               pathname === "/" ? "text" : "text-muted-foreground",
             )}
           >
@@ -92,12 +92,12 @@ function MobileNav() {
         </div>
       </div>
       {menu && (
-        <div className="fixed inset-0 z-40 pt-24 px-8">
+        <div className="fixed inset-0 z-40 pt-24 px-8 backdrop-blur-md">
           <div className="flex flex-col gap-4 items-start text-left">
             <Link
               href="/about"
               className={cn(
-                "text-2xl font-bold",
+                "text-xl font-bold",
                 pathname === "/about" ? "text" : "text-muted-foreground",
               )}
               onClick={toggler}
@@ -107,7 +107,7 @@ function MobileNav() {
             <Link
               href="/blog"
               className={cn(
-                "text-2xl font-bold",
+                "text-xl font-bold",
                 pathname === "/blog" ? "text" : "text-muted-foreground",
               )}
               onClick={toggler}
@@ -117,7 +117,7 @@ function MobileNav() {
             <Link
               href="/references"
               className={cn(
-                "text-2xl font-bold",
+                "text-xl font-bold",
                 pathname === "/references" ? "text" : "text-muted-foreground",
               )}
               onClick={toggler}

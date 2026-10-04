@@ -10,16 +10,16 @@ export const metadata: Metadata = {
 export default async function Page() {
   const posts = await readPosts();
   return (
-    <main className="max-w-[800px] mx-auto">
+    <main className="max-w-[800px] mx-auto px-4">
       <section className="flex flex-col gap-4">
-        <h1 className="text-4xl font-bold leading-tight text-foreground">
+        <h1 className="text-3xl sm:text-4xl font-bold leading-tight text-foreground">
           Blog
         </h1>
         <div className="flex flex-col gap-16">
           {posts.map((post) => (
             <div key={post.metadata.title} className="flex flex-col gap-4">
               <a href={`posts/${post.slug}`}>
-                <h3 className="text-2xl font-bold leading-tight underline underline-offset-2">
+                <h3 className="text-xl sm:text-2xl font-bold leading-tight underline underline-offset-2">
                   {post.metadata.title}
                 </h3>
                 <time className="font-medium">

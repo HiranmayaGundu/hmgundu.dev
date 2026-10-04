@@ -8,13 +8,13 @@ import Code from "./components/ui/code";
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: (props) => (
-      <h1 className="text-4xl font-bold leading-tight" {...props} />
+      <h1 className="text-3xl sm:text-4xl font-bold leading-tight" {...props} />
     ),
     h2: (props) => (
-      <h2 className="text-3xl font-bold leading-tight" {...props} />
+      <h2 className="text-2xl sm:text-3xl font-bold leading-tight" {...props} />
     ),
     h3: (props) => (
-      <h3 className="text-2xl font-bold leading-tight" {...props} />
+      <h3 className="text-xl sm:text-2xl font-bold leading-tight" {...props} />
     ),
     h4: (props) => (
       <h4 className="text-xl font-bold leading-tight" {...props} />

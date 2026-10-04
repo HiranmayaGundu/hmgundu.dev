@@ -1,10 +1,14 @@
-import { LinkHTMLAttributes } from "react";
+import { LinkHTMLAttributes, forwardRef } from "react";
 
-export function Link(props: LinkHTMLAttributes<HTMLAnchorElement>) {
+export const Link = forwardRef<
+  HTMLAnchorElement,
+  LinkHTMLAttributes<HTMLAnchorElement>
+>(function Link(props, ref) {
   return (
     <a
+      ref={ref}
       className="font-medium text-primary underline underline-offset-4"
       {...props}
     />
   );
-}
+});

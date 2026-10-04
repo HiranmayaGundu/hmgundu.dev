@@ -3,7 +3,7 @@ import SecondarySectionDivider from "@/components/secondary-section-divider";
 import SectionDivider from "@/components/section-divider";
 import type { Metadata } from "next";
 import { readPosts } from "@/lib/read-posts";
-import { Link } from "@/components/ui/link";
+import { LinkTooltip } from "@/components/link-tooltip";
 import Mark from "@/components/ui/mark";
 
 export const metadata: Metadata = {
@@ -38,13 +38,18 @@ export default async function Page() {
         <section className="mx-auto max-w-[800px] py-8 ">
           <p className="text-2xl font-medium leading-normal max-w-[800px] mx-auto">
             I&apos;m a Software Engineer at{" "}
-            <Link href="https://www.sigmacomputing.com/">Sigma Computing</Link>,
-            working on building a better business intelligence tool. This
+            <LinkTooltip href="https://www.sigmacomputing.com/">
+              Sigma Computing
+            </LinkTooltip>
+            , working on building a better business intelligence tool. This
             website is my personal blog, where I write about software
             development, testing, Kubernetes and anything else I find
             interesting in the field of software! <br /> <br />
             You can follow me on{" "}
-            <Link href="https://twitter.com/hiranmayagundu">Twitter</Link>.
+            <LinkTooltip href="https://twitter.com/hiranmayagundu">
+              Twitter
+            </LinkTooltip>
+            .
           </p>
         </section>
       </div>

@@ -97,3 +97,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* LinkTooltip (components/link-tooltip.tsx) uses Tippy's theme="link".
+   Tippy renders:
+     <div class="tippy-box" data-theme="link">
+       <div class="tippy-content">…</div>
+       <div class="tippy-arrow" />
+     </div>
+
+   These rules are deliberately NOT inside an `@layer` block: Tailwind's
+   components layer is dropped from the compiled stylesheet here (verified
+   with `tailwindcss -i app/globals.css`), so anything declared in it never
+   reaches the browser. Keep them at the top level.
+
+   Colours come from the --popover tokens rather than Tippy's built-in
+   light/dark themes, so the tooltip tracks the .dark class that next-themes
+   toggles and needs no JS theme plumbing.
+
+   The arrow is painted with `color`, not background-color: tippy.css leaves
+   .tippy-arrow::before's border transparent and resolves the placement's
+   facing border to `initial` (= currentColor). It also ships a default
+   `.tippy-arrow { color: #333 }`, so this selector needs to be more specific
+   than that to win. */
+.tippy-box[data-theme~="link"] {
+  @apply bg-popover text-popover-foreground border border-border;
+  border-radius: calc(var(--radius) - 2px);
+  box-shadow:
+    0 4px 12px -2px hsl(var(--foreground) / 0.12),
+    0 2px 4px -2px hsl(var(--foreground) / 0.08);
+}
+.tippy-box[data-theme~="link"] > .tippy-arrow {
+  @apply text-popover;
+}

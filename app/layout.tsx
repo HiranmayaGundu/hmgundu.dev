@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider";
+import "tippy.js/dist/tippy.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";

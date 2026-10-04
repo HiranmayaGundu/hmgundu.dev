@@ -19,8 +19,8 @@ export function Nav() {
 function DesktopNav() {
   const pathname = usePathname();
   return (
-    <nav className="hidden sm:block w-full p-4 z-40">
-      <div className="max-w-200 my-0 mx-auto flex items-center justify-center sm:justify-start gap-24">
+    <nav className="hidden sm:block w-full py-4 z-40">
+      <div className="max-w-200 my-0 mx-auto px-4 flex items-center justify-center sm:justify-start gap-24">
         <Link
           href="/"
           className={cn(
@@ -74,17 +74,31 @@ function MobileNav() {
   return (
     <nav className="sm:hidden w-full h-full p-4">
       <div className="w-full flex flex-col gap-4">
-        <div className="w-full flex justify-between relative z-120">
-          <Button variant="outline" size="icon" onClick={toggler}>
+        <div className="w-full flex items-center justify-between relative z-120">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={toggler}
+            aria-expanded={menu}
+            aria-label="Toggle menu"
+          >
             <MenuIcon isOpened={menu} height="30" width="30" />
             <span className="sr-only">Toggle menu</span>
           </Button>
+          <Link
+            href="/"
+            className="flex-1 text-center text-xl font-bold text-foreground"
+            onClick={() => setMenu(false)}
+          >
+            Hiranmaya Gundu
+          </Link>
           <ModeToggle />
         </div>
       </div>
       {menu && (
-        <div className="fixed inset-0 z-110 pt-24 px-8 backdrop-blur-md">
-          <div className="flex flex-col gap-4 items-start text-left">
+        <div className="fixed inset-0 z-110 pt-24 px-4 backdrop-blur-md">
+          {/* pl-1.5 lines links up with the hamburger icon above (button inset) */}
+          <div className="flex flex-col gap-4 items-start text-left pl-1.5">
             <Link
               href="/"
               className={cn(

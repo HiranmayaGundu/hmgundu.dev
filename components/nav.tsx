@@ -85,13 +85,6 @@ function MobileNav() {
             <MenuIcon isOpened={menu} height="30" width="30" />
             <span className="sr-only">Toggle menu</span>
           </Button>
-          <Link
-            href="/"
-            className="flex-1 text-center text-xl font-bold text-foreground"
-            onClick={() => setMenu(false)}
-          >
-            Hiranmaya Gundu
-          </Link>
           <ModeToggle />
         </div>
       </div>

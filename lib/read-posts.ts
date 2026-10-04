@@ -3,7 +3,7 @@ import path from "node:path";
 import fg from "fast-glob";
 import JSON5 from "json5";
 
-const postsDir = path.join(process.cwd(), "app", "posts");
+const postsDir = path.join(process.cwd(), "app", "blog", "(posts)");
 
 const META = /export\s+const\s+metadata\s+=\s+(\{(\r\n|\n|.)*?(\r\n|\n)\})/;
 

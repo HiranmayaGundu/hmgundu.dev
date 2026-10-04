@@ -18,7 +18,7 @@ export default async function Page() {
         <div className="flex flex-col gap-16">
           {posts.map((post) => (
             <div key={post.metadata.title} className="flex flex-col gap-4">
-              <a href={`posts/${post.slug}`}>
+              <a href={`/blog/${post.slug}`}>
                 <h3 className="text-xl sm:text-2xl font-bold leading-tight underline underline-offset-2">
                   {post.metadata.title}
                 </h3>

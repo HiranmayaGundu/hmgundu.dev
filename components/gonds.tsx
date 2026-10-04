@@ -1,7 +1,6 @@
-// @ts-nocheck
 "use client";
 import { useSpring, animated as a } from "@react-spring/web";
-import { MouseEventHandler, useCallback } from "react";
+import { MouseEventHandler } from "react";
 interface GondsProps {
   children?: React.ReactNode;
 }
@@ -15,10 +14,10 @@ const Gonds = (props: GondsProps) => {
     xy: [0, 0],
     config: { mass: 10, tension: 800, friction: 140 },
   }));
-  const onMouseMove: MouseEventHandler<HTMLDivElement> = useCallback(
-    ({ clientX: x, clientY: y }) => set.start({ xy: calc(x, y) }),
-    [set],
-  );
+  const onMouseMove: MouseEventHandler<HTMLDivElement> = ({
+    clientX: x,
+    clientY: y,
+  }) => set.start({ xy: calc(x, y) });
 
   const interpolateBackground = springProps.xy.to(
     (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`,

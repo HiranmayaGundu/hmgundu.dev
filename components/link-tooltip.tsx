@@ -56,7 +56,7 @@ export function LinkTooltip({ href, children, ...props }: LinkTooltipProps) {
             ref={setFloating}
             style={floatingStyles}
             {...getFloatingProps({
-              className: `z-[9999] max-w-none whitespace-nowrap rounded-[calc(var(--radius)-2px)] border border-border bg-popover px-[9px] py-[5px] text-sm text-popover-foreground shadow-md transition-opacity duration-[600ms] ${
+              className: `z-9999 max-w-none whitespace-nowrap rounded-md border border-border bg-popover px-2.25 py-1.25 text-sm text-popover-foreground shadow-md transition-opacity duration-600 ${
                 isPositioned ? "opacity-100" : "opacity-0"
               }`,
             })}

@@ -13,7 +13,7 @@ export function Footer() {
 function DesktopFooter() {
   return (
     <footer className="hidden sm:block py-8">
-      <div className="mx-auto grid max-w-[800px] grid-cols-2 gap-16 px-4">
+      <div className="mx-auto grid max-w-200 grid-cols-2 gap-16 px-4">
         <div className="flex flex-1 flex-col gap-4 max-w-80 place-self-start">
           <h3 className="font-bold text-xl">About this website</h3>
           <p className="font-medium">

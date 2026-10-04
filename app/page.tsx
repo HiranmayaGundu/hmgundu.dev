@@ -15,7 +15,7 @@ export default async function Page() {
   const posts = await readPosts();
   return (
     <main>
-      <section className="max-w-[800px] mx-auto px-4">
+      <section className="max-w-200 mx-auto px-4">
         <div className="grid sm:grid-cols-2">
           <div className="self-center place-self-center">
             <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-foreground">
@@ -26,7 +26,7 @@ export default async function Page() {
               </div>
             </h1>
           </div>
-          <div className="hidden sm:block absolute z-1 top-[5px] left-[50%]">
+          <div className="hidden sm:block absolute z-1 top-1.25 left-1/2">
             <Gonds />
           </div>
         </div>
@@ -35,8 +35,8 @@ export default async function Page() {
         <SectionDivider />
       </div>
       <div className="bg-secondary-background">
-        <section className="mx-auto max-w-[800px] py-8 px-4">
-          <p className="text-lg sm:text-2xl font-medium leading-normal max-w-[800px] mx-auto">
+        <section className="mx-auto max-w-200 py-8 px-4">
+          <p className="text-lg sm:text-2xl font-medium leading-normal max-w-200 mx-auto">
             I&apos;m a Software Engineer at{" "}
             <LinkTooltip href="https://www.sigmacomputing.com/">
               Sigma Computing
@@ -54,7 +54,7 @@ export default async function Page() {
         </section>
       </div>
       <SecondarySectionDivider />
-      <section className="mx-auto max-w-[800px] pb-8 px-4">
+      <section className="mx-auto max-w-200 pb-8 px-4">
         <h2 className="text-2xl sm:text-3xl font-bold leading-tight py-8">
           Recently Published
         </h2>
@@ -64,7 +64,7 @@ export default async function Page() {
               <h3 className="text-xl sm:text-2xl font-bold leading-tight underline underline-offset-2">
                 {post.metadata.title}
               </h3>
-              <p className="text-lg font-medium leading-normal max-w-[750px] ">
+              <p className="text-lg font-medium leading-normal max-w-187.5 ">
                 {post.metadata.summary}
               </p>
             </a>

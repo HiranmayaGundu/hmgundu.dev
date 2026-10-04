@@ -4,7 +4,7 @@ interface HeadProps {
   image?: string;
 }
 
-const HeadComponent: React.FC<HeadProps> = ({ title, description, image }) => {
+function HeadComponent({ title, description, image }: HeadProps) {
   return (
     <>
       <title key="title">{title ? `${title}` : "unkown page"}</title>
@@ -72,6 +72,6 @@ const HeadComponent: React.FC<HeadProps> = ({ title, description, image }) => {
       <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png" />
     </>
   );
-};
+}
 
 export default HeadComponent;

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function Page() {
   const posts = await readPosts();
   return (
-    <main className="max-w-[800px] mx-auto px-4">
+    <main className="max-w-200 mx-auto px-4">
       <section className="flex flex-col gap-4">
         <h1 className="text-3xl sm:text-4xl font-bold leading-tight text-foreground">
           Blog

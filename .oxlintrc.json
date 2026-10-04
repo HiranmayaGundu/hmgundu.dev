@@ -20,12 +20,7 @@
     "es2024": true
   },
   "rules": {
-    "jsx-a11y/anchor-has-content": "off",
-    "jsx-a11y/heading-has-content": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/self-closing-comp": "off",
-    "react/jsx-curly-brace-presence": "off",
-    "react/rules-of-hooks": "error"
+    "react/react-in-jsx-scope": "off"
   },
   "ignorePatterns": [".next", "node_modules", "public", "yarn-error.log"]
 }

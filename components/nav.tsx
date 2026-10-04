@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MenuIcon from "./menu-icon";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "./ui/button";
@@ -69,12 +69,12 @@ function DesktopNav() {
 
 function MobileNav() {
   const [menu, setMenu] = useState(false);
-  const toggler = useCallback(() => setMenu((m) => !m), []);
+  const toggler = () => setMenu((m) => !m);
   const pathname = usePathname();
   return (
     <nav className="sm:hidden w-full h-full p-4">
       <div className="w-full flex flex-col gap-4">
-        <div className="w-full flex justify-between relative z-[120]">
+        <div className="w-full flex justify-between relative z-120">
           <Button variant="outline" size="icon" onClick={toggler}>
             <MenuIcon isOpened={menu} height="30" width="30" />
             <span className="sr-only">Toggle menu</span>
@@ -83,7 +83,7 @@ function MobileNav() {
         </div>
       </div>
       {menu && (
-        <div className="fixed inset-0 z-[110] pt-24 px-8 backdrop-blur-md">
+        <div className="fixed inset-0 z-110 pt-24 px-8 backdrop-blur-md">
           <div className="flex flex-col gap-4 items-start text-left">
             <Link
               href="/"

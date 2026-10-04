@@ -1,5 +1,4 @@
 // from https://roabramov.space/blog/hamburger-animation/
-// @ts-nocheck
 "use client";
 import { useSpring, config, a } from "@react-spring/web";
 

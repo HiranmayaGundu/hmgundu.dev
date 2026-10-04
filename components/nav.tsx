@@ -74,7 +74,7 @@ function MobileNav() {
   return (
     <nav className="sm:hidden w-full h-full p-4">
       <div className="w-full flex flex-col gap-4">
-        <div className="w-full flex justify-between">
+        <div className="w-full flex justify-between relative z-50">
           <Button variant="outline" size="icon" onClick={toggler}>
             <MenuIcon isOpened={menu} height="30" width="30" />
             <span className="sr-only">Toggle menu</span>
@@ -90,8 +90,10 @@ function MobileNav() {
           </Link>
           <ModeToggle />
         </div>
-        <div className={cn(menu ? "block" : "hidden")}>
-          <div className="flex flex-col gap-4 items-center">
+      </div>
+      {menu && (
+        <div className="fixed inset-0 z-40 pt-24 px-8">
+          <div className="flex flex-col gap-4 items-start text-left">
             <Link
               href="/about"
               className={cn(
@@ -124,7 +126,7 @@ function MobileNav() {
             </Link>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

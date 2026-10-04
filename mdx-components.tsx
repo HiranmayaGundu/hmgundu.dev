@@ -25,10 +25,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: ({ href, children, ...rest }) => {
       if (href && /^https?:\/\//.test(href)) {
         return (
-          <LinkTooltip href={href}>
-            <Link href={href} {...rest}>
-              {children}
-            </Link>
+          <LinkTooltip href={href} {...rest}>
+            {children}
           </LinkTooltip>
         );
       }

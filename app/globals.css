@@ -213,17 +213,6 @@
   }
 }
 
-.tippy-box[data-theme~="link"] {
-  @apply bg-popover text-popover-foreground border border-border;
-  border-radius: calc(var(--radius) - 2px);
-  box-shadow:
-    0 4px 12px -2px hsl(var(--foreground) / 0.12),
-    0 2px 4px -2px hsl(var(--foreground) / 0.08);
-}
-.tippy-box[data-theme~="link"] > .tippy-arrow {
-  @apply text-popover;
-}
-
 .dark .shiki,
 .dark .shiki span {
   color: var(--shiki-dark) !important;

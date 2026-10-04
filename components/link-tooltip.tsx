@@ -13,26 +13,40 @@ interface LinkTooltipProps {
  * Port of components/Tooltip.tsx from main, which wrapped a link in Tippy to
  * reveal its destination on hover.
  *
- * Two differences from the original:
+ * Differences from the original:
  *  - main used Tippy's built-in light/dark themes driven by a ColorModeContext.
  *    This site uses next-themes, so the theme comes from the `.dark` class and
  *    the `--popover` tokens instead. That keeps the tooltip in sync with the
  *    rest of the design system without threading theme state through JS.
- *  - main wrapped children in a <span> because its Link could not hold a ref.
- *    ui/link now forwards its ref, so the link itself is the hover target and
- *    the tooltip covers exactly the link's hit area.
+ *  - Tippy is attached via its `reference` prop instead of wrapping the link
+ *    as a child. The child pattern makes @tippyjs/react clone the element
+ *    and read `element.ref`, which React 19 forbids (dev warning
+ *    "Accessing element.ref was removed in React 19"). A callback ref into
+ *    state gives Tippy the DOM node without ever touching element.ref.
+ *  - The link sits inside a plain <span>. tippy.js warns that interactive
+ *    tooltips appended to <body> may not be keyboard-accessible unless the
+ *    reference has a parent wrapper giving the popper an adjacent DOM
+ *    position. The span is inline and changes no layout.
  */
 export function LinkTooltip({ href, children }: LinkTooltipProps) {
+  const [reference, setReference] = React.useState<Element | null>(null);
+
   return (
-    <Tippy
-      content={href}
-      arrow={true}
-      interactive={true}
-      duration={600}
-      maxWidth="none"
-      theme="link"
-    >
-      <Link href={href}>{children}</Link>
-    </Tippy>
+    <>
+      <span>
+        <Link ref={setReference} href={href}>
+          {children}
+        </Link>
+      </span>
+      <Tippy
+        reference={reference}
+        content={href}
+        arrow={true}
+        interactive={true}
+        duration={600}
+        maxWidth="none"
+        theme="link"
+      />
+    </>
   );
 }

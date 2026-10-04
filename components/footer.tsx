@@ -1,4 +1,4 @@
-import { Twitter, Github } from "lucide-react";
+import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { Link } from "./ui/link";
 
 export function Footer() {
@@ -16,7 +16,7 @@ export function Footer() {
           <div className="flex flex-1 flex-col gap-4 max-w-80 place-self-start">
             <h3 className="font-bold text-xl">Social Media</h3>
             <div className="flex gap-2">
-              <Github />
+              <GitHubLogoIcon width={24} height={24} />
               <Link
                 href="https://github.com/HiranmayaGundu/hmgundu.dev"
                 rel="me noopener"
@@ -25,7 +25,7 @@ export function Footer() {
               </Link>
             </div>
             <div className="flex gap-2">
-              <Twitter />
+              <TwitterLogoIcon width={24} height={24} />
               <Link href="https://twitter.com/hiranmayagundu" rel="me noopener">
                 Follow me on twitter
               </Link>

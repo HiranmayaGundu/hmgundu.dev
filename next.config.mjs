@@ -1,24 +1,21 @@
-import rehypeSlug from "rehype-slug";
-import rehypePrism from "mdx-prism";
 import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions`` to include MDX files
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
-  // Linting is handled by oxlint (`npm run lint`); never let Next.js builds
-  // depend on ESLint being installed.
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   // Optionally, add any other Next.js config below
 };
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+  // Add markdown plugins here, as desired.
+  // NOTE: plugins must be referenced by package NAME (string), not imported
+  // function. @next/mdx resolves string references at compile time, and
+  // Turbopack requires loader options to be serializable - imported
+  // functions fail the build with "does not have serializable options".
   options: {
     remarkPlugins: [],
-    rehypePlugins: [rehypeSlug, rehypePrism],
+    rehypePlugins: ["rehype-slug", "mdx-prism"],
   },
 });
 

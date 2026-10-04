@@ -1,7 +1,7 @@
 import * as React from "react";
 import { DividerSvg } from "./divider-svg";
 
-const SectionDivider = (): JSX.Element => {
+const SectionDivider = (): React.JSX.Element => {
   return (
     <DividerSvg
       preserveAspectRatio="none"

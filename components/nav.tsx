@@ -79,21 +79,22 @@ function MobileNav() {
             <MenuIcon isOpened={menu} height="30" width="30" />
             <span className="sr-only">Toggle menu</span>
           </Button>
-          <Link
-            href="/"
-            className={cn(
-              "text-xl font-bold",
-              pathname === "/" ? "text" : "text-muted-foreground",
-            )}
-          >
-            Hiranmaya Gundu
-          </Link>
           <ModeToggle />
         </div>
       </div>
       {menu && (
         <div className="fixed inset-0 z-40 pt-24 px-8 backdrop-blur-md">
           <div className="flex flex-col gap-4 items-start text-left">
+            <Link
+              href="/"
+              className={cn(
+                "text-xl font-bold",
+                pathname === "/" ? "text" : "text-muted-foreground",
+              )}
+              onClick={toggler}
+            >
+              Home
+            </Link>
             <Link
               href="/about"
               className={cn(
